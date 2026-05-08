@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Soal UKRG Sosiologi SMA 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.no-select{-webkit-user-select:none;user-select:none}
+:root{
+  --bg:#F4F0EA;--surface:#FDFAF6;--ink:#18140F;--ink-muted:#6B6057;--ink-faint:#A89F96;
+  --accent:#1E5F74;--accent-light:#E8F4F8;--accent-mid:#2E86A0;
+  --correct:#166534;--correct-bg:#DCFCE7;--wrong:#991B1B;--wrong-bg:#FEE2E2;
+  --skip:#92400E;--skip-bg:#FFFBEB;--skip-bd:#FCD34D;
+  --border:#DDD5CA;--shadow:rgba(24,20,15,.08);--radius:14px;
+  --mc:#7C2D8F;--mc-bg:#F5F0FF;--mc-bd:#D8B4FE;
+  --pk:#C45D1C;--pk-bg:#FFF4EC;--pk-bd:#FDC89A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:16px;line-height:1.65}
+header{background:var(--ink);color:#F5F1EB;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--accent)}
+.hl{display:flex;flex-direction:column;gap:1px}
+.hle{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-mid);font-weight:600}
+.hlt{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#F5F1EB}
+#tbox{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:5px 14px}
+#tlbl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#A89F96}
+#timer{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;color:#F5F1EB;letter-spacing:.05em}
+#timer.warn{color:#FB923C}#timer.danger{color:#F87171;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pw{background:var(--surface);border-bottom:1px solid var(--border);padding:.55rem 2rem;display:flex;align-items:center;gap:1rem}
+.pt{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+.pf{height:100%;background:var(--accent);border-radius:99px;transition:width .4s;width:0}
+.ptx{font-size:12px;color:var(--ink-muted);white-space:nowrap;font-weight:500}
+.wrap{max-width:980px;margin:0 auto;padding:1.75rem 1.5rem;display:grid;grid-template-columns:1fr 268px;gap:1.5rem;align-items:start}
+.qcard{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 20px var(--shadow)}
+.qhead{padding:.85rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.qhead.pg{background:var(--accent)}.qhead.mcma{background:var(--mc)}.qhead.pgk{background:var(--pk)}
+.qn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:rgba(255,255,255,.28);line-height:1}
+.qn span{font-size:12px;font-weight:400;color:rgba(255,255,255,.55);display:block;font-family:'DM Sans',sans-serif;margin-top:2px}
+.qm{border-left:1px solid rgba(255,255,255,.18);padding-left:1rem;flex:1;display:flex;flex-direction:column;gap:2px}
+.q-topic-line{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+.q-subtopic-line{font-size:11.5px;color:rgba(255,255,255,.8);font-weight:500}
+.q-meta-pills{display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap}
+.q-type-pill{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+.q-level-pill{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.lv-LOTS{background:rgba(134,239,172,.25);color:#A7F3C1}
+.lv-MOTS{background:rgba(252,211,77,.25);color:#FDE68A}
+.lv-HOTS{background:rgba(252,165,165,.25);color:#FCA5A5}
+.qdif{display:inline-flex;align-items:center;gap:3px}
+.d{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2)}.d.on{background:#FCD34D}
+.qbody{padding:1.25rem 1.5rem 1.5rem}
+.komp-strip{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:.9rem;padding:.6rem .85rem;background:#F4F0EA;border-radius:8px;border:1px solid var(--border)}
+.ks-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint)}
+.ks-val{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px}
+.ks-komp{background:var(--accent-light);color:var(--accent);border:1px solid #A3CDD8}
+.ks-sub{background:white;color:var(--ink-muted);border:1px solid var(--border)}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-bottom:.75rem}
+.ppg{background:var(--accent-light);color:var(--accent);border:1px solid #A3CDD8}
+.pmc{background:var(--mc-bg);color:var(--mc);border:1px solid var(--mc-bd)}
+.ppk{background:var(--pk-bg);color:var(--pk);border:1px solid var(--pk-bd)}
+.passage{background:#EDE7DD;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin-bottom:1rem;font-size:14px;color:var(--ink-muted);font-style:italic;line-height:1.72}
+.qtext{font-size:15.5px;color:var(--ink);margin-bottom:1.1rem;line-height:1.78}
+.mhint{display:flex;align-items:center;gap:7px;background:var(--mc-bg);border:1px solid var(--mc-bd);border-radius:8px;padding:.55rem .9rem;margin-bottom:.9rem;font-size:12.5px;color:var(--mc);font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:.75rem 1rem;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;background:white;transition:all .18s;text-align:left;width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);line-height:1.55}
+.opt:hover:not(:disabled){border-color:var(--accent-mid);background:var(--accent-light)}
+.opt.sel{border-color:var(--accent);background:var(--accent-light)}
+.opt.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.opt.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.opt:disabled{cursor:default}
+.olbl{flex-shrink:0;width:23px;height:23px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;color:var(--ink-muted);margin-top:1px}
+.opt.sel .olbl{border-color:var(--accent);color:var(--accent)}
+.opt.correct .olbl{border-color:var(--correct);color:var(--correct)}
+.opt.wrong .olbl{border-color:var(--wrong);color:var(--wrong)}
+.mcopts{display:flex;flex-direction:column;gap:8px}
+.mcopt{display:flex;align-items:flex-start;gap:11px;padding:.75rem 1rem;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;background:white;transition:all .18s;text-align:left;width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);line-height:1.55}
+.mcopt:hover:not(:disabled){border-color:var(--mc);background:var(--mc-bg)}
+.mcopt.sel{border-color:var(--mc);background:var(--mc-bg)}
+.mcopt.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.mcopt.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.mcopt.missed{border-color:var(--correct);background:var(--correct-bg);opacity:.7}
+.mcopt:disabled{cursor:default}
+.mchk{flex-shrink:0;width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);background:white;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;color:transparent}
+.mcopt.sel .mchk{border-color:var(--mc);background:var(--mc);color:white}
+.mcopt.correct .mchk{border-color:var(--correct);background:var(--correct);color:white}
+.mcopt.wrong .mchk{border-color:var(--wrong);background:var(--wrong);color:white}
+.mcopt.missed .mchk{border-color:var(--correct);background:transparent;color:var(--correct)}
+.pkwrap{border:1.5px solid var(--pk-bd);border-radius:10px;overflow:hidden}
+.pkh{display:grid;grid-template-columns:1fr 95px 95px;background:var(--pk);padding:.6rem 1rem;font-size:11px;font-weight:600;color:white;letter-spacing:.08em;text-transform:uppercase;gap:.5rem}
+.pkrow{display:grid;grid-template-columns:1fr 95px 95px;padding:.75rem 1rem;border-top:1px solid var(--pk-bd);background:white;align-items:center;gap:.5rem}
+.pkrow.rc{background:var(--correct-bg)}.pkrow.rw{background:var(--wrong-bg)}
+.pkstmt{font-size:14px;color:var(--ink);line-height:1.55}
+.pkcol{display:flex;justify-content:center}
+.pkbtn{padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:white;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;color:var(--ink-muted);transition:all .15s}
+.pkbtn:hover:not(:disabled){border-color:var(--pk);color:var(--pk)}
+.pkbtn.st{border-color:var(--pk);background:var(--pk);color:white}
+.pkbtn.sf{border-color:var(--ink-muted);background:var(--ink-muted);color:white}
+.pkbtn.ok{border-color:var(--correct);background:var(--correct);color:white}
+.pkbtn.bad{border-color:var(--wrong);background:var(--wrong);color:white}
+.pkbtn:disabled{cursor:default}
+.expl{margin-top:1rem;padding:.9rem 1.1rem;border-radius:9px;background:#F0FAF4;border:1px solid #A7F3C1;font-size:14px;color:#14532D;display:none;line-height:1.65}
+.expl.show{display:block}
+.expl strong{display:block;margin-bottom:5px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--correct)}
+.navb{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;border-top:1px solid var(--border);gap:.75rem;flex-wrap:wrap}
+.btn{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;padding:.55rem 1.15rem;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:white;color:var(--ink-muted);transition:all .18s;display:flex;align-items:center;gap:5px}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btnp{background:var(--accent);color:white;border-color:var(--accent)}
+.btnp:hover{background:#174F63;border-color:#174F63;color:white}
+.btn:disabled{opacity:.33;cursor:default;pointer-events:none}
+.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:82px}
+.sc{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 10px var(--shadow)}
+.stit{font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink)}
+.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:.8rem}
+.qdot{aspect-ratio:1;border-radius:7px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:11.5px;font-weight:500;color:var(--ink-muted);display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.qdot:hover{border-color:var(--accent);color:var(--accent)}
+.qdot.active{border-color:var(--accent);background:var(--accent);color:white}
+.qdot.ans{border-color:var(--accent-mid);background:var(--accent-light);color:var(--accent)}
+.qdot.cc{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.qdot.cw{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.qdot.cs{border-color:var(--skip);background:var(--skip-bg);color:var(--skip)}
+.qdot.cp{border-color:#D97706;background:#FEF3C7;color:#92400E}
+.leg{padding:0 .8rem .8rem;display:flex;flex-direction:column;gap:4px}
+.legi{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink-muted)}
+.legd{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.stg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.sti{background:var(--surface);padding:.7rem 1rem;text-align:center}
+.stv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);display:block}
+.stl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:500}
+/* WELCOME */
+#ws{max-width:660px;margin:3rem auto;padding:0 1.5rem}
+.wc{background:var(--surface);border-radius:18px;border:1px solid var(--border);overflow:hidden;box-shadow:0 6px 32px var(--shadow)}
+.wt{background:var(--ink);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.wt::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:var(--accent);opacity:.12}
+.wte{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-mid);font-weight:600;margin-bottom:8px}
+.wth{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#F5F1EB;letter-spacing:-.02em;line-height:1.15;margin-bottom:.4rem}
+.wts{color:rgba(245,241,235,.5);font-size:15px}
+.wb{padding:2rem}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.5rem}
+.ii{background:var(--bg);border-radius:10px;padding:.85rem 1rem;display:flex;align-items:flex-start;gap:9px}
+.iico{font-size:19px;flex-shrink:0;margin-top:1px}
+.ilb{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:500}
+.ivl{font-size:14.5px;font-weight:500;color:var(--ink)}
+.tr{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.tag{font-size:11.5px;padding:3px 11px;border-radius:99px;background:var(--accent-light);color:var(--accent);font-weight:500;border:1px solid rgba(30,95,116,.15)}
+.tag.mc{background:var(--mc-bg);color:var(--mc);border-color:var(--mc-bd)}
+.tag.pk{background:var(--pk-bg);color:var(--pk);border-color:var(--pk-bd)}
+.bst{width:100%;padding:.875rem;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;background:var(--accent);color:white;border:none;border-radius:10px;cursor:pointer}
+.bst:hover{background:#174F63}
+/* RESULT */
+#rs{display:none;max-width:860px;margin:2.5rem auto;padding:0 1.5rem}
+.rb{width:108px;height:108px;border-radius:50%;margin:0 auto .75rem;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:white}
+.rb.lulus{background:var(--correct);box-shadow:0 8px 30px rgba(22,101,52,.35)}
+.rb.gagal{background:var(--wrong);box-shadow:0 8px 30px rgba(153,27,27,.35)}
+.kkm-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:5px 16px;border-radius:99px;margin:0 auto .75rem;letter-spacing:.04em}
+.kkm-badge.lulus{background:var(--correct-bg);color:var(--correct);border:1.5px solid #86EFAC}
+.kkm-badge.gagal{background:var(--wrong-bg);color:var(--wrong);border:1.5px solid #FCA5A5}
+.rtit{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--ink);margin-bottom:.35rem;text-align:center}
+.rsub{color:var(--ink-muted);font-size:15px;margin-bottom:1.5rem;text-align:center}
+.rg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--border)}
+.rst{background:var(--surface);padding:1rem;text-align:center}
+.rv{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);display:block;margin-bottom:3px}
+.rv.g{color:var(--correct)}.rv.r{color:var(--wrong)}.rv.s{color:var(--skip)}
+.rl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);font-weight:500}
+.pred{padding:.85rem 1.4rem;border-radius:var(--radius);margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5}
+.tabs{display:flex;gap:4px;margin-bottom:1rem;background:var(--bg);border-radius:10px;padding:4px}
+.tab{flex:1;padding:.6rem;border-radius:7px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink-muted);transition:all .18s}
+.tab.active{background:var(--surface);color:var(--accent);box-shadow:0 1px 6px var(--shadow);font-weight:600}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.ana-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-bottom:1rem}
+.ana-head{padding:.75rem 1.1rem;font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.ana-head-left{display:flex;align-items:center;gap:.5rem}
+.ana-badge{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px}
+.ab-ok{background:var(--correct-bg);color:var(--correct)}
+.ab-warn{background:var(--skip-bg);color:var(--skip)}
+.ab-bad{background:var(--wrong-bg);color:var(--wrong)}
+.ana-body{padding:0 .85rem .85rem;display:flex;flex-direction:column;gap:.4rem}
+.ana-item{display:flex;align-items:flex-start;gap:.65rem;padding:.6rem .75rem;border-radius:8px;font-size:13px;line-height:1.5}
+.ai-cor{background:var(--correct-bg);border:1px solid #A7F3C1;color:var(--correct)}
+.ai-wrg{background:var(--wrong-bg);border:1px solid #FCA5A5;color:var(--wrong)}
+.ai-skp{background:var(--skip-bg);border:1px solid var(--skip-bd);color:var(--skip)}
+.ai-content strong{display:block;font-weight:600;font-size:12.5px;margin-bottom:1px}
+.ai-content span{font-size:12px;opacity:.85}
+.komp-table{width:100%;border-collapse:collapse;font-size:13px}
+.komp-table th{background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:left;font-size:11.5px;font-weight:600}
+.komp-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border)}
+.komp-table tr:last-child td{border-bottom:none}
+.komp-table tr:nth-child(even) td{background:#FAF7F3}
+.score-bar{height:6px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:3px}
+.score-fill{height:100%;border-radius:99px}
+.sf-good{background:var(--correct)}.sf-mid{background:#F59E0B}.sf-bad{background:var(--wrong)}
+.rbtns{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.btr{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;padding:.75rem 1.75rem;border-radius:9px;cursor:pointer;transition:all .18s;border:none}
+.btr.pri{background:var(--accent);color:white}.btr.pri:hover{background:#174F63}
+.btr.out{background:white;color:var(--accent);border:1.5px solid var(--accent)}.btr.out:hover{background:var(--accent-light)}
+.rev-banner{background:linear-gradient(135deg,#1C1917,#292524);color:#F5F1EB;padding:.75rem 1.5rem;text-align:center;font-size:13px;font-weight:500}
+.rev-banner span{color:#FCD34D;font-weight:700}
+@media(max-width:720px){
+  .wrap{grid-template-columns:1fr;padding:1rem}.sidebar{position:static}
+  header{padding:1rem}.hlt{font-size:17px}.pw{padding:.55rem 1rem}
+  .wth{font-size:26px}.ig{grid-template-columns:1fr}
+  .rg{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- WELCOME -->
+<div id="ws">
+  <div class="wc">
+    <div class="wt">
+      <p class="wte">Tes Kemampuan Akademik · Sosiologi SMA · UKRG 2026</p>
+      <h1 class="wth">Latihan Soal UKRG<br>Sosiologi SMA 2026</h1>
+      <p class="wts">Uji pemahaman Sosiologi dari kelas 10–12 SMA</p>
+    </div>
+    <div class="wb">
+      <div class="ig">
+        <div class="ii"><span class="iico">📋</span><div><p class="ilb">Jumlah soal</p><p class="ivl">30 soal</p></div></div>
+        <div class="ii"><span class="iico">⏱</span><div><p class="ilb">Waktu</p><p class="ivl">75 menit</p></div></div>
+        <div class="ii"><span class="iico">🎯</span><div><p class="ilb">Penilaian</p><p class="ivl">Benar +1 · Salah/Kosong 0</p></div></div>
+        <div class="ii"><span class="iico">🏫</span><div><p class="ilb">KKM</p><p class="ivl">75 · Lulus / Tidak Lulus</p></div></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Tipe Soal</p>
+      <div class="tr">
+        <span class="tag">20× Pilihan Ganda (PG)</span>
+        <span class="tag mc">5× PG Multi-Jawab (MCMA)</span>
+        <span class="tag pk">5× Benar / Salah (PGK)</span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Materi Kelas 10–12</p>
+      <div class="tr">
+        <span class="tag">Sosiologi sebagai Ilmu</span><span class="tag">Interaksi Sosial</span>
+        <span class="tag">Ketidaksetaraan Sosial</span><span class="tag">Metode Penelitian Sosial</span>
+        <span class="tag">Kelompok Sosial</span><span class="tag">Konflik Sosial</span>
+        <span class="tag">Harmoni Sosial</span><span class="tag">Perubahan Sosial</span>
+        <span class="tag">Globalisasi</span><span class="tag">Kearifan Lokal</span>
+      </div>
+      <button class="bst" onclick="startExam()">Mulai Latihan →</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM -->
+<div id="es" style="display:none">
+  <header>
+    <div class="hl">
+      <span class="hle">Latihan Soal UKRG Sosiologi SMA · 2026</span>
+      <span class="hlt">Latihan Soal UKRG Sosiologi SMA 2026</span>
+    </div>
+    <div id="tbox"><span id="tlbl">Sisa Waktu</span><span id="timer">75:00</span></div>
+  </header>
+  <div class="pw">
+    <div class="pt"><div class="pf" id="pf"></div></div>
+    <span class="ptx" id="ptx">0 / 30 dijawab</span>
+  </div>
+  <div id="rev-banner" class="rev-banner" style="display:none">
+    Mode Review — <span>Pembahasan tersedia di setiap soal</span>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="qcard">
+        <div class="qhead pg" id="qh">
+          <div class="qn" id="qnum">1<span>dari 30</span></div>
+          <div class="qm">
+            <div class="q-topic-line" id="q-topic-line">Topik</div>
+            <div class="q-subtopic-line" id="q-subtopic-line">Subtopik</div>
+            <div class="q-meta-pills">
+              <span class="q-type-pill" id="q-type-pill">PG</span>
+              <span class="q-level-pill" id="q-level-pill">LOTS</span>
+              <span class="qdif" id="qdif"></span>
+            </div>
+          </div>
+        </div>
+        <div class="qbody no-select" id="qbody"></div>
+        <div class="navb">
+          <button class="btn" id="bprev" onclick="nav(-1)">← Sebelumnya</button>
+          <div style="display:flex;gap:.5rem">
+            <button class="btn btnp" id="bnext" onclick="nav(1)">Selanjutnya →</button>
+            <button class="btn btnp" id="bfin" style="display:none">Selesai</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="sc">
+        <div class="stit">Navigasi Soal</div>
+        <div class="qgrid" id="qgrid"></div>
+        <div class="leg">
+          <div class="legi"><div class="legd" style="background:var(--accent)"></div>Sedang dikerjakan</div>
+          <div class="legi"><div class="legd" style="background:var(--accent-light);border:1.5px solid var(--accent-mid)"></div>Sudah dijawab</div>
+          <div class="legi"><div class="legd" style="background:white;border:1.5px solid var(--border)"></div>Belum dijawab</div>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="stit">Statistik</div>
+        <div class="stg">
+          <div class="sti"><span class="stv" id="sdon">0</span><span class="stl">Dijawab</span></div>
+          <div class="sti"><span class="stv" id="slft">30</span><span class="stl">Tersisa</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="rs">
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <div class="rb" id="rbadge">—</div>
+    <div class="kkm-badge" id="kkm-badge"></div>
+    <h2 class="rtit" id="rtit">Hasil Latihan</h2>
+    <p class="rsub" id="rsub"></p>
+  </div>
+  <div class="rg">
+    <div class="rst"><span class="rv g" id="rcor">0</span><span class="rl">Benar</span></div>
+    <div class="rst"><span class="rv r" id="rwrg">0</span><span class="rl">Salah</span></div>
+    <div class="rst"><span class="rv s" id="rskp">0</span><span class="rl">Tidak Dijawab</span></div>
+    <div class="rst"><span class="rv" id="rsco" style="color:var(--accent)">0</span><span class="rl">Nilai (100)</span></div>
+  </div>
+  <div class="pred" id="pred"></div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('tab-soal',this)">📋 Analisis per Soal</button>
+    <button class="tab" onclick="switchTab('tab-komp',this)">📊 Kompetensi &amp; Subkompetensi</button>
+  </div>
+  <div id="tab-soal" class="tab-panel active"></div>
+  <div id="tab-komp" class="tab-panel"></div>
+  <div class="rbtns">
+    <button class="btr out" onclick="reviewMode()">📖 Lihat Pembahasan</button>
+    <button class="btr pri" onclick="restartExam()">↺ Ulangi Latihan</button>
+  </div>
+</div>
+
+<script>
+// ── CHARTS ──────────────────────────────────────────────
+function makeChartQ12(){
+  var bars=[['Takut',33.5],['Malu',29.0],['Tidak tahu melapor kemana',23.5],['Merasa bersalah',18.5]];
+  var html='<div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem">';
+  html+='<p style="font-size:11.5px;color:var(--ink-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem">Grafik Alasan Korban Tidak Melaporkan Pengalaman Kekerasan Seksualnya<br><span style="font-weight:400;font-style:italic">Sumber: Laporan Studi Kuantitatif Barometer Kesetaraan Gender, INFID, 2020</span></p>';
+  for(var i=0;i<bars.length;i++){
+    var l=bars[i][0],v=bars[i][1];
+    html+='<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.65rem">';
+    html+='<div style="width:180px;font-size:13px;color:var(--ink);text-align:right;flex-shrink:0">'+l+'</div>';
+    html+='<div style="flex:1;height:28px;background:#F5E8E8;border-radius:4px;overflow:hidden">';
+    html+='<div style="width:'+(v/40*100)+'%;height:100%;background:#E88C8C;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">';
+    html+='<span style="font-size:12px;font-weight:600;color:#7B2828">'+v+'%</span></div></div></div>';
+  }
+  html+='</div>';
+  return html;
+}
+
+function makePie(slices){
+  var total=0;for(var i=0;i<slices.length;i++)total+=slices[i][0];
+  var start=-Math.PI/2,paths='';
+  for(var i=0;i<slices.length;i++){
+    var v=slices[i][0],c=slices[i][1];
+    var angle=v/total*2*Math.PI,end=start+angle;
+    var x1=(100+90*Math.cos(start)).toFixed(2),y1=(100+90*Math.sin(start)).toFixed(2);
+    var x2=(100+90*Math.cos(end)).toFixed(2),y2=(100+90*Math.sin(end)).toFixed(2);
+    var la=angle>Math.PI?1:0;
+    paths+='<path d="M100,100 L'+x1+','+y1+' A90,90 0 '+la+',1 '+x2+','+y2+' Z" fill="'+c+'" stroke="white" stroke-width="1.5"/>';
+    start=end;
+  }
+  return paths;
+}
+
+function makeChartQ24(){
+  var slices=[[1.87,'#A8C8A0'],[10.88,'#B8D8F0'],[27.94,'#6BAAD6'],[25.87,'#E06060'],[21.88,'#E8A040'],[11.56,'#F0D040']];
+  var legs=[['#A8C8A0','Pre-Boomer (Usia 75+ tahun)','1,87%'],['#B8D8F0','Post Gen Z (Usia 0–7 tahun)','10,88%'],['#6BAAD6','Gen Z (Usia 8–23 tahun)','27,94%'],['#E06060','Milenial (Usia 24–39 tahun)','25,87%'],['#E8A040','Gen X (Usia 40–55 tahun)','21,88%'],['#F0D040','Baby Boomer (Usia 56–74 tahun)','11,56%']];
+  var legHtml='';for(var i=0;i<legs.length;i++){legHtml+='<div style="display:flex;align-items:center;gap:6px;font-size:11px"><div style="width:10px;height:10px;border-radius:2px;background:'+legs[i][0]+';flex-shrink:0"></div><span style="color:var(--ink-muted);flex:1">'+legs[i][1]+'</span><span style="font-weight:600;color:var(--ink)">'+legs[i][2]+'</span></div>';}
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem">'
+    +'<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem"><div style="background:#1E5F74;color:white;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px">★ glints</div><div><p style="font-size:14px;font-weight:700;color:var(--ink)">BONUS DEMOGRAFI — BAK PEDANG BERMATA DUA</p><p style="font-size:11px;color:var(--ink-muted);font-style:italic">Sumber: Badan Pusat Statistik, BKKBN</p></div></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">'
+    +'<div><p style="font-size:11.5px;font-weight:600;color:var(--ink-muted);margin-bottom:.5rem;text-align:center">Komposisi Penduduk Indonesia<br>(Sensus Penduduk 2020)</p>'
+    +'<svg viewBox="0 0 200 200" style="width:100%;max-width:190px;display:block;margin:0 auto">'+makePie(slices)+'</svg></div>'
+    +'<div style="display:flex;flex-direction:column;gap:5px;justify-content:center">'+legHtml+'</div></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.75rem">'
+    +'<div style="background:#FEF9E7;border:1.5px solid #FCD34D;border-radius:8px;padding:.6rem;text-align:center"><div style="font-size:10px;font-weight:600;color:#92400E;margin-bottom:2px">Jumlah Penduduk Indonesia<br>(Sensus Penduduk 2020)</div><div style="font-size:16px;font-weight:700;color:var(--ink)">270,20 juta jiwa</div></div>'
+    +'<div style="background:#EFF6FF;border:1.5px solid #93C5FD;border-radius:8px;padding:.6rem;text-align:center"><div style="font-size:10px;font-weight:600;color:#1E40AF;margin-bottom:2px">Penduduk Usia Produktif<br>(15–64 tahun)</div><div style="font-size:16px;font-weight:700;color:var(--ink)">70,72%</div></div>'
+    +'<div style="background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:8px;padding:.6rem;text-align:center"><div style="font-size:10px;font-weight:600;color:#991B1B;margin-bottom:2px">Penduduk Usia Nonproduktif<br>(&lt;15 &amp; &gt;64 tahun)</div><div style="font-size:16px;font-weight:700;color:var(--ink)">29,28%</div></div></div>'
+    +'<p style="font-size:12.5px;color:var(--ink);text-align:center;font-weight:500;margin-bottom:.75rem">Artinya, <strong>100 orang</strong> berusia produktif hanya akan menanggung beban <strong>41 orang nonproduktif.</strong></p>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">'
+    +'<div style="background:#DCFCE7;border-radius:8px;padding:.65rem"><p style="font-size:11px;font-weight:700;color:var(--correct);margin-bottom:5px">Potensi</p><p style="font-size:12px;color:#14532D;line-height:1.6">● Menciptakan pertumbuhan dan perkembangan negara<br>● Memicu pertumbuhan ekonomi negara<br>● Menaikkan PDB</p></div>'
+    +'<div style="background:#FEE2E2;border-radius:8px;padding:.65rem"><p style="font-size:11px;font-weight:700;color:var(--wrong);margin-bottom:5px">Tantangan</p><p style="font-size:12px;color:#7F1D1D;line-height:1.6">● Jumlah pengangguran meningkat<br>● Ketidakseimbangan antara kualitas SDM dengan standar kualifikasi<br>● Middle income trap</p></div>'
+    +'</div></div>';
+}
+
+function makeChartQ27(){
+  var rows=[['Makanan dan kebutuhan pokok','45%','32%'],['Gadget dan teknologi','8%','18%'],['Hiburan digital (streaming, game)','2%','12%'],['Fashion dan lifestyle','12%','20%'],['Pendidikan anak','25%','15%'],['Tabungan/investasi','8%','3%']];
+  var rowHtml='';
+  for(var i=0;i<rows.length;i++){
+    var bg=i%2?'#FAF7F3':'white';
+    rowHtml+='<tr style="background:'+bg+'"><td style="padding:.6rem .85rem;color:var(--ink);border-bottom:1px solid var(--border)">'+rows[i][0]+'</td><td style="padding:.6rem .85rem;text-align:center;color:var(--ink);border-bottom:1px solid var(--border)">'+rows[i][1]+'</td><td style="padding:.6rem .85rem;text-align:center;color:var(--ink);border-bottom:1px solid var(--border)">'+rows[i][2]+'</td></tr>';
+  }
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
+    +'<div style="background:var(--ink);color:#F5F1EB;padding:.65rem 1rem;font-size:13px;font-weight:600">Tabel Perubahan Pola Belanja Keluarga Kelas Menengah di Kota X (2015 vs 2024)</div>'
+    +'<table style="width:100%;border-collapse:collapse;font-size:13.5px"><thead><tr style="background:#F4F0EA">'
+    +'<th style="padding:.6rem .85rem;text-align:left;font-weight:600;color:var(--ink);border-bottom:1px solid var(--border)">Kategori Pengeluaran</th>'
+    +'<th style="padding:.6rem .85rem;text-align:center;font-weight:600;color:var(--ink);border-bottom:1px solid var(--border)">% dari Total Pengeluaran 2015</th>'
+    +'<th style="padding:.6rem .85rem;text-align:center;font-weight:600;color:var(--ink);border-bottom:1px solid var(--border)">% dari Total Pengeluaran 2024</th>'
+    +'</tr></thead><tbody>'+rowHtml+'</tbody></table>'
+    +'<p style="font-size:11px;color:var(--ink-faint);padding:.5rem .85rem;font-style:italic">Data dari 1.500 keluarga kelas menengah dengan pendapatan Rp 8–15 juta/bulan di kota-kota besar. Rata-rata pengeluaran total per bulan relatif sama (disesuaikan inflasi).</p></div>';
+}
+
+// ── QUESTIONS ───────────────────────────────────────────
+var Q=[
+{no:1,type:'pg',kelas:10,topic:'Sosiologi sebagai Ilmu',sub:'Ciri Ilmu Sosiologi',komp:'Pemahaman',subkomp:'Mengidentifikasi contoh yang sesuai dengan konsep atau prosedur penelitian dalam Sosiologi',level:'LOTS',passage:'Seorang peneliti mengkaji fenomena tawuran antarpelajar di kotanya. Setelah mengumpulkan data, ia menyimpulkan bahwa pelajar yang terlibat tawuran adalah generasi yang rusak moral dan tidak layak mendapat perhatian pemerintah. Kesimpulan tersebut ia cantumkan dalam laporan penelitiannya.',text:'Ciri sosiologi manakah yang dilanggar oleh peneliti tersebut?',opts:['Empiris, karena kesimpulan peneliti tidak mencerminkan fakta yang sebenarnya terjadi di lapangan','Objektif, karena peneliti menyusun kesimpulan berdasarkan sudut pandang pribadi, bukan berdasarkan data','Teoretis, karena kesimpulan peneliti tidak didasarkan pada kerangka teori sosiologi yang relevan','Nonetis, karena peneliti memberikan penilaian moral atas perilaku kelompok yang sedang ditelitinya','Kumulatif, karena peneliti menarik kesimpulan tanpa merujuk pada hasil penelitian sebelumnya'],answer:3,expl:'Peneliti menyimpulkan bahwa pelajar yang terlibat tawuran "rusak moral dan tidak layak mendapat perhatian pemerintah." Ini adalah vonis moral atas kelompok yang diteliti, yang melanggar ciri nonetis — sosiologi mengkaji fenomena secara ilmiah tanpa menghakimi baik atau buruknya perilaku tersebut.\n\nOpsi A salah, karena empiris mempersoalkan apakah data bersumber dari fakta nyata, bukan apakah kesimpulan akurat secara moral.\n\nOpsi B salah, karena objektif mempersoalkan cara peneliti melihat dan menganalisis fakta, sedangkan pelanggaran dalam ilustrasi lebih spesifik: peneliti memberi vonis moral.\n\nOpsi C salah, karena teoretis mempersoalkan apakah peneliti menyusun pola dan abstraksi konseptual.\n\nOpsi E salah, karena kumulatif mempersoalkan apakah peneliti membangun di atas teori sebelumnya.'},
+{no:2,type:'pg',kelas:10,topic:'Sosiologi sebagai Ilmu',sub:'Fungsi Ilmu Sosiologi',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Setelah mengikuti pelatihan kerja, banyak peserta dari latar belakang pendidikan rendah tetap sulit mendapat pekerjaan. Mereka mengaku kesulitan memahami materi pelatihan dan tidak memiliki jaringan kerja. Sementara itu, peserta dari kota cenderung lebih mudah terserap pasar kerja.',text:'Pada kasus ini, peran yang dapat dilakukan oleh seorang sosiolog adalah ….',opts:['Menyarankan peserta dari desa untuk lebih kompetitif dan berpikir modern agar dapat menjadi saluran mobilitas sosial','Menyusun kampanye motivasi kerja keras di kalangan masyarakat desa agar dapat memperbaiki kesejahteraan keluarganya','Menganalisis hambatan struktural dan merekomendasikan desain pelatihan berbasis kebutuhan lokal','Membandingkan jumlah pengangguran di kota dan desa sebagai bentuk pengawasan publik','Mengawasi lembaga pelatihan agar disiplin dalam mendata keberhasilan program serta menilai efektivitas program'],answer:2,expl:'Jawaban C paling tepat karena sosiolog melihat faktor struktural, menganalisis ketidaksesuaian program dengan konteks sosial lokal, dan merancang solusi berbasis kebutuhan sosial riil.\n\nOpsi A salah karena mengandung bias individualistik dan blaming the victim.\n\nOpsi B salah, karena fokus pada penyuluhan motivasional cenderung menjadi ranah psikologi sosial, bukan sosiologi struktural.\n\nOpsi D salah, karena hanya bersifat deskriptif-kuantitatif.\n\nOpsi E salah, karena mengarah ke tindakan administratif/birokratis.'},
+{no:3,type:'pg',kelas:10,topic:'Sosiologi sebagai Ilmu',sub:'Teori-Teori Dasar Sosiologi',komp:'Penerapan',subkomp:'Menggunakan konsep/teori Sosiologi untuk menjelaskan fenomena atau masalah sosial',level:'MOTS',passage:'Di sebuah sekolah menengah, terdapat kelompok siswa populer yang dikenal sebagai "anak gaul." Mereka secara tidak langsung menentukan tren gaya berpakaian dan cara bergaul yang dianggap keren di sekolah tersebut. Seorang siswa bernama Bram yang berasal dari desa dan baru pindah ke sekolah itu mulai dijauhi karena cara bicaranya dianggap kampungan dan penampilannya dianggap norak. Lama-kelamaan, Bram menarik diri dari pergaulan dan merasa tidak layak bergabung dengan kelompok mana pun di sekolah.',text:'Teori sosiologi manakah yang paling tepat untuk menjelaskan proses yang dialami Bram?',opts:['Teori Struktural Fungsional, karena kehadiran Bram mengganggu keseimbangan sistem pergaulan yang sudah terbentuk di sekolah.','Teori Konflik, karena kelompok populer secara sadar menyingkirkan Bram untuk mempertahankan dominasi sosial mereka.','Teori Interaksionisme Simbolik, karena label "kampungan" mengubah cara lingkungan memperlakukan Bram dan cara Bram memandang dirinya sendiri.','Teori Konflik, karena Bram dan kelompok populer bersaing memperebutkan status sosial di lingkungan sekolah.','Teori Interaksionisme Simbolik, karena Bram dan siswa populer memaknai simbol "keren" secara berbeda dalam kehidupan sekolah.'],answer:2,expl:'Opsi C benar karena inti narasi adalah proses pelabelan sosial. Label "kampungan" dan "norak" menjadi simbol yang mengubah cara komunitas sekolah memperlakukan Bram, sekaligus mengubah cara Bram memandang dirinya hingga ia menarik diri.\n\nOpsi A salah, karena Struktural Fungsional berfokus pada terganggunya keseimbangan sistem.\n\nOpsi B salah, karena narasi tidak menunjukkan upaya sadar kelompok populer untuk mendominasi.\n\nOpsi D salah, karena Bram tidak bersaing — ia justru menarik diri.\n\nOpsi E salah, karena fokusnya melenceng ke perbedaan pemaknaan simbol antardua pihak, bukan dampak pelabelan terhadap identitas diri Bram.'},
+{no:4,type:'pg',kelas:10,topic:'Interaksi Sosial',sub:'Bentuk-Bentuk Interaksi Sosial',komp:'Pemahaman',subkomp:'Menjelaskan definisi konsep/teori/prosedur dalam Sosiologi dengan tepat',level:'LOTS',passage:'Sekelompok mahasiswa rantau dari Sulawesi tinggal bersama dalam satu kos di Bandung. Mereka tetap menjalankan tradisi memasak makanan khas daerah dan berkomunikasi dalam bahasa daerah di antara sesama. Namun, setelah dua tahun bergaul dengan mahasiswa lokal, mereka mulai terbiasa berbicara bahasa Sunda dalam keseharian, merayakan tradisi Sunda tertentu, dan mengonsumsi makanan khas Sunda, meskipun tidak meninggalkan identitas dan tradisi asal mereka.',text:'Bentuk interaksi sosial manakah yang paling tepat menggambarkan proses yang dialami mahasiswa tersebut?',opts:['Asimilasi, karena mahasiswa Sulawesi mulai mengadopsi budaya Sunda dalam kehidupan sehari-hari mereka di Bandung','Akulturasi, karena unsur budaya Sunda diserap ke dalam kehidupan mahasiswa tanpa menghilangkan identitas budaya asalnya','Difusi budaya, karena budaya Sunda menyebar dan diadopsi oleh mahasiswa rantau melalui interaksi sosial sehari-hari','Akomodasi, karena mahasiswa Sulawesi menyesuaikan diri dengan budaya lokal untuk mengurangi gesekan sosial di lingkungan baru','Amalgamasi, karena perpaduan budaya Sulawesi dan Sunda menghasilkan identitas budaya baru di kalangan mahasiswa rantau'],answer:1,expl:'Mahasiswa menyerap unsur budaya Sunda tetapi tetap mempertahankan identitas dan tradisi asal mereka — ciri khas akulturasi.\n\nOpsi A salah, karena asimilasi mensyaratkan kedua budaya melebur hingga identitas asal tidak lagi dikenali.\n\nOpsi C salah, karena difusi menjelaskan proses penyebaran saja, bukan penyerapan aktif.\n\nOpsi D salah, karena akomodasi merujuk penyesuaian sementara untuk meredakan ketegangan.\n\nOpsi E salah, karena amalgamasi merujuk pada percampuran biologis atau pembentukan kelompok baru.'},
+{no:5,type:'pg',kelas:10,topic:'Ketidaksetaraan Sosial dan Upaya Mewujudkan Kesetaraan Sosial',sub:'Ketidaksetaraan Sosial dan Upaya Mewujudkan Kesetaraan Sosial',komp:'Pemahaman',subkomp:'Menjelaskan definisi konsep/teori/prosedur dalam Sosiologi dengan tepat',level:'LOTS',passage:'Di Suku Minangkabau, Sumatera Barat, garis keturunan ditarik dari pihak ibu. Harta pusaka diwariskan kepada anak perempuan, dan laki-laki yang menikah akan tinggal di rumah istri. Sementara itu, di banyak suku lain di Indonesia, laki-laki justru menjadi kepala keluarga dan pewaris utama harta.',text:'Ilustrasi tersebut paling tepat menunjukkan karakteristik gender, yaitu…',opts:['Gender bersifat kodrat karena peran perempuan dalam keluarga sudah ditentukan sejak lahir.','Gender terbentuk dari budaya sehingga peran laki-laki dan perempuan berbeda antarmasyarakat.','Gender dapat berubah seiring waktu karena Minangkabau dulunya menganut sistem patriarki.','Gender bersifat universal meskipun cara pengungkapannya berbeda di tiap kebudayaan.','Gender berkaitan dengan faktor biologis karena perempuan lebih cocok mengurus harta keluarga.'],answer:1,expl:'Opsi B benar karena sistem matrilineal Minangkabau berbeda dengan sistem yang berlaku di suku-suku lain. Perbedaan ini membuktikan bahwa peran gender bukan sesuatu yang tetap, melainkan hasil konstruksi budaya.\n\nOpsi A salah, karena jika gender bersifat kodrat, peran perempuan seharusnya sama di semua masyarakat.\n\nOpsi C salah, karena ilustrasi tidak menyebutkan Minangkabau pernah menganut sistem patriarki.\n\nOpsi D salah, karena ilustrasi menunjukkan perbedaan yang substantif.\n\nOpsi E salah, karena mewarisi harta adalah konstruksi sosial-budaya, bukan kemampuan biologis.'},
+{no:6,type:'mcma',kelas:10,topic:'Ketidaksetaraan Sosial dan Upaya Mewujudkan Kesetaraan Sosial',sub:'Ketidaksetaraan Sosial dan Upaya Mewujudkan Kesetaraan Sosial',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Angka putus sekolah di sebuah kabupaten terpencil meningkat tajam setelah proyek tambang besar beroperasi di wilayah tersebut. Banyak siswa laki-laki usia 14–17 tahun berhenti sekolah dan langsung bekerja di sektor tambang maupun usaha pendukungnya. Sebelum tambang beroperasi, sebagian besar siswa tersebut tercatat hadir rutin dan tidak memiliki masalah akademik yang berarti. Upah harian di sektor tambang bahkan melebihi penghasilan bulanan banyak orang tua mereka.',text:'Mengapa lonjakan angka putus sekolah dalam kasus tersebut sulit dicegah meskipun wajib belajar 12 tahun sudah diatur secara hukum?\n\nPilihlah semua jawaban yang benar! Jawaban benar lebih dari satu.',opts:['Aturan wajib belajar kehilangan daya ikatnya ketika tidak ada mekanisme penegakan yang efektif di tingkat daerah.','Siswa yang putus sekolah kurang memiliki motivasi belajar sehingga mudah tergoda oleh tawaran kerja di sektor tambang.','Kesenjangan penghasilan antara bekerja dan bersekolah menciptakan tekanan ekonomi yang membuat keputusan putus sekolah tampak rasional.','Kehadiran tambang menggeser fungsi sekolah sebagai jalur utama mobilitas sosial di mata keluarga dan siswa.','Pemerintah daerah sengaja membiarkan putus sekolah terjadi demi menjaga pasokan tenaga kerja murah untuk perusahaan tambang.'],answers:[0,2,3],expl:'Pernyataan A benar: regulasi tanpa penegakan yang konsisten tidak mampu berfungsi sebagai instrumen perlindungan yang nyata.\n\nPernyataan C benar: upah harian tambang yang melampaui penghasilan bulanan orang tua menciptakan tekanan ekonomi nyata sehingga keputusan berhenti sekolah tampak masuk akal secara ekonomi.\n\nPernyataan D benar: siswa sebelumnya hadir rutin dan tidak bermasalah akademik — tambang menggeser persepsi tentang jalur sukses.\n\nPernyataan B salah: narasi justru menggambarkan siswa sebagai pihak yang sebelumnya aktif dan tidak bermasalah.\n\nPernyataan E salah: narasi tidak menyebutkan adanya kesengajaan pemerintah daerah.'},
+{no:7,type:'pg',kelas:10,topic:'Ketidaksetaraan Sosial dan Upaya Mewujudkan Kesetaraan Sosial',sub:'Ketidaksetaraan Sosial dan Upaya Mewujudkan Kesetaraan Sosial',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena sosial berdasarkan kasus atau data',level:'HOTS',passage:'Di sebuah kawasan pinggiran perkotaan yang padat penduduk, banyak keluarga hidup tanpa memiliki akses ke air bersih, sanitasi, dan jaringan listrik yang stabil. Di kawasan ini banyak orang tua yang bekerja di sektor informal dengan pendapatan tidak teratur. Anak-anak di daerah ini sering putus sekolah karena mendukung ekonomi orang tuanya. Penduduknya merasa terasing dari perkembangan kota dan tidak banyak menerima dukungan dari program pemerintah. Hal ini menunjukkan adanya ketimpangan sosial dan hal tersebut pada akhirnya berkontribusi pada meningkatnya kemiskinan, layanan publik yang terbatas dan rendahnya literasi.',text:'Mengapa ketimpangan sosial dapat meningkatkan angka kemiskinan pada masyarakat perkotaan pada kasus tersebut?',opts:['Tradisi budaya yang memprioritaskan pendidikan formal daripada informal, sehingga mengabaikan keterampilan hidup yang relevan dengan kondisi masyarakat.','Penolakan kelompok marginal untuk direlokasi ke lingkungan yang lebih sehat, yang menyebabkan mereka tetap tinggal di wilayah tanpa akses layanan dasar.','Kurangnya motivasi warga untuk memperbaiki kehidupan mereka sendiri karena tidak adanya bentuk pengangguran yang nyata di wilayah masyarakat berada.','Akses yang tidak merata terhadap layanan dasar dan ketidakberpihakan kebijakan yang menyebabkan warga terpinggirkan dan tidak mendapat layanan memadai.','Perencanaan keuangan buruk dan tingkat konsumsi yang tidak berimbang menyebabkan pendapatan dari sektor informal sulit mencukupi kebutuhan dasar.'],answer:3,expl:'Opsi D benar karena narasi secara eksplisit menggambarkan ketimpangan akses — warga tidak memiliki air bersih, sanitasi, listrik, dan minim dukungan program pemerintah.\n\nOpsi A salah: narasi tidak menyinggung tradisi budaya atau prioritas jenis pendidikan.\n\nOpsi B salah: narasi tidak menyebutkan adanya tawaran relokasi yang ditolak warga.\n\nOpsi C salah: warga justru aktif bekerja di sektor informal.\n\nOpsi E salah: narasi tidak menyebutkan perencanaan keuangan; penyebabnya bersifat struktural.'},
+{no:8,type:'pg',kelas:10,topic:'Metode Penelitian Sosial',sub:'Dasar-Dasar Penelitian Sosial',komp:'Pemahaman',subkomp:'Menjelaskan definisi konsep/teori/prosedur dalam Sosiologi dengan tepat',level:'LOTS',passage:'Penggunaan media sosial yang sangat populer di kalangan remaja menimbulkan kekhawatiran karena diduga dapat memengaruhi perilaku dan moral mereka. Meningkatnya kenakalan remaja sering dikaitkan dengan interaksi mereka terhadap konten tertentu di media sosial. Berdasarkan fenomena tersebut, seorang peneliti melakukan studi terhadap remaja berusia 13–18 tahun yang aktif menggunakan media sosial.\n\nPeneliti mengumpulkan data dengan menyebarkan kuesioner secara daring kepada 150 responden. Kuesioner tersebut terdiri atas dua bagian, yaitu bagian pertama untuk mengukur seberapa sering dan bagaimana mereka menggunakan media sosial, serta bagian kedua untuk mengukur tingkat kenakalan remaja berdasarkan pengalaman dan pandangan mereka sendiri.',text:'Manakah pernyataan berikut yang menunjukkan metode penelitian yang sesuai dengan teknik pengumpulan data pada ilustrasi tersebut?',opts:['Penelitian eksperimen dengan teknik penentuan sampel stratified sampling karena membandingkan kelompok pengguna media sosial dan nonpengguna dari berbagai tingkatan.','Penelitian eksploratif dengan teknik cluster sampling berdasarkan wilayah untuk mengkaji pengaruh media sosial terhadap moral remaja.','Penelitian kuantitatif dengan teknik simple random sampling berdasarkan rentang usia yang dipilih secara acak untuk menganalisis pengaruh penggunaan media sosial terhadap tingkat kenakalan remaja.','Penelitian lapangan dengan teknik area sampling berdasarkan wilayah tertentu untuk mengamati penggunaan media sosial dan tingkat kenakalan remaja.','Penelitian kualitatif dengan teknik purposive sampling yang menetapkan kriteria tertentu guna memahami dampak penggunaan media sosial pada remaja.'],answer:2,expl:'Opsi C benar karena penggunaan kuesioner terstruktur untuk banyak responden adalah ciri penelitian kuantitatif.\n\nOpsi A salah: eksperimen mensyaratkan perlakuan dan kelompok kontrol.\n\nOpsi B salah: eksploratif biasanya kualitatif; teknik cluster sampling tidak didukung narasi.\n\nOpsi D salah: penelitian lapangan dengan observasi tidak sesuai dengan kuesioner daring.\n\nOpsi E salah: kualitatif bertujuan memahami makna secara mendalam melalui wawancara, bukan kuesioner terstruktur dengan banyak responden.'},
+{no:9,type:'mcma',kelas:10,topic:'Metode Penelitian Sosial',sub:'Metode Penelitian Kualitatif',komp:'Penalaran',subkomp:'Mengevaluasi kesesuaian teori, pendapat, kebijakan, atau metode penelitian',level:'HOTS',passage:'Seorang pelajar SMA tertarik meneliti fenomena kecemasan sosial di kalangan remaja pengguna media sosial. Ia ingin memahami secara mendalam bagaimana perasaan, pikiran, dan pengalaman pengguna aktif terhadap tekanan sosial dari konten teman sebaya. Ia pun mulai menyusun rencana penelitian awal, yaitu:\n\n• Merumuskan masalah: Bagaimana pengalaman remaja pengguna media sosial dalam menghadapi tekanan sosial akibat perbandingan dengan teman-temannya?\n• Menyusun pedoman wawancara mendalam sebagai alat pengumpulan data utama\n• Merencanakan untuk mewawancarai 5–7 remaja aktif pengguna media sosial yang dipilih berdasarkan pengalaman mereka dengan kecemasan sosial',text:'Berdasarkan langkah-langkah tersebut, manakah pernyataan yang tepat untuk menyempurnakan penelitian tersebut?\n\nPilih jawaban yang benar! Jawaban benar lebih dari satu.',opts:['Peneliti perlu memastikan rumusan masalah menggambarkan pengalaman mendalam individu yang diteliti.','Peneliti sebaiknya menambah jumlah responden agar data yang terkumpul bisa diolah secara statistik dan digeneralisasi.','Peneliti sebaiknya memperkuat teknik triangulasi data untuk meningkatkan keabsahan temuan data primer di lapangan.','Peneliti dapat melakukan observasi non-partisipan untuk melengkapi data wawancara dan melihat interaksi sosial secara langsung.','Peneliti perlu mengganti pedoman wawancara dengan kuesioner tertutup agar hasilnya lebih objektif dan mudah diukur'],answers:[0,2,3],expl:'Pernyataan A benar: rumusan masalah harus selaras dengan pendekatan kualitatif yang menggali makna subjektif pengalaman individu.\n\nPernyataan C benar: triangulasi data penting untuk meningkatkan validitas temuan penelitian kualitatif.\n\nPernyataan D benar: observasi non-partisipan dapat memperkaya data wawancara.\n\nPernyataan B salah: fokus penelitian kualitatif bukan generalisasi statistik.\n\nPernyataan E salah: instrumen tertutup tidak cocok untuk menggali pengalaman personal secara mendalam.'},
+{no:10,type:'pgk',kelas:10,topic:'Metode Penelitian Sosial',sub:'Metode Penelitian Kuantitatif',komp:'Penerapan',subkomp:'Menentukan metode penelitian yang tepat untuk mengkaji suatu fenomena sosial',level:'MOTS',passage:'Seorang peneliti ingin mengetahui apakah terdapat pengaruh intensitas penggunaan media sosial terhadap prestasi belajar siswa SMP di Kota Banjarmasin. Ia menyebarkan kuesioner kepada 120 siswa yang dipilih secara acak dari empat sekolah berbeda. Data yang terkumpul kemudian dianalisis menggunakan uji korelasi untuk melihat hubungan antara kedua variabel.',text:'Tentukan Benar atau Salah pada setiap pernyataan berikut!',stmts:['Variabel terikat dalam penelitian ini adalah intensitas penggunaan media sosial siswa.','Kuesioner merupakan instrumen yang sesuai untuk mengumpulkan data dalam penelitian kuantitatif ini.','Pengambilan sampel dari empat sekolah secara acak merupakan bentuk stratified random sampling.','Uji korelasi yang digunakan peneliti termasuk dalam tahap analisis data.'],answers:[false,true,false,true],expl:'Pernyataan 1 salah: variabel terikat adalah prestasi belajar siswa. Intensitas penggunaan media sosial adalah variabel bebas.\n\nPernyataan 2 benar: kuesioner adalah instrumen baku dalam penelitian kuantitatif.\n\nPernyataan 3 salah: pengambilan sampel dari sekolah yang dipilih secara acak lebih tepat disebut cluster random sampling.\n\nPernyataan 4 benar: uji korelasi digunakan untuk mengolah dan menginterpretasi data, masuk ke tahap analisis data.'},
+{no:11,type:'pg',kelas:11,topic:'Kelompok Sosial',sub:'Ragam Kelompok Sosial',komp:'Pemahaman',subkomp:'Menjelaskan definisi konsep/teori/prosedur dalam Sosiologi dengan tepat',level:'LOTS',passage:'Di sebuah SMA, terdapat organisasi siswa bernama "Lingkar Hijau". Organisasi ini dibentuk oleh siswa dari berbagai kelas dan latar belakang berbeda. Mereka tidak memiliki hubungan kekerabatan, melainkan terhubung karena tujuan bersama: meningkatkan kepedulian lingkungan sekolah. Kegiatan mereka meliputi kerja bakti rutin, kampanye pengurangan plastik sekali pakai, dan kolaborasi dengan komunitas pecinta lingkungan dari luar sekolah.',text:'Berdasarkan karakteristik tersebut, apakah jenis kelompok sosial Lingkar Hijau?',opts:['Kelompok primer, karena interaksi antar anggotanya intim, personal, dan berfokus pada relasi emosional sehari-hari.','Kelompok sekunder, karena terbentuk atas dasar kepentingan dan tujuan bersama, bukan ikatan emosional yang mendalam.','Kelompok formal, karena memiliki struktur organisasi, pembagian tugas, dan program kerja yang terencana.','Kelompok okupasional, karena anggotanya berasal dari latar belakang aktivitas tertentu yang sama.','Kerumunan, karena kehadiran anggotanya hanya bersifat sementara dan tanpa tujuan berkelanjutan.'],answer:1,expl:'Opsi B benar karena Lingkar Hijau terbentuk berdasarkan tujuan bersama (kepedulian lingkungan). Hubungan lebih impersonal dan berorientasi pada kepentingan — ciri utama kelompok sekunder.\n\nOpsi A salah: ikatan mereka bukan hubungan intim sehari-hari seperti keluarga atau sahabat dekat.\n\nOpsi C salah: dari sisi tipologi sosiologis lebih tepat dimasukkan sebagai kelompok sekunder meskipun ada struktur organisasi.\n\nOpsi D salah: kelompok okupasional terbentuk dari profesi/pekerjaan yang sama.\n\nOpsi E salah: Lingkar Hijau adalah komunitas berkelanjutan dengan aktivitas rutin.'},
+{no:12,type:'mcma',kelas:11,topic:'Permasalahan Sosial',sub:'Ragam Permasalahan Sosial',komp:'Penerapan',subkomp:'Menginterpretasi data (tabel, grafik, infografik, hasil penelitian) tentang suatu fenomena sosial',level:'MOTS',chartFn:'makeChartQ12',text:'Jika dianalisis secara sosiologis, data pada grafik tersebut menunjukkan bahwa hambatan korban dalam mengakses keadilan berkaitan dengan faktor-faktor berikut. Manakah faktor yang paling tepat?\n\nPilih jawaban yang benar! Jawaban benar lebih dari satu.',opts:['Lemahnya internalisasi norma budaya yang mendukung keberanian korban untuk bersuara.','Dominasi budaya patriarki yang cenderung menyalahkan korban atas kekerasan seksual yang dialaminya.','Ketidaksiapan aparat penegak hukum dalam menindaklanjuti laporan kasus kekerasan seksual.','Terbatasnya fungsi media massa dalam membongkar stigma sosial terhadap korban kekerasan seksual.','Belum optimalnya peran lembaga formal dan informal sebagai agen perlindungan dan pendampingan korban.'],answers:[0,1,4],expl:'Opsi A benar: rasa takut dan malu menunjukkan norma sosial yang mendukung keberanian korban belum terinternalisasi dengan kuat.\n\nOpsi B benar: budaya patriarki sering melahirkan victim blaming yang memunculkan rasa malu dan takut yang tampak dominan pada grafik.\n\nOpsi C salah: grafik tidak menunjukkan hambatan pada tahap penanganan hukum, melainkan sebelum korban melapor.\n\nOpsi D salah: grafik tidak memberikan informasi mengenai peran media massa.\n\nOpsi E benar: alasan "tidak tahu melapor ke mana" menunjukkan lembaga formal maupun informal belum berfungsi optimal sebagai sumber perlindungan dan pendampingan.'},
+{no:13,type:'pg',kelas:11,topic:'Permasalahan Sosial',sub:'Ragam Permasalahan Sosial',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena sosial berdasarkan kasus atau data',level:'HOTS',passage:'Sebuah studi di Kota Bahari menunjukkan bahwa ketimpangan pendapatan antara kelompok kaya dan miskin semakin lebar dalam 10 tahun terakhir. Akses terhadap fasilitas pendidikan, kesehatan, dan pekerjaan berkualitas lebih mudah diperoleh oleh kelompok masyarakat atas. Sementara itu, masyarakat miskin harus bergantung pada layanan informal yang terbatas dan seringkali berkualitas rendah. Ketidakpuasan mulai muncul di media sosial dan ruang publik. Beberapa kelompok masyarakat melakukan aksi protes untuk menuntut keadilan sosial.',text:'Apabila kondisi ketimpangan ini terus berlanjut dalam jangka panjang, dampak sosial manakah yang paling mungkin terjadi?',opts:['Kesadaran kolektif masyarakat miskin semakin kuat sehingga mendorong lahirnya gerakan sosial yang mengubah kebijakan.','Ketimpangan akses pendidikan memperlemah mobilitas sosial sehingga kemiskinan cenderung diwariskan antargenerasi.','Ketidakpuasan yang menumpuk mendorong masyarakat miskin untuk lebih aktif berpartisipasi dalam proses politik formal.','Protes yang terus berulang menekan pemerintah untuk memprioritaskan pemerataan layanan publik di wilayah miskin.','Kelompok miskin semakin bergantung pada jaringan sosial informal sebagai pengganti layanan publik yang tidak memadai.'],answer:1,expl:'Opsi B benar karena ketimpangan akses pendidikan yang berlangsung terus-menerus memutus kesempatan anak-anak dari keluarga miskin untuk meningkatkan status sosialnya — kemiskinan tidak berhenti pada satu generasi, melainkan diwariskan.\n\nOpsi A salah: protes sudah terjadi tetapi tidak ada indikasi berhasil mengubah kebijakan.\n\nOpsi C salah: ketidakpuasan disalurkan melalui protes dan media sosial, bukan partisipasi politik formal.\n\nOpsi D salah: narasi tidak menunjukkan respons positif dari pemerintah.\n\nOpsi E salah: ketergantungan pada jaringan informal sudah berjalan, bukan dampak baru.'},
+{no:14,type:'pg',kelas:11,topic:'Konflik Sosial',sub:'Faktor Penyebab Konflik Sosial',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Di Kelurahan Maju Jaya, warga terdiri dari beragam kelompok sosial seperti penduduk asli, pendatang dari kota, serta etnis minoritas. Dalam kegiatan pembangunan balai warga, kelompok penduduk asli selalu diundang dalam rapat musyawarah, sementara kelompok lain jarang dilibatkan. Kelompok pendatang dan etnis minoritas juga kesulitan memperoleh informasi tentang kegiatan warga karena akses informasi hanya beredar di lingkaran tertentu. Akibatnya, kelompok yang tidak terlibat merasa tersisih dan mulai muncul perasaan tidak dihargai. Ketegangan mulai terlihat ketika beberapa warga menyuarakan ketidakpuasan dalam forum daring lokal. Situasi ini menimbulkan saling curiga, bahkan muncul komentar negatif antarkelompok.',text:'Berdasarkan narasi tersebut, apa yang paling tepat menjelaskan mengapa kelompok pendatang dan etnis minoritas mulai merasa tersisih?',opts:['Kelompok penduduk asli mendominasi forum musyawarah sehingga suara kelompok lain tidak pernah dipertimbangkan.','Dominasi kelompok mayoritas memperlemah solidaritas sosial dan merenggangkan relasi antarkelompok masyarakat.','Kesenjangan dalam akses informasi membuat kelompok lain tidak mendapat kesempatan yang sama untuk berpartisipasi.','Kelompok pendatang belum cukup lama tinggal sehingga belum memiliki kepercayaan dari warga setempat.','Minimnya inisiatif kelompok pendatang untuk membangun relasi membuat mereka sulit diterima dalam komunitas.'],answer:2,expl:'Opsi C benar karena narasi secara eksplisit menyebutkan bahwa akses informasi hanya beredar di lingkaran tertentu, sehingga kelompok pendatang tidak mendapat kesempatan yang sama untuk berpartisipasi.\n\nOpsi A salah: masalahnya justru mereka tidak diundang dan tidak mendapat informasi sejak awal.\n\nOpsi B salah: dominasi mayoritas adalah gambaran umum, bukan pemicu spesifik.\n\nOpsi D salah: lama tinggal tidak disebutkan sebagai faktor penyebab.\n\nOpsi E salah: narasi justru menunjukkan kelompok pendatang ingin berpartisipasi.'},
+{no:15,type:'pg',kelas:11,topic:'Konflik Sosial',sub:'Jenis-Jenis Konflik',komp:'Pemahaman',subkomp:'Mengidentifikasi contoh yang sesuai dengan konsep atau prosedur penelitian dalam Sosiologi',level:'LOTS',passage:'Di beberapa kota di Indonesia mulai banyak terjadi konflik antara kelompok pedagang pasar tradisional dan pengelola pusat perbelanjaan modern/mal yang baru dibangun. Para pedagang pasar tradisional merasa dirugikan karena kehadiran mal tersebut mengakibatkan menurunnya jumlah pembeli di pasar tradisional. Mereka menganggap bahwa pembangunan pusat perbelanjaan tidak memperhatikan keberlangsungan ekonomi masyarakat kecil. Sementara itu, pihak pengelola mal merasa bahwa pembangunan tersebut sah dan merupakan bentuk kemajuan ekonomi kota. Ketegangan semakin meningkat setelah terjadi aksi demonstrasi yang diwarnai kericuhan. Pemerintah kota mencoba meredam konflik dengan memediasi kedua belah pihak, namun hingga kini belum tercapai kesepakatan yang memuaskan semua pihak. Konflik ini menjadi sorotan media dan memunculkan berbagai reaksi dari masyarakat luas.',text:'Apa jenis konflik sosial yang terjadi berdasarkan ilustrasi tersebut?',opts:['Konflik antar kelas sosial karena terjadi benturan antara pedagang tradisional dan pedagang di mal.','Konflik antarkelompok kepentingan karena adanya perbedaan kepentingan ekonomi yang berbeda.','Konflik politik antar institusi dalam hal ini kelompok pedagang di mal ingin mengalahkan pedagang pasar tradisional.','Konflik budaya akibat perubahan nilai dimana pedagang pasar tradisional kehilangan pelanggan sejak adanya mal.','Konflik antarpribadi karena perbedaan individu yang terjadi di antara para pedagang tradisional kepada pedagang di mal.'],answer:1,expl:'Opsi B benar karena konflik terjadi antara dua kelompok dengan kepentingan ekonomi yang berlawanan.\n\nOpsi A salah: konflik antarkelas merujuk pertentangan vertikal seperti buruh vs. pemilik modal.\n\nOpsi C salah: tidak ada persaingan kekuasaan kelembagaan politik.\n\nOpsi D salah: menurunnya pembeli adalah dampak ekonomi, bukan pertentangan nilai budaya.\n\nOpsi E salah: ini pertentangan dua kelompok kolektif, bukan antarpribadi.'},
+{no:16,type:'pg',kelas:11,topic:'Konflik Sosial',sub:'Dampak Konflik',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena sosial berdasarkan kasus atau data',level:'HOTS',passage:'Di sebuah kota industri, gelombang urbanisasi membawa banyak pekerja migran dari berbagai daerah untuk bekerja di pabrik-pabrik setempat. Ketegangan sempat memuncak ketika sekelompok warga asli memprotes kepadatan hunian di kawasan mereka yang didominasi pekerja migran. Pemerintah kota merespons dengan membangun kawasan hunian khusus pekerja migran di pinggiran kota, terpisah dari permukiman warga asli. Konflik mereda dan situasi tampak terkendali. Namun lima tahun kemudian, peneliti menemukan bahwa anak-anak warga asli dan anak-anak pekerja migran bersekolah di tempat yang berbeda dan hampir tidak pernah berinteraksi. Generasi muda warga asli tumbuh dengan narasi bahwa pekerja migran adalah penyebab kepadatan dan masalah sosial di kota mereka, sementara anak-anak pekerja migran memandang warga asli sebagai kelompok yang tidak pernah menerima kehadiran mereka. Ketika terjadi pemutusan hubungan kerja massal, permusuhan antargenerasi justru semakin terbuka.',text:'Mengapa kebijakan tersebut justru memperburuk hubungan sosial kedua kelompok dalam jangka panjang?',opts:['Pemisahan hunian memperkuat identitas kelompok sehingga masing-masing pihak semakin menutup diri dari pengaruh luar.','Pemisahan hunian memutus interaksi kedua kelompok sehingga prasangka antarkelompok terus diwariskan ke generasi berikutnya.','Pemisahan hunian mengurangi gesekan langsung sehingga ketegangan tidak tersalurkan dan justru menumpuk menjadi permusuhan yang lebih dalam.','Pemisahan hunian menciptakan kesenjangan ekonomi antara kedua kawasan sehingga kecemburuan sosial semakin memperkeruh hubungan antarkelompok.','Pemisahan hunian mengalihkan perhatian pemerintah dari akar konflik sehingga ketegangan struktural tidak pernah ditangani secara tuntas.'],answer:1,expl:'Opsi B benar karena pemisahan hunian menghilangkan ruang interaksi yang dibutuhkan untuk mengoreksi prasangka. Anak-anak tumbuh terpisah dan hanya mengenal kelompok lain melalui narasi yang sudah terbentuk — prasangka menguat dan diwariskan.\n\nOpsi A salah: menguatnya identitas kelompok bukan penjelasan langsung mengapa prasangka diwariskan lintas generasi.\n\nOpsi C salah: permusuhan menguat bukan karena ketegangan tidak tersalurkan, melainkan karena tidak ada interaksi membangun pemahaman.\n\nOpsi D salah: narasi tidak menyebutkan kesenjangan ekonomi antarkawasan.\n\nOpsi E salah: menjelaskan kelemahan kebijakan di level institusional, bukan proses sosial antarkelompok.'},
+{no:17,type:'mcma',kelas:11,topic:'Konflik Sosial',sub:'Upaya Penanganan Konflik',komp:'Penalaran',subkomp:'Mengevaluasi kesesuaian teori, pendapat, kebijakan, atau metode penelitian',level:'HOTS',passage:'Pada suatu daerah terjadi ketegangan antara komunitas adat dengan perusahaan perkebunan sawit. Konflik ini bermula dari klaim terhadap hak kepemilikan lahan. Perusahaan berpegang pada izin yang mereka miliki, sementara komunitas adat merasa terabaikan. Konflik ini mengakibatkan terjadinya bentrokan fisik dan pemblokiran jalan oleh warga yang mengakibatkan aktivitas distribusi hasil perkebunan sawit menjadi terhambat. Mediasi awal dalam rangka penyelesaian konflik yang terjadi sudah dilakukan tetapi gagal total dan bahkan memperparah ketegangan dan ketidakpercayaan antara kedua belah pihak. Situasi yang terjadi ini berada pada titik krisis dan memerlukan intervensi yang lebih kuat.',text:'Bagaimana strategi yang tepat untuk mencapai kedamaian yang berkelanjutan antara komunitas adat dan perusahaan perkebunan?\n\nPilihlah semua jawaban yang benar! Jawaban benar lebih dari satu.',opts:['Memulai kembali negosiasi langsung antara manajemen perusahaan dan perwakilan komunitas adat tanpa melibatkan pihak ketiga.','Melibatkan mediator independen yang memiliki kewenangan hukum untuk membuat keputusan yang mengikat kedua belah pihak.','Mengadakan dialog multi-pihak yang melibatkan pemerintah, akademisi, dan organisasi non-pemerintah untuk membangun pemahaman bersama.','Mengembangkan program kemitraan usaha dengan sistem bagi hasil yang adil sebagai dasar hubungan jangka panjang kedua pihak.','Membentuk forum musyawarah yang difasilitasi tokoh masyarakat setempat untuk mencari solusi berbasis kearifan lokal.'],answers:[1,2,3],expl:'Pernyataan B benar: situasi krisis membutuhkan arbitrase pihak ketiga independen yang keputusannya mengikat secara hukum.\n\nPernyataan C benar: dialog multi-pihak diperlukan untuk membangun pemahaman yang melampaui kepentingan dua pihak.\n\nPernyataan D benar: program kemitraan bagi hasil membangun kepentingan bersama untuk menjaga perdamaian jangka panjang.\n\nPernyataan A salah: mediasi awal sudah gagal dan memperparah ketidakpercayaan — mengulanginya tanpa pihak ketiga hanya mengulang pola gagal.\n\nPernyataan E salah: forum musyawarah berbasis kearifan lokal tidak memiliki kewenangan hukum cukup untuk sengketa yang sudah di titik krisis.'},
+{no:18,type:'pgk',kelas:11,topic:'Konflik Sosial',sub:'Penelitian Berbasis Pemecahan Konflik',komp:'Penerapan',subkomp:'Menggunakan konsep/teori Sosiologi untuk menjelaskan fenomena atau masalah sosial',level:'MOTS',passage:'Seorang peneliti mengkaji konflik antara warga lokal dan perusahaan tambang yang baru beroperasi di wilayah mereka. Dari hasil observasi dan wawancara, diketahui bahwa warga merasa lingkungan mereka rusak dan tidak mendapatkan kompensasi yang layak, sementara perusahaan merasa telah mengikuti prosedur hukum yang berlaku. Peneliti kemudian menganalisis konflik tersebut menggunakan pendekatan Segitiga SPK serta memetakan aktor-aktor yang terlibat, termasuk pihak yang dapat menjadi mediator.',text:'Tentukan Benar atau Salah pada setiap pernyataan berikut!',stmts:['Penggunaan peta konflik tidak relevan karena konflik lebih menekankan aspek hukum daripada hubungan antaraktor.','Perasaan dirugikan yang dialami warga termasuk dalam komponen sikap dalam Segitiga SPK.','Identifikasi mediator potensial seperti tokoh adat merupakan bagian dari analisis konflik untuk mencari resolusi.','Klaim perusahaan bahwa mereka telah mengikuti prosedur hukum menunjukkan bahwa konflik hanya terjadi pada level perilaku (behavior).'],answers:[false,true,true,false],expl:'Pernyataan 1 salah: peta konflik digunakan untuk memetakan hubungan antaraktor dan kepentingan, tidak terbatas pada jenis konflik tertentu.\n\nPernyataan 2 benar: perasaan dirugikan adalah persepsi subjektif yang masuk dalam komponen sikap (attitude) dalam Segitiga SPK.\n\nPernyataan 3 benar: identifikasi mediator potensial adalah bagian dari pemetaan konflik yang bertujuan mencari resolusi.\n\nPernyataan 4 salah: klaim perusahaan lebih mencerminkan posisi atau kepentingan dalam konflik (kontradiksi), bukan perilaku semata.'},
+{no:19,type:'pg',kelas:11,topic:'Harmoni Sosial',sub:'Inklusi dan Kohesi Sosial',komp:'Penerapan',subkomp:'Menggunakan konsep/teori Sosiologi untuk menjelaskan fenomena atau masalah sosial',level:'MOTS',passage:'Pemerintah daerah meluncurkan program "Transportasi untuk Semua" yang mewajibkan seluruh angkutan umum menyediakan kursi prioritas, jalur khusus kursi roda, informasi audio-visual bagi penumpang tunanetra dan tunarungu, serta pelatihan bagi sopir untuk melayani penumpang dengan berbagai kebutuhan. Program ini bertujuan agar seluruh warga dapat menggunakan transportasi publik secara mandiri dan nyaman.',text:'Prinsip inklusivitas manakah yang paling tepat tercermin dari kebijakan tersebut?',opts:['Semua pengguna transportasi harus diperlakukan dengan aturan yang sama agar tercipta keadilan dalam pelayanan.','Kelompok berkebutuhan khusus sebaiknya diberikan layanan transportasi terpisah agar tidak mengganggu pengguna lain.','Sistem transportasi perlu dirancang agar dapat mengakomodasi keberagaman kebutuhan pengguna.','Inklusivitas tercapai ketika masyarakat umum bersedia membantu kelompok berkebutuhan khusus dalam menggunakan fasilitas publik.','Pemerintah harus memastikan semua pengguna memiliki pengalaman yang sama tanpa perbedaan dalam penggunaan transportasi.'],answer:2,expl:'Prinsip inklusivitas menekankan bahwa sistem harus menyesuaikan diri terhadap keberagaman individu. Program ini menunjukkan fasilitas dirancang agar semua orang dapat berpartisipasi secara mandiri dan setara.\n\nOpsi A salah: perlakuan yang sama belum tentu adil; inklusivitas menekankan penyesuaian berdasarkan kebutuhan.\n\nOpsi B salah: pemisahan layanan bertentangan dengan prinsip inklusi.\n\nOpsi D salah: ketergantungan pada bantuan orang lain bukan inti inklusivitas.\n\nOpsi E salah: inklusivitas tidak menuntut kesamaan pengalaman, melainkan kesetaraan akses sesuai kebutuhan.'},
+{no:20,type:'pg',kelas:11,topic:'Harmoni Sosial',sub:'Upaya Membangun Harmoni Sosial',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Di sebuah kampung perkotaan, sering terjadi konflik kecil antara warga lama dan pendatang baru terkait penggunaan fasilitas umum seperti tempat parkir dan ruang terbuka. Warga lama merasa pendatang tidak memahami aturan tidak tertulis, sementara pendatang merasa tidak pernah dilibatkan dalam pengambilan keputusan. Ketua RW kemudian mengadakan kerja bakti rutin dan forum musyawarah bulanan yang mewajibkan kehadiran perwakilan dari kedua kelompok untuk membahas masalah lingkungan secara bersama.',text:'Keterkaitan antara langkah tersebut dengan upaya membangun harmoni sosial adalah …',opts:['Kegiatan tersebut membantu menjaga kebersihan dan ketertiban lingkungan sehingga konflik dapat berkurang secara alami.','Kegiatan tersebut memastikan semua warga memahami aturan yang berlaku sehingga tidak terjadi pelanggaran di kemudian hari.','Kegiatan tersebut menciptakan ruang interaksi yang setara sehingga mengurangi prasangka dan memperkuat integrasi sosial.','Kegiatan tersebut mendorong warga untuk lebih aktif dalam kegiatan lingkungan sebagai bentuk tanggung jawab sosial.','Kegiatan tersebut mempercepat penyelesaian konflik melalui keputusan bersama yang mengikat seluruh warga.'],answer:2,expl:'Kerja bakti dan forum musyawarah menjadi ruang interaksi langsung yang setara di mana kedua kelompok dapat saling memahami perspektif masing-masing — inti dari harmoni sosial.\n\nOpsi A salah: kebersihan adalah dampak fisik, bukan mekanisme sosial harmoni.\n\nOpsi B salah: pemahaman aturan lebih berkaitan dengan kontrol sosial.\n\nOpsi D salah: partisipasi aktif belum tentu mengurangi jarak sosial jika tidak melibatkan interaksi lintas kelompok secara bermakna.\n\nOpsi E salah: fokus pada hasil, bukan proses sosial membangun hubungan harmonis.'},
+{no:21,type:'pg',kelas:12,topic:'Perubahan Sosial',sub:'Teori-Teori Perubahan Sosial',komp:'Pemahaman',subkomp:'Mengidentifikasi contoh yang sesuai dengan konsep atau prosedur penelitian dalam Sosiologi',level:'LOTS',passage:'Ketimpangan digital di wilayah pedesaan menyebabkan banyak pelajar tertinggal dalam pembelajaran daring selama pandemi.',text:'Dalam analisis teori konflik, penyebab utama dari ketertinggalan ini adalah ….',opts:['Ketidakmampuan guru desa beradaptasi dengan teknologi','Ketimpangan infrastruktur akibat distribusi sumber daya yang tidak adil','Kurangnya motivasi belajar pelajar pedesaan','Siklus perubahan budaya yang sedang berlangsung','Kehilangan fungsi keluarga dalam mendampingi pembelajaran'],answer:1,expl:'Teori konflik memandang akar ketimpangan digital pada distribusi sumber daya yang tidak merata. Akses internet dan perangkat teknologi lebih banyak tersedia di kota — mencerminkan dominasi kelompok berkuasa dalam mengakses fasilitas pendidikan. Ketertinggalan pelajar desa adalah dampak ketimpangan struktural, bukan kesalahan pribadi. Pilihan A dan C menyalahkan individu, D terlalu umum, dan E lebih cocok untuk pendekatan fungsional.'},
+{no:22,type:'pg',kelas:12,topic:'Perubahan Sosial',sub:'Faktor Penyebab Perubahan Sosial',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Dalam lima tahun terakhir, masyarakat di sebuah kota kecil mulai bergantung pada aplikasi belanja online. Banyak toko kelontong tradisional sepi pengunjung karena konsumen lebih memilih membeli kebutuhan melalui ponsel. Beberapa pemilik toko mencoba bertahan dengan menjual barang di platform digital, tapi sebagian lainnya terpaksa menutup usahanya. Di sisi lain, anak-anak muda memanfaatkan peluang ini untuk membuka jasa kurir mandiri dan bisnis dropship.',text:'Berdasarkan ilustrasi tersebut, perubahan sosial yang terjadi disebabkan oleh ….',opts:['pergeseran pola konsumsi dan munculnya bentuk adaptasi ekonomi baru','meningkatnya angka pengangguran di kota karena toko kelontong gulung tikar','dominasi generasi tua yang enggan menggunakan teknologi digital','penurunan pendapatan masyarakat akibat tidak adanya peluang ekonomi baru','penolakan total masyarakat kota terhadap budaya belanja modern'],answer:0,expl:'Ilustrasi menunjukkan bagaimana era digital memicu perubahan pola konsumsi sekaligus mendorong inovasi ekonomi baru (bisnis kurir dan dropship).\n\nOpsi B mengecoh: dampaknya bukan hanya pengangguran melainkan juga munculnya peluang kerja baru.\n\nOpsi C & E tidak sesuai dengan data narasi.\n\nOpsi D menyesatkan karena justru ada pergeseran, bukan penurunan total pendapatan.'},
+{no:23,type:'pg',kelas:12,topic:'Perubahan Sosial',sub:'Bentuk-Bentuk Perubahan Sosial',komp:'Pemahaman',subkomp:'Menjelaskan definisi konsep/teori/prosedur dalam Sosiologi dengan tepat',level:'LOTS',passage:'Perhatikan pernyataan berikut!\n\n"Perubahan sosial besar adalah perubahan yang dirasakan oleh banyak orang, sedangkan perubahan sosial kecil adalah perubahan yang hanya dirasakan oleh sebagian kecil masyarakat."',text:'Manakah pernyataan yang tepat untuk mengoreksi definisi tersebut?',opts:['Perubahan besar ditentukan oleh kecepatan terjadinya, sedangkan perubahan kecil terjadi secara lambat dan bertahap.','Perubahan besar ditentukan oleh seberapa banyak orang yang terlibat, sedangkan perubahan kecil hanya melibatkan kelompok tertentu.','Perubahan besar ditentukan oleh kedalaman dampaknya terhadap struktur sosial, sedangkan perubahan kecil tidak menyentuh struktur sosial secara mendasar.','Perubahan besar selalu dipicu oleh faktor dari luar masyarakat, sedangkan perubahan kecil berasal dari dalam masyarakat itu sendiri.','Perubahan besar selalu menimbulkan konflik sosial, sedangkan perubahan kecil berlangsung tanpa menimbulkan gejolak di masyarakat.'],answer:2,expl:'Opsi C benar: ukuran besar/kecilnya perubahan ditentukan oleh kedalaman dampaknya terhadap struktur sosial, bukan jumlah orang yang merasakannya.\n\nOpsi A salah: kecepatan bukan penentu besar/kecilnya perubahan.\n\nOpsi B salah: ini mereplikasi kesalahan yang sama dengan pernyataan dalam soal.\n\nOpsi D salah: asal-usul perubahan tidak menentukan apakah tergolong besar atau kecil.\n\nOpsi E salah: tidak semua perubahan besar menimbulkan konflik.'},
+{no:24,type:'pgk',kelas:12,topic:'Perubahan Sosial',sub:'Dampak Perubahan Sosial',komp:'Penerapan',subkomp:'Menggunakan konsep/teori Sosiologi untuk menjelaskan fenomena atau masalah sosial',level:'MOTS',chartFn:'makeChartQ24',passage:'',text:'Berdasarkan data infografis tersebut, tentukan Benar atau Salah pada setiap pernyataan berikut tentang dampak perubahan sosial di masa yang akan datang apabila bonus demografi tidak dikelola dengan baik!',stmts:['Meningkatnya proporsi pengangguran pada penduduk usia produktif apabila lapangan kerja tidak bertambah secara signifikan.','Ketidakseimbangan antara kualitas SDM dan standar kualifikasi kerja dapat mendorong Indonesia terjebak dalam middle income trap.','Banyaknya pemuda yang menjadi pekerja kasar dengan gaya hidup mewah.','Kemampuan daya beli masyarakat rendah karena tidak mampu menguasai teknologi.'],answers:[true,true,false,false],expl:'Pernyataan 1 Benar: jika lapangan kerja tidak bertambah signifikan sementara populasi usia produktif meningkat, angka pengangguran pasti naik.\n\nPernyataan 2 Benar: jika kualitas SDM tidak ditingkatkan, Indonesia sulit naik ke tingkat ekonomi lebih tinggi dan bisa terjebak middle income trap.\n\nPernyataan 3 Salah: tidak ada hubungan logis antara bonus demografi tidak terkelola dengan gaya hidup mewah pekerja kasar.\n\nPernyataan 4 Salah: daya beli rendah lebih terkait dengan pengangguran dan upah rendah, bukan semata ketidakmampuan menguasai teknologi.'},
+{no:25,type:'pg',kelas:12,topic:'Perubahan Sosial',sub:'Dampak Perubahan Sosial',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena sosial berdasarkan kasus atau data',level:'HOTS',passage:'Kampung Cempaka dulunya merupakan permukiman padat dengan kegiatan sosial yang tinggi. Warga sering mengadakan kerja bakti, arisan RT, dan kegiatan keagamaan bersama. Namun, sejak banyak rumah dijual dan dibeli oleh pendatang dari luar daerah, suasana sosial berubah. Warga baru lebih tertutup, tidak aktif dalam kegiatan warga, dan lebih memilih berinteraksi melalui media sosial. Meskipun kawasan menjadi lebih bersih dan tertata, namun hubungan antarwarga melemah.',text:'Apa dampak jangka panjang dari pola interaksi sosial yang mulai berubah di Kampung Cempaka?',opts:['Kesadaran kolektif dalam menjaga lingkungan mulai melemah secara bertahap.','Partisipasi warga dalam kegiatan rutin mengalami penurunan yang tidak disadari.','Rasa memiliki terhadap komunitas perlahan terkikis karena kurangnya keterlibatan.','Kegiatan sosial berubah bentuk tanpa memperkuat hubungan antarwarga.','Norma sosial tetap bertahan meskipun jumlah interaksi warga semakin terbatas.'],answer:2,expl:'Opsi C benar: kurangnya interaksi dan keterlibatan langsung akan mengikis rasa memiliki terhadap komunitas — inti dari kohesi sosial dalam jangka panjang.\n\nOpsi A salah: lingkungan justru disebutkan lebih bersih, sehingga asumsi melemahnya kesadaran lingkungan tidak konsisten.\n\nOpsi B salah: penurunan partisipasi adalah gejala yang sudah terjadi, bukan dampak jangka panjang yang lebih dalam.\n\nOpsi D salah: terlalu spekulatif.\n\nOpsi E salah: norma justru berpotensi melemah ketika interaksi sosial berkurang.'},
+{no:26,type:'pgk',kelas:12,topic:'Globalisasi',sub:'Wujud dan Dampak Globalisasi di Berbagai Bidang',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Arti merupakan murid SMA yang memiliki kebiasaan berkomunikasi dengan teman-teman dari berbagai negara melalui media sosial. Ia juga belajar Bahasa Korea dan Jepang menggunakan aplikasi bahasa online, berbelanja berbagai merek internasional melalui situs e-commerce, dan menonton tayangan global melalui layanan streaming online. Arti juga bergabung dengan bootcamp virtual (pelatihan intensif daring) bersama peserta dari berbagai negara. Aktivitas kesehariannya dilakukan dan dibentuk oleh akses instan budaya, pengetahuan dan komunikasi global.',text:'Tentukan Benar atau Salah pada setiap pernyataan berikut!',stmts:['Globalisasi memfasilitasi pertukaran budaya dan interaksi lintas negara melalui teknologi digital.','Masyarakat digital cenderung hanya mengadopsi budaya global tanpa mempertahankan budaya lokal.','Internet memungkinkan individu untuk mengakses pendidikan global, pasar, dan jaringan secara cepat.','Globalisasi digital memperkuat batas wilayah karena interaksi lebih banyak terjadi dalam komunitas yang homogen.'],answers:[true,false,true,false],expl:'Pernyataan 1 benar: globalisasi berbasis teknologi digital mempercepat pertukaran budaya dan interaksi lintas negara.\n\nPernyataan 2 salah: sering terjadi hibridisasi budaya — budaya lokal tetap dipertahankan dan dikombinasikan dengan pengaruh global.\n\nPernyataan 3 benar: internet membuka akses luas terhadap pendidikan, pasar, dan jaringan sosial/profesional lintas batas.\n\nPernyataan 4 salah: globalisasi digital justru mengaburkan batas wilayah dan memungkinkan terbentuknya komunitas global.'},
+{no:27,type:'pg',kelas:12,topic:'Globalisasi',sub:'Wujud dan Dampak Globalisasi di Berbagai Bidang',komp:'Penerapan',subkomp:'Menginterpretasi data (tabel, grafik, infografik, hasil penelitian) tentang suatu fenomena sosial',level:'MOTS',chartFn:'makeChartQ27',passage:'Data dari 1.500 keluarga kelas menengah dengan pendapatan Rp 8-15 juta/bulan di kota-kota besar. Rata-rata pengeluaran total per bulan relatif sama (disesuaikan inflasi).',text:'Berdasarkan data tersebut, perubahan pola konsumsi masyarakat kota X PALING TEPAT menunjukkan ….',opts:['Peningkatan kesejahteraan keluarga karena pengeluaran untuk kebutuhan pokok menurun','Pergeseran prioritas konsumsi ke arah gaya hidup dan status sosial yang terlihat','Kemajuan literasi digital masyarakat Indonesia dalam memanfaatkan teknologi','Kesadaran orang tua yang menurun terhadap pentingnya investasi pendidikan anak','Pengaruh negatif globalisasi yang membuat masyarakat lebih konsumtif dan hedonis'],answer:1,expl:'Opsi B benar: data menunjukkan pergeseran dari pengeluaran produktif/esensial ke pengeluaran yang berfungsi menampilkan status sosial. Di era media sosial, ada tekanan sosial untuk "terlihat" kelas menengah melalui simbol konsumsi.\n\nOpsi A salah: pengeluaran pokok turun bukan karena kesejahteraan naik, tetapi karena dialokasikan ke kategori lain. Total pengeluaran sama.\n\nOpsi C salah: tidak bisa diklaim "literasi digital" tanpa data lebih lanjut tentang tujuan penggunaan gadget.\n\nOpsi D salah: penurunan pengeluaran pendidikan tidak otomatis berarti kesadaran menurun.\n\nOpsi E salah: terlalu judgmental tanpa analisis struktur sosial yang lebih dalam.'},
+{no:28,type:'mcma',kelas:12,topic:'Globalisasi',sub:'Sikap Kritis dalam Menghadapi Globalisasi',komp:'Penalaran',subkomp:'Mengevaluasi kesesuaian teori, pendapat, kebijakan, atau metode penelitian',level:'HOTS',passage:'Era digital mendorong tren belanja online masyarakat Indonesia berkembang pesat. Banyak orang kini lebih memilih belanja kebutuhan sehari-hari lewat aplikasi ketimbang pasar tradisional. Namun, di sisi lain, pasar tradisional di kota kecil mulai sepi dan beberapa pedagang mengeluh omzet menurun. Selain itu, kelompok anak muda juga merasa gaya hidup digital ini lebih praktis.',text:'Manakah respons kritis yang tepat untuk menyikapi fenomena tersebut?\n\nPilihlah semua jawaban yang benar! Jawaban benar lebih dari satu.',opts:['Anak muda sebaiknya dibiasakan kembali belanja langsung ke pasar tradisional untuk menjaga kelangsungan ekonomi lokal.','Perlu ada pelatihan literasi digital bagi pelaku usaha tradisional agar mereka bisa bersaing.','Kemajuan teknologi tidak bisa dihindari, tetapi harus dikawal agar tidak menciptakan kesenjangan baru.','Pemerintah sebaiknya membuat pembatasan terhadap akses aplikasi belanja digital demi menjaga keseimbangan ekonomi lokal.','Pedagang pasar tradisional perlu beradaptasi dengan persaingan yang semakin ketat dengan menurunkan harga tanpa mengorbankan kualitas.'],answers:[1,2],expl:'Pernyataan B benar: pelatihan literasi digital adalah respons adaptif dan solutif.\n\nPernyataan C benar: kesadaran akan risiko kesenjangan adalah sikap kritis yang tepat — mencari titik temu antara inovasi dan keadilan sosial.\n\nPernyataan A salah: terlalu normatif dan tidak menjawab akar persoalan struktural.\n\nPernyataan D salah: kebijakan membatasi teknologi berpotensi kontra-produktif dan reaktif.\n\nPernyataan E salah: menurunkan harga saja bukan solusi jangka panjang yang berkelanjutan.'},
+{no:29,type:'pg',kelas:12,topic:'Pemberdayaan Berbasis Kearifan Lokal',sub:'Fungsi Kearifan Lokal',komp:'Penerapan',subkomp:'Menentukan faktor, fungsi, atau masalah berdasarkan narasi kasus',level:'MOTS',passage:'Di sebuah desa agraris, masyarakat memiliki tradisi "selamatan panen" yang selalu dilakukan setelah musim panen selesai. Tradisi ini melibatkan doa bersama, pembagian hasil panen, dan larangan bersikap serakah dalam memanfaatkan hasil bumi. Meskipun sebagian warga sudah menggunakan teknologi pertanian modern, tradisi tersebut tetap dijalankan karena dianggap sebagai bagian dari ajaran leluhur yang mengatur hubungan manusia dengan sesama dan alam.',text:'Fungsi kearifan lokal yang paling tepat menjelaskan fenomena tersebut adalah …',opts:['Kearifan lokal berfungsi sebagai pedoman nilai yang mengarahkan perilaku masyarakat dalam kehidupan sehari-hari.','Kearifan lokal berfungsi sebagai sarana distribusi ekonomi agar hasil panen dapat dinikmati secara merata oleh warga.','Kearifan lokal berfungsi sebagai alat integrasi sosial yang mempererat hubungan antarwarga melalui kegiatan bersama.','Kearifan lokal berfungsi sebagai bentuk pelestarian tradisi agar tidak hilang akibat modernisasi.','Kearifan lokal berfungsi sebagai mekanisme kontrol sosial untuk mencegah penyimpangan perilaku dalam masyarakat.'],answer:0,expl:'Opsi A benar: tradisi "selamatan panen" mencerminkan nilai-nilai yang mengatur perilaku (tidak serakah, menjaga keseimbangan). Yang dipertahankan meskipun ada modernisasi adalah sistem nilai sebagai pedoman hidup.\n\nOpsi B salah: pembagian hasil panen hanya salah satu praktik, bukan fungsi utama.\n\nOpsi C salah: integrasi sosial adalah dampak dari kegiatan bersama, bukan alasan utama.\n\nOpsi D salah: pelestarian tradisi adalah konsekuensi, bukan fungsi utama.\n\nOpsi E salah: kontrol sosial bisa muncul, tetapi bukan inti dari praktik tersebut.'},
+{no:30,type:'pgk',kelas:12,topic:'Pemberdayaan Berbasis Kearifan Lokal',sub:'Prinsip Pemberdayaan Komunitas',komp:'Penalaran',subkomp:'Mengevaluasi kesesuaian teori, pendapat, kebijakan, atau metode penelitian',level:'HOTS',passage:'Sebuah LSM menjalankan program pemberdayaan di desa dengan memberikan bantuan alat produksi kepada kelompok ibu rumah tangga untuk usaha makanan ringan. Program ini dirancang dan ditentukan sepenuhnya oleh pihak LSM, termasuk jenis usaha, pemasaran, dan pengelolaan keuangan. Setelah bantuan diberikan, LSM hanya melakukan monitoring singkat tanpa pendampingan lanjutan. Dalam beberapa bulan, sebagian besar usaha tidak berkembang.',text:'Tentukan Benar atau Salah pada setiap pernyataan berikut!',stmts:['Program tersebut kurang berhasil karena tidak melibatkan partisipasi aktif masyarakat dalam perencanaan.','Pemberian bantuan alat produksi sudah cukup untuk memastikan keberlanjutan program pemberdayaan.','Tidak adanya pendampingan lanjutan menjadi salah satu faktor kegagalan program.','Program tetap dapat dikatakan berhasil karena telah memberikan akses modal awal kepada masyarakat.'],answers:[true,false,true,false],expl:'Pernyataan 1 benar: pemberdayaan menekankan partisipasi aktif masyarakat sejak tahap perencanaan. Tanpa itu, program cenderung tidak sesuai kebutuhan lokal.\n\nPernyataan 2 salah: bantuan alat produksi hanya stimulus awal; tanpa kapasitas dan dukungan sistem, program tidak akan berkelanjutan.\n\nPernyataan 3 benar: pendampingan adalah komponen kunci untuk memastikan transfer pengetahuan dan adaptasi terhadap tantangan di lapangan.\n\nPernyataan 4 salah: keberhasilan pemberdayaan diukur dari peningkatan kemandirian dan keberlanjutan, bukan sekadar pemberian bantuan awal.'}
+];
+
+// ── STATE ───────────────────────────────────────────────
+var cur=0,rev=false,done=false,tint=null,tLeft=75*60;
+var UA=[];
+function initUA(){UA=[];for(var i=0;i<Q.length;i++){var q=Q[i];if(q.type==='pg')UA.push(null);else if(q.type==='mcma')UA.push([]);else{var arr=[];for(var j=0;j<q.stmts.length;j++)arr.push(null);UA.push(arr);}}}
+initUA();
+
+// ── START ───────────────────────────────────────────────
+function startExam(){
+  document.getElementById('ws').style.display='none';
+  document.getElementById('es').style.display='block';
+  buildGrid();renderQ(0);startTimer();
+}
+function buildGrid(){
+  var g=document.getElementById('qgrid');g.innerHTML='';
+  for(var i=0;i<Q.length;i++){
+    var b=document.createElement('button');
+    b.className='qdot';b.textContent=i+1;b.id='qd'+i;
+    (function(idx){b.onclick=function(){goTo(idx);};})(i);
+    g.appendChild(b);
+  }
+}
+
+// ── RENDER ──────────────────────────────────────────────
+function renderQ(idx){
+  cur=idx;
+  var q=Q[idx],isc=done||rev;
+  document.getElementById('qh').className='qhead '+q.type;
+  document.getElementById('qnum').innerHTML=idx+1+'<span>dari '+Q.length+'</span>';
+  document.getElementById('q-topic-line').textContent=q.topic;
+  document.getElementById('q-subtopic-line').textContent=q.sub||'';
+  var tl={pg:'Pilihan Ganda',mcma:'Multi-Jawab (MCMA)',pgk:'Benar / Salah (PGK)'};
+  document.getElementById('q-type-pill').textContent=tl[q.type]||q.type;
+  var lp=document.getElementById('q-level-pill');
+  lp.textContent=q.level;lp.className='q-level-pill lv-'+q.level;
+  var lm={LOTS:1,MOTS:2,HOTS:3},lv=lm[q.level]||2;
+  var de=document.getElementById('qdif');de.innerHTML='';
+  for(var i=1;i<=3;i++){var s=document.createElement('span');s.className='d'+(i<=lv?' on':'');de.appendChild(s);}
+
+  var body=document.getElementById('qbody');body.innerHTML='';
+
+  // Kompetensi strip
+  var ks=document.createElement('div');ks.className='komp-strip';
+  ks.innerHTML='<span class="ks-label">Kompetensi:</span><span class="ks-val ks-komp">'+q.komp+'</span>'
+    +'<span class="ks-label" style="margin-left:4px">Subkompetensi:</span><span class="ks-val ks-sub">'+q.subkomp+'</span>';
+  body.appendChild(ks);
+
+  // Chart
+  if(q.chartFn){
+    var cw=document.createElement('div');
+    if(q.chartFn==='makeChartQ12')cw.innerHTML=makeChartQ12();
+    else if(q.chartFn==='makeChartQ24')cw.innerHTML=makeChartQ24();
+    else if(q.chartFn==='makeChartQ27')cw.innerHTML=makeChartQ27();
+    body.appendChild(cw);
+  }
+  // Passage
+  if(q.passage&&q.passage.trim()){
+    var pb=document.createElement('div');pb.className='passage';
+    pb.innerHTML=q.passage.replace(/\n/g,'<br>');body.appendChild(pb);
+  }
+  // Question text
+  var qt=document.createElement('p');qt.className='qtext';
+  qt.innerHTML=q.text.replace(/\n/g,'<br>');body.appendChild(qt);
+
+  if(q.type==='pg')renderPG(body,q,idx,isc);
+  else if(q.type==='mcma')renderMCMA(body,q,idx,isc);
+  else renderPGK(body,q,idx,isc);
+
+  if(isc&&q.expl){
+    var ex=document.createElement('div');ex.className='expl show';
+    ex.innerHTML='<strong>📖 Pembahasan</strong>'+q.expl.replace(/\n/g,'<br>');body.appendChild(ex);
+  }
+
+  document.getElementById('bprev').disabled=(idx===0);
+  var isLast=(idx===Q.length-1);
+  var bn=document.getElementById('bnext'),bf=document.getElementById('bfin');
+  bn.style.display=isLast?'none':'flex';bf.style.display=isLast?'flex':'none';
+  if(rev){bf.textContent='Kembali ke Hasil';bf.onclick=function(){showResultScreen();};}
+  else{bf.textContent='Selesai Latihan';bf.onclick=function(){finishExam();};}
+  updGrid();updStats();
+}
+
+function renderPG(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill ppg';p.textContent='Pilih satu jawaban';body.appendChild(p);
+  var w=document.createElement('div');w.className='opts';
+  var labs=['A','B','C','D','E'];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.createElement('button');b.className='opt';
+    if(isc){b.disabled=true;if(i===q.answer)b.classList.add('correct');if(UA[idx]===i&&i!==q.answer)b.classList.add('wrong');}
+    else{if(UA[idx]===i)b.classList.add('sel');(function(ii){b.onclick=function(){UA[idx]=ii;renderQ(idx);};})(i);}
+    b.innerHTML='<span class="olbl">'+labs[i]+'</span><span>'+q.opts[i]+'</span>';w.appendChild(b);
+  }
+  body.appendChild(w);
+}
+
+function renderMCMA(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill pmc';p.textContent='Pilih semua jawaban yang benar (bisa lebih dari satu)';body.appendChild(p);
+  if(!isc){var h=document.createElement('div');h.className='mhint';h.innerHTML='⚡ Klik untuk memilih / batalkan pilihan.';body.appendChild(h);}
+  var w=document.createElement('div');w.className='mcopts';
+  var sel=UA[idx]||[];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.createElement('button');b.className='mcopt';
+    if(isc){
+      b.disabled=true;
+      var ic=q.answers.indexOf(i)>=0,is=sel.indexOf(i)>=0;
+      if(is&&ic)b.classList.add('correct');else if(is&&!ic)b.classList.add('wrong');else if(!is&&ic)b.classList.add('missed');
+    }else{
+      if(sel.indexOf(i)>=0)b.classList.add('sel');
+      (function(ii){b.onclick=function(){
+        var a=UA[idx]||[];var ni=a.indexOf(ii);
+        if(ni>=0)a.splice(ni,1);else a.push(ii);
+        UA[idx]=a;renderQ(idx);
+      };})(i);
+    }
+    b.innerHTML='<span class="mchk">✓</span><span>'+q.opts[i]+'</span>';w.appendChild(b);
+  }
+  body.appendChild(w);
+}
+
+function renderPGK(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill ppk';p.textContent='Pilih Benar atau Salah untuk setiap pernyataan';body.appendChild(p);
+  var t=document.createElement('div');t.className='pkwrap';
+  var h=document.createElement('div');h.className='pkh';
+  h.innerHTML='<span>Pernyataan</span><span style="text-align:center">Benar</span><span style="text-align:center">Salah</span>';
+  t.appendChild(h);
+  if(!Array.isArray(UA[idx])||UA[idx].length!==q.stmts.length){var arr=[];for(var j=0;j<q.stmts.length;j++)arr.push(null);UA[idx]=arr;}
+  for(var si=0;si<q.stmts.length;si++){
+    var row=document.createElement('div');row.className='pkrow';
+    var uv=UA[idx][si],cv=q.answers[si];
+    if(isc)row.classList.add(uv===cv?'rc':'rw');
+    var sd=document.createElement('div');sd.className='pkstmt';sd.textContent=q.stmts[si];
+    var ct=document.createElement('div');ct.className='pkcol';
+    var bt=document.createElement('button');bt.className='pkbtn';bt.textContent='Benar';
+    var cf=document.createElement('div');cf.className='pkcol';
+    var bf2=document.createElement('button');bf2.className='pkbtn';bf2.textContent='Salah';
+    if(isc){
+      bt.disabled=true;bf2.disabled=true;
+      if(cv===true)bt.classList.add('ok');else if(uv===true)bt.classList.add('bad');
+      if(cv===false)bf2.classList.add('ok');else if(uv===false)bf2.classList.add('bad');
+    }else{
+      if(uv===true)bt.classList.add('st');
+      if(uv===false)bf2.classList.add('sf');
+      (function(sii){
+        bt.onclick=function(){var a=UA[idx].slice();a[sii]=a[sii]===true?null:true;UA[idx]=a;renderQ(idx);};
+        bf2.onclick=function(){var a=UA[idx].slice();a[sii]=a[sii]===false?null:false;UA[idx]=a;renderQ(idx);};
+      })(si);
+    }
+    ct.appendChild(bt);cf.appendChild(bf2);
+    row.appendChild(sd);row.appendChild(ct);row.appendChild(cf);
+    t.appendChild(row);
+  }
+  body.appendChild(t);
+}
+
+// ── HELPERS ─────────────────────────────────────────────
+function isAns(i){
+  var q=Q[i],a=UA[i];
+  if(q.type==='pg')return a!==null;
+  if(q.type==='mcma')return Array.isArray(a)&&a.length>0;
+  if(!Array.isArray(a))return false;
+  for(var j=0;j<a.length;j++)if(a[j]!==null)return true;
+  return false;
+}
+function isCor(i){
+  var q=Q[i],a=UA[i];
+  if(q.type==='pg')return a===q.answer;
+  if(q.type==='mcma'){
+    if(!Array.isArray(a)||!a.length)return false;
+    var sa=a.slice().sort().join(','),sa2=q.answers.slice().sort().join(',');
+    return sa===sa2;
+  }
+  if(q.type==='pgk'){
+    if(!Array.isArray(a))return false;
+    for(var j=0;j<q.answers.length;j++)if(a[j]!==q.answers[j])return false;
+    return true;
+  }
+  return false;
+}
+function isPart(i){
+  var q=Q[i],a=UA[i];
+  if(q.type==='mcma'&&Array.isArray(a)&&a.length){
+    var hasCor=false;for(var j=0;j<a.length;j++)if(q.answers.indexOf(a[j])>=0){hasCor=true;break;}
+    return hasCor&&!isCor(i);
+  }
+  if(q.type==='pgk'&&Array.isArray(a)){
+    var hasCor2=false;for(var j=0;j<q.answers.length;j++)if(a[j]===q.answers[j]){hasCor2=true;break;}
+    return hasCor2&&!isCor(i);
+  }
+  return false;
+}
+function nav(d){var n=cur+d;if(n>=0&&n<Q.length)renderQ(n);}
+function goTo(i){renderQ(i);}
+function updGrid(){
+  for(var i=0;i<Q.length;i++){
+    var dot=document.getElementById('qd'+i);dot.className='qdot';
+    if(i===cur){dot.classList.add('active');continue;}
+    if(!isAns(i))continue;
+    if(done||rev){if(isCor(i))dot.classList.add('cc');else if(isPart(i))dot.classList.add('cp');else dot.classList.add('cw');}
+    else dot.classList.add('ans');
+  }
+}
+function updStats(){
+  var n=0;for(var i=0;i<Q.length;i++)if(isAns(i))n++;
+  document.getElementById('sdon').textContent=n;
+  document.getElementById('slft').textContent=Q.length-n;
+  document.getElementById('pf').style.width=(n/Q.length*100)+'%';
+  document.getElementById('ptx').textContent=n+' / '+Q.length+' dijawab';
+}
+
+// ── TIMER ───────────────────────────────────────────────
+function startTimer(){
+  tint=setInterval(function(){
+    tLeft--;
+    var m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');
+    var el=document.getElementById('timer');el.textContent=m+':'+s;el.className='';
+    if(tLeft<=300)el.classList.add('warn');
+    if(tLeft<=60)el.classList.add('danger');
+    if(tLeft<=0){clearInterval(tint);finishExam(true);}
+  },1000);
+}
+
+// ── FINISH ──────────────────────────────────────────────
+function finishExam(tu){clearInterval(tint);done=true;showResultScreen(tu);}
+
+function showResultScreen(tu){
+  document.getElementById('es').style.display='none';
+  document.getElementById('rs').style.display='block';
+  window.scrollTo(0,0);
+  var cor=0,wrg=0,skp=0;
+  for(var i=0;i<Q.length;i++){if(!isAns(i))skp++;else if(isCor(i))cor++;else wrg++;}
+  var sc=Math.round(cor/Q.length*100),KKM=75,lulus=sc>=KKM;
+  var badge=document.getElementById('rbadge');badge.textContent=sc;badge.className='rb '+(lulus?'lulus':'gagal');
+  var kb=document.getElementById('kkm-badge');kb.className='kkm-badge '+(lulus?'lulus':'gagal');
+  kb.innerHTML=lulus?'✅ LULUS &nbsp;·&nbsp; KKM 75 tercapai':'❌ TIDAK LULUS &nbsp;·&nbsp; KKM 75 tidak tercapai';
+  document.getElementById('rcor').textContent=cor;
+  document.getElementById('rwrg').textContent=wrg;
+  document.getElementById('rskp').textContent=skp;
+  document.getElementById('rsco').textContent=sc;
+  var msg='',bg='',cl='',bd='';
+  if(sc>=85){msg='🏆 Sangat Baik — Penguasaan materi sangat baik!';bg='#DCFCE7';cl='#14532D';bd='#A7F3C1';}
+  else if(sc>=75){msg='✅ Baik — Hasil memuaskan, KKM tercapai!';bg='#EFF6FF';cl='#1E40AF';bd='#BFDBFE';}
+  else if(sc>=55){msg='📚 Cukup — Belum mencapai KKM. Beberapa materi perlu dipelajari lagi.';bg='#FFFBEB';cl='#92400E';bd='#FCD34D';}
+  else{msg='💪 Perlu Belajar Lebih — Belum mencapai KKM. Pelajari kembali materi yang belum dikuasai!';bg='#FEF2F2';cl='#991B1B';bd='#FCA5A5';}
+  var pb=document.getElementById('pred');pb.textContent=msg;
+  pb.style.cssText='background:'+bg+';color:'+cl+';border:1px solid '+bd+';border-radius:var(--radius);padding:.85rem 1.4rem;margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5';
+  document.getElementById('rtit').textContent=(tu?'Waktu Habis!':'Latihan Selesai');
+  document.getElementById('rsub').textContent='Nilai: '+sc+' / 100 · '+cor+' benar, '+wrg+' salah, '+skp+' tidak dijawab dari '+Q.length+' soal';
+  buildAnalisisSoal();
+  buildAnalisisKomp();
+}
+
+function switchTab(id,el){
+  var panels=document.querySelectorAll('.tab-panel');for(var i=0;i<panels.length;i++)panels[i].classList.remove('active');
+  var tabs=document.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── ANALISIS PER SOAL ────────────────────────────────────
+function buildAnalisisSoal(){
+  var panel=document.getElementById('tab-soal');panel.innerHTML='';
+  var groups={},order=[];
+  for(var i=0;i<Q.length;i++){
+    var q=Q[i];
+    if(!groups[q.topic]){groups[q.topic]={topic:q.topic,items:[]};order.push(q.topic);}
+    groups[q.topic].items.push({q:q,i:i});
+  }
+  for(var t=0;t<order.length;t++){
+    var g=groups[order[t]];
+    var cor=0;for(var x=0;x<g.items.length;x++)if(isCor(g.items[x].i))cor++;
+    var tot=g.items.length,pct=Math.round(cor/tot*100);
+    var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
+    var sec=document.createElement('div');sec.className='ana-section';
+    var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
+    for(var x=0;x<g.items.length;x++){
+      var qi=g.items[x].q,ii=g.items[x].i;
+      var ans=isAns(ii),cor2=isCor(ii);
+      var cls='ai-cor',icon='✅',status='Benar';
+      if(!ans){cls='ai-skp';icon='⬜';status='Tidak Dijawab';}
+      else if(!cor2){cls='ai-wrg';icon='❌';status='Salah';}
+      var item=document.createElement('div');item.className='ana-item '+cls;
+      item.innerHTML='<span class="ai-icon">'+icon+'</span><div class="ai-content"><strong>Soal '+qi.no+' · '+status+' · '+qi.level+'</strong><span>'+qi.sub+' — '+qi.komp+': '+qi.subkomp+'</span></div>';
+      bodyDiv.appendChild(item);
+    }
+    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:13.5px">📌 '+g.topic+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' benar ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
+    sec.appendChild(bodyDiv);
+    panel.appendChild(sec);
+  }
+}
+function toggleSec(el){
+  var body=el.nextElementSibling;
+  var arr=el.querySelector('span:last-child');
+  if(body.style.display==='none'){body.style.display='flex';arr.textContent='▾';}
+  else{body.style.display='none';arr.textContent='▸';}
+}
+
+// ── ANALISIS KOMPETENSI ──────────────────────────────────
+function buildAnalisisKomp(){
+  var panel=document.getElementById('tab-komp');panel.innerHTML='';
+  var kompMap={},kompOrder=[];
+  for(var i=0;i<Q.length;i++){
+    var q=Q[i];
+    if(!kompMap[q.komp]){kompMap[q.komp]={komp:q.komp,subs:{},subOrder:[]};kompOrder.push(q.komp);}
+    if(!kompMap[q.komp].subs[q.subkomp]){kompMap[q.komp].subs[q.subkomp]={subkomp:q.subkomp,items:[]};kompMap[q.komp].subOrder.push(q.subkomp);}
+    kompMap[q.komp].subs[q.subkomp].items.push({q:q,i:i});
+  }
+
+  // Summary table
+  var h=document.createElement('h3');h.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h.textContent='Ringkasan per Kompetensi';panel.appendChild(h);
+  var wrap=document.createElement('div');wrap.style.cssText='background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem';
+  var html='<table class="komp-table"><thead><tr><th>Kompetensi</th><th>Soal</th><th>Benar</th><th>Skor</th><th>Capaian</th></tr></thead><tbody>';
+  for(var k=0;k<kompOrder.length;k++){
+    var km=kompMap[kompOrder[k]];
+    var allItems=[];for(var s in km.subs)allItems=allItems.concat(km.subs[s].items);
+    var cor=0;for(var x=0;x<allItems.length;x++)if(isCor(allItems[x].i))cor++;
+    var tot=allItems.length,pct=Math.round(cor/tot*100);
+    var fillCls=pct>=70?'sf-good':pct>=40?'sf-mid':'sf-bad';
+    html+='<tr><td style="font-weight:500">'+km.komp+'</td><td style="text-align:center">'+tot+'</td><td style="text-align:center;color:var(--correct);font-weight:600">'+cor+'</td><td style="text-align:center;font-weight:600">'+pct+'%</td><td style="min-width:100px"><div class="score-bar"><div class="score-fill '+fillCls+'" style="width:'+pct+'%"></div></div></td></tr>';
+  }
+  html+='</tbody></table>';
+  wrap.innerHTML=html;panel.appendChild(wrap);
+
+  // Level summary
+  var h2=document.createElement('h3');h2.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h2.textContent='Capaian per Level Kognitif';panel.appendChild(h2);
+  var lvlBox=document.createElement('div');lvlBox.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem';
+  var lvls=['LOTS','MOTS','HOTS'];
+  for(var lv=0;lv<lvls.length;lv++){
+    var lvName=lvls[lv],ids=[];
+    for(var i=0;i<Q.length;i++)if(Q[i].level===lvName)ids.push(i);
+    var cor=0;for(var x=0;x<ids.length;x++)if(isCor(ids[x]))cor++;
+    var tot=ids.length,pct=tot>0?Math.round(cor/tot*100):0;
+    var col=pct>=70?'var(--correct)':pct>=40?'#D97706':'var(--wrong)';
+    lvlBox.innerHTML+='<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;text-align:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:5px">'+lvName+'</div><div style="font-family:Playfair Display,serif;font-size:26px;font-weight:700;color:'+col+'">'+pct+'%</div><div style="font-size:12px;color:var(--ink-muted)">'+cor+' / '+tot+' benar</div></div>';
+  }
+  panel.appendChild(lvlBox);
+
+  // Detail subkompetensi
+  var h3=document.createElement('h3');h3.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h3.textContent='Detail per Subkompetensi';panel.appendChild(h3);
+
+  for(var k=0;k<kompOrder.length;k++){
+    var km=kompMap[kompOrder[k]];
+    var allItems=[];for(var s=0;s<km.subOrder.length;s++)allItems=allItems.concat(km.subs[km.subOrder[s]].items);
+    var cor=0;for(var x=0;x<allItems.length;x++)if(isCor(allItems[x].i))cor++;
+    var tot=allItems.length,pct=Math.round(cor/tot*100);
+    var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
+    var sec=document.createElement('div');sec.className='ana-section';
+    var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
+
+    for(var s=0;s<km.subOrder.length;s++){
+      var sm=km.subs[km.subOrder[s]];
+      var sc2=0;for(var x=0;x<sm.items.length;x++)if(isCor(sm.items[x].i))sc2++;
+      var st2=sm.items.length,p2=Math.round(sc2/st2*100);
+      var fillCls=p2>=70?'sf-good':p2>=40?'sf-mid':'sf-bad';
+      var badges='';
+      for(var x=0;x<sm.items.length;x++){
+        var qi2=sm.items[x].q,ii2=sm.items[x].i;
+        var cor3=isCor(ii2),ans3=isAns(ii2);
+        var col=cor3?'var(--correct)':ans3?'var(--wrong)':'var(--skip)';
+        var ic=cor3?'✅':ans3?'❌':'⬜';
+        badges+='<span style="display:inline-flex;align-items:center;gap:3px;font-size:11.5px;padding:2px 7px;border-radius:99px;border:1px solid '+col+';color:'+col+';background:white">'+ic+' No.'+qi2.no+'</span>';
+      }
+      var subDiv=document.createElement('div');
+      subDiv.style.cssText='background:#FAF7F3;border:1px solid var(--border);border-radius:8px;padding:.65rem .85rem;margin-bottom:.35rem';
+      subDiv.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:500;color:var(--ink)">'+sm.subkomp+'</span><span style="font-size:12px;font-weight:600;color:'+(p2>=70?'var(--correct)':p2>=40?'#D97706':'var(--wrong)')+'">'+sc2+'/'+st2+' ('+p2+'%)</span></div><div class="score-bar"><div class="score-fill '+fillCls+'" style="width:'+p2+'%"></div></div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">'+badges+'</div>';
+      bodyDiv.appendChild(subDiv);
+
+      // Rekomendasi
+      var wrong=[],skipped=[];
+      for(var x=0;x<sm.items.length;x++){var ii3=sm.items[x].i;if(!isAns(ii3))skipped.push(sm.items[x].q);else if(!isCor(ii3))wrong.push(sm.items[x].q);}
+      if(wrong.length||skipped.length){
+        var rec=document.createElement('div');
+        rec.style.cssText='background:#FEF9E7;border:1px solid var(--skip-bd);border-radius:7px;padding:.55rem .75rem;margin-bottom:.35rem;font-size:12.5px;color:var(--skip)';
+        var txt='💡 Perlu ditingkatkan: ';
+        if(skipped.length){var ns=[];for(var x=0;x<skipped.length;x++)ns.push(skipped[x].no);txt+='Soal '+ns.join(', ')+' tidak dijawab. ';}
+        if(wrong.length){var nw=[];for(var x=0;x<wrong.length;x++)nw.push(wrong[x].no);txt+='Soal '+nw.join(', ')+' dijawab salah. ';}
+        txt+='Pelajari kembali: <strong>'+sm.subkomp+'</strong>';
+        rec.innerHTML=txt;bodyDiv.appendChild(rec);
+      }
+    }
+    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:13.5px">🎯 '+km.komp+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' benar ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
+    sec.appendChild(bodyDiv);
+    panel.appendChild(sec);
+  }
+}
+
+// ── REVIEW / RESTART ─────────────────────────────────────
+function reviewMode(){
+  rev=true;done=true;
+  document.getElementById('rs').style.display='none';
+  document.getElementById('es').style.display='block';
+  document.getElementById('rev-banner').style.display='block';
+  window.scrollTo(0,0);renderQ(0);updGrid();
+}
+function restartExam(){
+  initUA();done=false;rev=false;cur=0;tLeft=75*60;clearInterval(tint);
+  document.getElementById('rs').style.display='none';
+  document.getElementById('es').style.display='none';
+  document.getElementById('rev-banner').style.display='none';
+  document.getElementById('ws').style.display='block';
+  document.getElementById('timer').textContent='75:00';document.getElementById('timer').className='';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
