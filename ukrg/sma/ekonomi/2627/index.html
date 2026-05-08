@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Soal UKRG Ekonomi SMA 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.no-select{-webkit-user-select:none;user-select:none}
+:root{
+  --bg:#F4F0EA;--surface:#FDFAF6;--ink:#18140F;--ink-muted:#6B6057;--ink-faint:#A89F96;
+  --accent:#1E5F74;--accent-light:#E8F4F8;--accent-mid:#2E86A0;
+  --correct:#166534;--correct-bg:#DCFCE7;--wrong:#991B1B;--wrong-bg:#FEE2E2;
+  --skip:#92400E;--skip-bg:#FFFBEB;--skip-bd:#FCD34D;
+  --border:#DDD5CA;--shadow:rgba(24,20,15,.08);--radius:14px;
+  --mc:#7C2D8F;--mc-bg:#F5F0FF;--mc-bd:#D8B4FE;
+  --pk:#C45D1C;--pk-bg:#FFF4EC;--pk-bd:#FDC89A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:16px;line-height:1.65}
+header{background:var(--ink);color:#F5F1EB;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--accent)}
+.hl{display:flex;flex-direction:column;gap:1px}
+.hle{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-mid);font-weight:600}
+.hlt{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#F5F1EB}
+#tbox{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:5px 14px}
+#tlbl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#A89F96}
+#timer{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;color:#F5F1EB;letter-spacing:.05em}
+#timer.warn{color:#FB923C}#timer.danger{color:#F87171;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pw{background:var(--surface);border-bottom:1px solid var(--border);padding:.55rem 2rem;display:flex;align-items:center;gap:1rem}
+.pt{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+.pf{height:100%;background:var(--accent);border-radius:99px;transition:width .4s;width:0}
+.ptx{font-size:12px;color:var(--ink-muted);white-space:nowrap;font-weight:500}
+.wrap{max-width:980px;margin:0 auto;padding:1.75rem 1.5rem;display:grid;grid-template-columns:1fr 268px;gap:1.5rem;align-items:start}
+.qcard{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 20px var(--shadow)}
+.qhead{padding:.85rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.qhead.pg{background:var(--accent)}.qhead.mcma{background:var(--mc)}.qhead.pgk{background:var(--pk)}
+.qn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:rgba(255,255,255,.28);line-height:1}
+.qn span{font-size:12px;font-weight:400;color:rgba(255,255,255,.55);display:block;font-family:'DM Sans',sans-serif;margin-top:2px}
+.qm{border-left:1px solid rgba(255,255,255,.18);padding-left:1rem;flex:1;display:flex;flex-direction:column;gap:2px}
+.q-topic-line{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+.q-subtopic-line{font-size:11.5px;color:rgba(255,255,255,.8);font-weight:500}
+.q-meta-pills{display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap}
+.q-type-pill{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+.q-level-pill{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.lv-Mudah{background:rgba(134,239,172,.25);color:#A7F3C1}
+.lv-Medium{background:rgba(252,211,77,.25);color:#FDE68A}
+.lv-HOTS{background:rgba(252,165,165,.25);color:#FCA5A5}
+.qdif{display:inline-flex;align-items:center;gap:3px}
+.d{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2)}.d.on{background:#FCD34D}
+.qbody{padding:1.25rem 1.5rem 1.5rem}
+.komp-strip{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:.9rem;padding:.6rem .85rem;background:#F4F0EA;border-radius:8px;border:1px solid var(--border)}
+.ks-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint)}
+.ks-val{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px}
+.ks-komp{background:var(--accent-light);color:var(--accent);border:1px solid #A3CDD8}
+.ks-sub{background:white;color:var(--ink-muted);border:1px solid var(--border)}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-bottom:.75rem}
+.ppg{background:var(--accent-light);color:var(--accent);border:1px solid #A3CDD8}
+.pmc{background:var(--mc-bg);color:var(--mc);border:1px solid var(--mc-bd)}
+.ppk{background:var(--pk-bg);color:var(--pk);border:1px solid var(--pk-bd)}
+.passage{background:#EDE7DD;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin-bottom:1rem;font-size:14px;color:var(--ink-muted);font-style:italic;line-height:1.72}
+.qtext{font-size:15.5px;color:var(--ink);margin-bottom:1.1rem;line-height:1.78}
+.mhint{display:flex;align-items:center;gap:7px;background:var(--mc-bg);border:1px solid var(--mc-bd);border-radius:8px;padding:.55rem .9rem;margin-bottom:.9rem;font-size:12.5px;color:var(--mc);font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:.75rem 1rem;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;background:white;transition:all .18s;text-align:left;width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);line-height:1.55}
+.opt:hover:not(:disabled){border-color:var(--accent-mid);background:var(--accent-light)}
+.opt.sel{border-color:var(--accent);background:var(--accent-light)}
+.opt.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.opt.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.opt:disabled{cursor:default}
+.olbl{flex-shrink:0;width:23px;height:23px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;color:var(--ink-muted);margin-top:1px}
+.opt.sel .olbl{border-color:var(--accent);color:var(--accent)}
+.opt.correct .olbl{border-color:var(--correct);color:var(--correct)}
+.opt.wrong .olbl{border-color:var(--wrong);color:var(--wrong)}
+.mcopts{display:flex;flex-direction:column;gap:8px}
+.mcopt{display:flex;align-items:flex-start;gap:11px;padding:.75rem 1rem;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;background:white;transition:all .18s;text-align:left;width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);line-height:1.55}
+.mcopt:hover:not(:disabled){border-color:var(--mc);background:var(--mc-bg)}
+.mcopt.sel{border-color:var(--mc);background:var(--mc-bg)}
+.mcopt.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.mcopt.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.mcopt.missed{border-color:var(--correct);background:var(--correct-bg);opacity:.7}
+.mcopt:disabled{cursor:default}
+.mchk{flex-shrink:0;width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);background:white;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;color:transparent}
+.mcopt.sel .mchk{border-color:var(--mc);background:var(--mc);color:white}
+.mcopt.correct .mchk{border-color:var(--correct);background:var(--correct);color:white}
+.mcopt.wrong .mchk{border-color:var(--wrong);background:var(--wrong);color:white}
+.mcopt.missed .mchk{border-color:var(--correct);background:transparent;color:var(--correct)}
+.pkwrap{border:1.5px solid var(--pk-bd);border-radius:10px;overflow:hidden}
+.pkh{display:grid;grid-template-columns:1fr 95px 95px;background:var(--pk);padding:.6rem 1rem;font-size:11px;font-weight:600;color:white;letter-spacing:.08em;text-transform:uppercase;gap:.5rem}
+.pkrow{display:grid;grid-template-columns:1fr 95px 95px;padding:.75rem 1rem;border-top:1px solid var(--pk-bd);background:white;align-items:center;gap:.5rem}
+.pkrow.rc{background:var(--correct-bg)}.pkrow.rw{background:var(--wrong-bg)}
+.pkstmt{font-size:14px;color:var(--ink);line-height:1.55}
+.pkcol{display:flex;justify-content:center}
+.pkbtn{padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:white;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;color:var(--ink-muted);transition:all .15s}
+.pkbtn:hover:not(:disabled){border-color:var(--pk);color:var(--pk)}
+.pkbtn.st{border-color:var(--pk);background:var(--pk);color:white}
+.pkbtn.sf{border-color:var(--ink-muted);background:var(--ink-muted);color:white}
+.pkbtn.ok{border-color:var(--correct);background:var(--correct);color:white}
+.pkbtn.bad{border-color:var(--wrong);background:var(--wrong);color:white}
+.pkbtn:disabled{cursor:default}
+.expl{margin-top:1rem;padding:.9rem 1.1rem;border-radius:9px;background:#F0FAF4;border:1px solid #A7F3C1;font-size:14px;color:#14532D;display:none;line-height:1.65}
+.expl.show{display:block}
+.expl strong{display:block;margin-bottom:5px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--correct)}
+.navb{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;border-top:1px solid var(--border);gap:.75rem;flex-wrap:wrap}
+.btn{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;padding:.55rem 1.15rem;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:white;color:var(--ink-muted);transition:all .18s;display:flex;align-items:center;gap:5px}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btnp{background:var(--accent);color:white;border-color:var(--accent)}
+.btnp:hover{background:#174F63;border-color:#174F63;color:white}
+.btn:disabled{opacity:.33;cursor:default;pointer-events:none}
+.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:82px}
+.sc{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 10px var(--shadow)}
+.stit{font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink)}
+.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:.8rem}
+.qdot{aspect-ratio:1;border-radius:7px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:11.5px;font-weight:500;color:var(--ink-muted);display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.qdot:hover{border-color:var(--accent);color:var(--accent)}
+.qdot.active{border-color:var(--accent);background:var(--accent);color:white}
+.qdot.ans{border-color:var(--accent-mid);background:var(--accent-light);color:var(--accent)}
+.qdot.cc{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.qdot.cw{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.qdot.cs{border-color:var(--skip);background:var(--skip-bg);color:var(--skip)}
+.qdot.cp{border-color:#D97706;background:#FEF3C7;color:#92400E}
+.leg{padding:0 .8rem .8rem;display:flex;flex-direction:column;gap:4px}
+.legi{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink-muted)}
+.legd{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.stg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.sti{background:var(--surface);padding:.7rem 1rem;text-align:center}
+.stv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);display:block}
+.stl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:500}
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
+.data-table th{background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:left;font-size:11.5px;font-weight:600}
+.data-table th:not(:first-child){text-align:center}
+.data-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border)}
+.data-table td:not(:first-child){text-align:center}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even) td{background:#FAF7F3}
+/* WELCOME */
+#ws{max-width:660px;margin:3rem auto;padding:0 1.5rem}
+.wc{background:var(--surface);border-radius:18px;border:1px solid var(--border);overflow:hidden;box-shadow:0 6px 32px var(--shadow)}
+.wt{background:var(--ink);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.wt::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:var(--accent);opacity:.12}
+.wte{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-mid);font-weight:600;margin-bottom:8px}
+.wth{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#F5F1EB;letter-spacing:-.02em;line-height:1.15;margin-bottom:.4rem}
+.wts{color:rgba(245,241,235,.5);font-size:15px}
+.wb{padding:2rem}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.5rem}
+.ii{background:var(--bg);border-radius:10px;padding:.85rem 1rem;display:flex;align-items:flex-start;gap:9px}
+.iico{font-size:19px;flex-shrink:0;margin-top:1px}
+.ilb{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:500}
+.ivl{font-size:14.5px;font-weight:500;color:var(--ink)}
+.tr{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.tag{font-size:11.5px;padding:3px 11px;border-radius:99px;background:var(--accent-light);color:var(--accent);font-weight:500;border:1px solid rgba(30,95,116,.15)}
+.tag.mc{background:var(--mc-bg);color:var(--mc);border-color:var(--mc-bd)}
+.tag.pk{background:var(--pk-bg);color:var(--pk);border-color:var(--pk-bd)}
+.bst{width:100%;padding:.875rem;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;background:var(--accent);color:white;border:none;border-radius:10px;cursor:pointer}
+.bst:hover{background:#174F63}
+/* RESULT */
+#rs{display:none;max-width:860px;margin:2.5rem auto;padding:0 1.5rem}
+.rb{width:108px;height:108px;border-radius:50%;margin:0 auto .75rem;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:white}
+.rb.lulus{background:var(--correct);box-shadow:0 8px 30px rgba(22,101,52,.35)}
+.rb.gagal{background:var(--wrong);box-shadow:0 8px 30px rgba(153,27,27,.35)}
+.kkm-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:5px 16px;border-radius:99px;margin:0 auto .75rem;letter-spacing:.04em}
+.kkm-badge.lulus{background:var(--correct-bg);color:var(--correct);border:1.5px solid #86EFAC}
+.kkm-badge.gagal{background:var(--wrong-bg);color:var(--wrong);border:1.5px solid #FCA5A5}
+.rtit{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--ink);margin-bottom:.35rem;text-align:center}
+.rsub{color:var(--ink-muted);font-size:15px;margin-bottom:1.5rem;text-align:center}
+.rg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--border)}
+.rst{background:var(--surface);padding:1rem;text-align:center}
+.rv{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);display:block;margin-bottom:3px}
+.rv.g{color:var(--correct)}.rv.r{color:var(--wrong)}.rv.s{color:var(--skip)}
+.rl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);font-weight:500}
+.pred{padding:.85rem 1.4rem;border-radius:var(--radius);margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5}
+.tabs{display:flex;gap:4px;margin-bottom:1rem;background:var(--bg);border-radius:10px;padding:4px}
+.tab{flex:1;padding:.6rem;border-radius:7px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink-muted);transition:all .18s}
+.tab.active{background:var(--surface);color:var(--accent);box-shadow:0 1px 6px var(--shadow);font-weight:600}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.ana-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-bottom:1rem}
+.ana-head{padding:.75rem 1.1rem;font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.ana-head-left{display:flex;align-items:center;gap:.5rem}
+.ana-badge{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px}
+.ab-ok{background:var(--correct-bg);color:var(--correct)}
+.ab-warn{background:var(--skip-bg);color:var(--skip)}
+.ab-bad{background:var(--wrong-bg);color:var(--wrong)}
+.ana-body{padding:0 .85rem .85rem;display:flex;flex-direction:column;gap:.4rem}
+.ana-item{display:flex;align-items:flex-start;gap:.65rem;padding:.6rem .75rem;border-radius:8px;font-size:13px;line-height:1.5}
+.ai-cor{background:var(--correct-bg);border:1px solid #A7F3C1;color:var(--correct)}
+.ai-wrg{background:var(--wrong-bg);border:1px solid #FCA5A5;color:var(--wrong)}
+.ai-skp{background:var(--skip-bg);border:1px solid var(--skip-bd);color:var(--skip)}
+.ai-content strong{display:block;font-weight:600;font-size:12.5px;margin-bottom:1px}
+.ai-content span{font-size:12px;opacity:.85}
+.komp-table{width:100%;border-collapse:collapse;font-size:13px}
+.komp-table th{background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:left;font-size:11.5px;font-weight:600}
+.komp-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border)}
+.komp-table tr:last-child td{border-bottom:none}
+.komp-table tr:nth-child(even) td{background:#FAF7F3}
+.score-bar{height:6px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:3px}
+.score-fill{height:100%;border-radius:99px}
+.sf-good{background:var(--correct)}.sf-mid{background:#F59E0B}.sf-bad{background:var(--wrong)}
+.rbtns{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.btr{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;padding:.75rem 1.75rem;border-radius:9px;cursor:pointer;transition:all .18s;border:none}
+.btr.pri{background:var(--accent);color:white}.btr.pri:hover{background:#174F63}
+.btr.out{background:white;color:var(--accent);border:1.5px solid var(--accent)}.btr.out:hover{background:var(--accent-light)}
+.rev-banner{background:linear-gradient(135deg,#1C1917,#292524);color:#F5F1EB;padding:.75rem 1.5rem;text-align:center;font-size:13px;font-weight:500}
+.rev-banner span{color:#FCD34D;font-weight:700}
+@media(max-width:720px){
+  .wrap{grid-template-columns:1fr;padding:1rem}.sidebar{position:static}
+  header{padding:1rem}.hlt{font-size:17px}.pw{padding:.55rem 1rem}
+  .wth{font-size:26px}.ig{grid-template-columns:1fr}
+  .rg{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- WELCOME -->
+<div id="ws">
+  <div class="wc">
+    <div class="wt">
+      <p class="wte">Tes Kemampuan Akademik · Ekonomi SMA · UKRG 2026</p>
+      <h1 class="wth">Latihan Soal UKRG<br>Ekonomi SMA 2026</h1>
+      <p class="wts">Uji pemahaman Ekonomi dari kelas 10–12 SMA</p>
+    </div>
+    <div class="wb">
+      <div class="ig">
+        <div class="ii"><span class="iico">📋</span><div><p class="ilb">Jumlah soal</p><p class="ivl">30 soal</p></div></div>
+        <div class="ii"><span class="iico">⏱</span><div><p class="ilb">Waktu</p><p class="ivl">90 menit</p></div></div>
+        <div class="ii"><span class="iico">🎯</span><div><p class="ilb">Penilaian</p><p class="ivl">Benar +1 · Salah/Kosong 0</p></div></div>
+        <div class="ii"><span class="iico">🏫</span><div><p class="ilb">KKM</p><p class="ivl">75 · Lulus / Tidak Lulus</p></div></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Tipe Soal</p>
+      <div class="tr">
+        <span class="tag">21× Pilihan Ganda (PG)</span>
+        <span class="tag pk">3× PG Benar / Salah (PGK)</span>
+        <span class="tag mc">6× PG Multi-Jawab (MCMA)</span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Materi</p>
+      <div class="tr">
+        <span class="tag">Konsep Dasar Ekonomi</span><span class="tag">Kegiatan & Mekanisme Pasar</span>
+        <span class="tag">Keseimbangan Pasar</span><span class="tag">Elastisitas</span>
+        <span class="tag">Kebijakan Harga</span><span class="tag">Pertumbuhan & Pembangunan</span>
+        <span class="tag">Pendapatan Nasional</span><span class="tag">Inflasi & Uang</span>
+        <span class="tag">Ketenagakerjaan</span><span class="tag">Kebijakan Moneter & Fiskal</span>
+        <span class="tag">Ekonomi Internasional</span><span class="tag">Badan Usaha</span>
+        <span class="tag">Akuntansi</span>
+      </div>
+      <button class="bst" onclick="startExam()">Mulai Latihan →</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM -->
+<div id="es" style="display:none">
+  <header>
+    <div class="hl">
+      <span class="hle">Latihan Soal UKRG Ekonomi SMA · 2026</span>
+      <span class="hlt">Latihan Soal UKRG Ekonomi SMA 2026</span>
+    </div>
+    <div id="tbox"><span id="tlbl">Sisa Waktu</span><span id="timer">75:00</span></div>
+  </header>
+  <div class="pw">
+    <div class="pt"><div class="pf" id="pf"></div></div>
+    <span class="ptx" id="ptx">0 / 30 dijawab</span>
+  </div>
+  <div id="rev-banner" class="rev-banner" style="display:none">
+    Mode Review — <span>Pembahasan tersedia di setiap soal</span>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="qcard">
+        <div class="qhead pg" id="qh">
+          <div class="qn" id="qnum">1<span>dari 30</span></div>
+          <div class="qm">
+            <div class="q-topic-line" id="q-topic-line">Topik</div>
+            <div class="q-subtopic-line" id="q-subtopic-line">Subtopik</div>
+            <div class="q-meta-pills">
+              <span class="q-type-pill" id="q-type-pill">PG</span>
+              <span class="q-level-pill" id="q-level-pill">Mudah</span>
+              <span class="qdif" id="qdif"></span>
+            </div>
+          </div>
+        </div>
+        <div class="qbody no-select" id="qbody"></div>
+        <div class="navb">
+          <button class="btn" id="bprev" onclick="nav(-1)">← Sebelumnya</button>
+          <div style="display:flex;gap:.5rem">
+            <button class="btn btnp" id="bnext" onclick="nav(1)">Selanjutnya →</button>
+            <button class="btn btnp" id="bfin" style="display:none">Selesai</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="sc">
+        <div class="stit">Navigasi Soal</div>
+        <div class="qgrid" id="qgrid"></div>
+        <div class="leg">
+          <div class="legi"><div class="legd" style="background:var(--accent)"></div>Sedang dikerjakan</div>
+          <div class="legi"><div class="legd" style="background:var(--accent-light);border:1.5px solid var(--accent-mid)"></div>Sudah dijawab</div>
+          <div class="legi"><div class="legd" style="background:white;border:1.5px solid var(--border)"></div>Belum dijawab</div>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="stit">Statistik</div>
+        <div class="stg">
+          <div class="sti"><span class="stv" id="sdon">0</span><span class="stl">Dijawab</span></div>
+          <div class="sti"><span class="stv" id="slft">30</span><span class="stl">Tersisa</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="rs">
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <div class="rb" id="rbadge">—</div>
+    <div class="kkm-badge" id="kkm-badge"></div>
+    <h2 class="rtit" id="rtit">Hasil Latihan</h2>
+    <p class="rsub" id="rsub"></p>
+  </div>
+  <div class="rg">
+    <div class="rst"><span class="rv g" id="rcor">0</span><span class="rl">Benar</span></div>
+    <div class="rst"><span class="rv r" id="rwrg">0</span><span class="rl">Salah</span></div>
+    <div class="rst"><span class="rv s" id="rskp">0</span><span class="rl">Tidak Dijawab</span></div>
+    <div class="rst"><span class="rv" id="rsco" style="color:var(--accent)">0</span><span class="rl">Nilai (100)</span></div>
+  </div>
+  <div class="pred" id="pred"></div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('tab-soal',this)">📋 Analisis per Soal</button>
+    <button class="tab" onclick="switchTab('tab-komp',this)">📊 Kompetensi</button>
+    <button class="tab" onclick="switchTab('tab-subkomp',this)">🎯 Subkompetensi</button>
+  </div>
+  <div id="tab-soal" class="tab-panel active"></div>
+  <div id="tab-komp" class="tab-panel"></div>
+  <div id="tab-subkomp" class="tab-panel"></div>
+  <div class="rbtns">
+    <button class="btr out" onclick="reviewMode()">📖 Lihat Pembahasan</button>
+    <button class="btr pri" onclick="restartExam()">↺ Ulangi Latihan</button>
+  </div>
+</div>
+
+<script>
+// ── CHART HELPERS ───────────────────────────────────────
+function makeTableQ5(){
+  var rows=[
+    ['1','Harga tiket konser naik → jumlah tiket dibeli turun','Hukum Permintaan'],
+    ['2','Menjelang hari raya, permintaan daging ayam meningkat meski harga tetap','Faktor Musim/Momen'],
+    ['3','Harga jagung naik → petani perluas lahan dan tingkatkan produksi','Hukum Penawaran'],
+    ['4','Harga pupuk naik → petani kurangi jumlah sayur yang ditawarkan','Faktor Kenaikan Biaya Produksi'],
+    ['5','Berita dampak buruk minuman berpemanis → konsumen kurangi pembelian meski harga tetap','Perubahan Selera/Preferensi']
+  ];
+  var h='<table class="data-table"><thead><tr><th>No</th><th style="text-align:left">Fenomena Ekonomi (A)</th><th style="text-align:left">Faktor Penyebab (B)</th></tr></thead><tbody>';
+  for(var i=0;i<rows.length;i++) h+='<tr><td style="text-align:center;font-weight:700">'+rows[i][0]+'</td><td>'+rows[i][1]+'</td><td>'+rows[i][2]+'</td></tr>';
+  h+='</tbody></table>';
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'+h+'<p style="font-size:11px;color:var(--ink-faint);padding:.5rem .85rem;font-style:italic">Cocokkan fenomena di kolom A dengan faktor penyebab di kolom B!</p></div>';
+}
+function makeTableQ13(){
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
+    +'<div style="background:var(--ink);color:#F5F1EB;padding:.65rem 1rem;font-size:13px;font-weight:600">Data Ekonomi Suatu Negara (dalam triliun rupiah)</div>'
+    +'<table class="data-table"><tbody>'
+    +'<tr><td>Gross Domestic Product (GDP)</td><td style="font-weight:700">3.200</td></tr>'
+    +'<tr><td>Pendapatan Neto Luar Negeri</td><td style="font-weight:700">(150)</td></tr>'
+    +'<tr><td>Penyusutan</td><td style="font-weight:700">250</td></tr>'
+    +'<tr><td>Pajak Tidak Langsung</td><td style="font-weight:700">120</td></tr>'
+    +'<tr><td>Pajak Perseroan</td><td style="font-weight:700">90</td></tr>'
+    +'<tr><td>Laba Ditahan</td><td style="font-weight:700">70</td></tr>'
+    +'<tr><td>Iuran Asuransi</td><td style="font-weight:700">40</td></tr>'
+    +'<tr><td>Dana Sosial</td><td style="font-weight:700">30</td></tr>'
+    +'<tr><td>Pajak Langsung</td><td style="font-weight:700">180</td></tr>'
+    +'<tr><td>Disposable Income (DI)</td><td style="font-weight:700">2.400</td></tr>'
+    +'</tbody></table></div>';
+}
+function makeTableQ14(){
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
+    +'<div style="background:var(--ink);color:#F5F1EB;padding:.65rem 1rem;font-size:13px;font-weight:600">Data Pendapatan Nominal dan IHK</div>'
+    +'<table class="data-table"><thead><tr><th>Tahun</th><th>Pendapatan Nominal</th><th>IHK</th></tr></thead><tbody>'
+    +'<tr><td>2025</td><td>Rp6.000.000,00</td><td>150</td></tr>'
+    +'<tr><td>2026</td><td>Rp6.360.000,00</td><td>165</td></tr>'
+    +'</tbody></table><p style="font-size:11px;color:var(--ink-faint);padding:.5rem .85rem;font-style:italic">Bunga deposito tetap 6% per tahun</p></div>';
+}
+function makeTableQ24(){
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
+    +'<div style="background:var(--ink);color:#F5F1EB;padding:.65rem 1rem;font-size:13px;font-weight:600">Laporan Keuangan Koperasi "Amanah Sejahtera" 2025</div>'
+    +'<table class="data-table"><tbody>'
+    +'<tr><td>SHU Tahun Berjalan</td><td style="font-weight:700">Rp80.000.000</td></tr>'
+    +'<tr><td>Alokasi SHU Jasa Usaha (45%)</td><td style="font-weight:700">Rp36.000.000</td></tr>'
+    +'<tr><td>Alokasi SHU Jasa Modal (30%)</td><td style="font-weight:700">Rp24.000.000</td></tr>'
+    +'<tr><td>Jasa Pengurus (15%)</td><td style="font-weight:700">Rp12.000.000</td></tr>'
+    +'<tr><td>Dana Sosial (10%)</td><td style="font-weight:700">Rp8.000.000</td></tr>'
+    +'<tr><td>Total Simpanan Anggota</td><td style="font-weight:700">Rp200.000.000</td></tr>'
+    +'<tr><td>Total Pinjaman Anggota</td><td style="font-weight:700">Rp400.000.000</td></tr>'
+    +'<tr><td colspan="2" style="background:#EDE7DD;font-style:italic;font-size:12px">Bu Sari: Simpanan Rp4.000.000 · Pinjaman Rp8.000.000</td></tr>'
+    +'</tbody></table></div>';
+}
+function makeTableQ28(){
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
+    +'<div style="background:var(--ink);color:#F5F1EB;padding:.65rem 1rem;font-size:13px;font-weight:600">Neraca Saldo (sebagian) "Servis Elektronik Cepat" per 31 Des 2025</div>'
+    +'<table class="data-table"><thead><tr><th>Akun</th><th>Debit (Rp)</th><th>Kredit (Rp)</th></tr></thead><tbody>'
+    +'<tr><td>Perlengkapan servis</td><td>4.500.000</td><td>–</td></tr>'
+    +'<tr><td>Asuransi dibayar di muka</td><td>6.000.000</td><td>–</td></tr>'
+    +'<tr><td>Peralatan servis</td><td>30.000.000</td><td>–</td></tr>'
+    +'<tr><td>Akumulasi penyusutan peralatan</td><td>–</td><td>2.000.000</td></tr>'
+    +'<tr><td>Beban gaji</td><td>5.000.000</td><td>–</td></tr>'
+    +'<tr><td>Pendapatan jasa</td><td>–</td><td>18.000.000</td></tr>'
+    +'</tbody></table></div>';
+}
+function makeTableQ30(){
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
+    +'<div style="background:var(--ink);color:#F5F1EB;padding:.65rem 1rem;font-size:13px;font-weight:600">Data Keuangan Bengkel Las "Karya Mandiri" – Desember 2025</div>'
+    +'<table class="data-table"><tbody>'
+    +'<tr><td>Pendapatan Jasa Las</td><td style="font-weight:700">Rp72.000.000</td></tr>'
+    +'<tr><td>Pendapatan Sewa Alat</td><td style="font-weight:700">Rp8.000.000</td></tr>'
+    +'<tr><td>Beban Gaji</td><td style="font-weight:700">Rp22.000.000</td></tr>'
+    +'<tr><td>Beban Bahan Habis Pakai</td><td style="font-weight:700">Rp12.000.000</td></tr>'
+    +'<tr><td>Beban Sewa Bengkel</td><td style="font-weight:700">Rp6.000.000</td></tr>'
+    +'<tr><td>Beban Listrik & Air</td><td style="font-weight:700">Rp1.800.000</td></tr>'
+    +'<tr><td>Prive</td><td style="font-weight:700">Rp3.500.000</td></tr>'
+    +'<tr><td>Modal Akhir</td><td style="font-weight:700">Rp145.000.000</td></tr>'
+    +'</tbody></table></div>';
+}
+
+// ── QUESTIONS ───────────────────────────────────────────
+var Q=[
+// 1
+{no:1,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Konsep Dasar – Kelangkaan',komp:'Penerapan',subkomp:'Mengidentifikasi masalah ekonomi dan faktor penyebabnya melalui narasi kasus',level:'Mudah',
+passage:'Di sebuah wilayah kepulauan, masyarakat mengalami beberapa masalah ekonomi secara bersamaan. Pada awal musim kemarau, warga kesulitan memperoleh air bersih meskipun pada musim hujan sumber air melimpah. Beberapa SPBU mengalami kekosongan BBM karena kapal pengangkut terlambat akibat cuaca buruk. Harga cabai juga melonjak karena banyak petani gagal panen akibat serangan hama, sementara permintaan masyarakat tetap tinggi. Pemerintah daerah juga menghadapi keterbatasan dokter spesialis karena sebagian besar tenaga medis lebih memilih bekerja di kota besar.',
+text:'Berdasarkan ilustrasi tersebut, kesimpulan yang paling tepat mengenai kelangkaan dan cara mengatasinya adalah....',
+opts:['Kelangkaan terjadi karena seluruh sumber daya alam telah habis, sehingga solusi utamanya adalah menghentikan distribusi barang ke luar wilayah.',
+'Kelangkaan terjadi karena permintaan masyarakat terlalu tinggi, sehingga solusi utamanya adalah menaikkan harga agar konsumsi masyarakat berkurang.',
+'Kelangkaan terjadi karena kebutuhan tidak seimbang dengan ketersediaan sumber daya, sehingga solusinya harus disesuaikan dengan penyebabnya.',
+'Kelangkaan tidak termasuk masalah ekonomi karena barang dan jasa masih tersedia di daerah lain dan pasar akan menyesuaikan sendiri.',
+'Kelangkaan terjadi karena lemahnya aturan harga pemerintah, sehingga solusi utamanya adalah menetapkan harga maksimum untuk semua kebutuhan.'],
+answer:2,
+expl:'Kelangkaan dalam ekonomi terjadi ketika kebutuhan manusia lebih besar daripada ketersediaan sumber daya. Kelangkaan tidak selalu berarti barang benar-benar habis — bisa karena distribusi terganggu, produksi menurun, atau SDM terbatas.\n\nOpsi A Salah → Air masih melimpah di musim hujan, BBM terkendala distribusi, bukan karena SDA habis.\n\nOpsi B Salah → Kelangkaan tidak hanya karena permintaan tinggi; ada faktor musim, distribusi, dan gagal panen.\n\nOpsi C Benar → Kelangkaan terjadi karena kebutuhan tidak seimbang dengan sumber daya. Solusi harus sesuai akar penyebabnya.\n\nOpsi D Salah → Barang yang ada di daerah lain tetap langka jika tidak sampai ke tempat yang membutuhkan.\n\nOpsi E Salah → Penetapan harga maksimum tidak menyelesaikan masalah distribusi, gagal panen, atau kekurangan tenaga ahli.'},
+// 2
+{no:2,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Konsep Dasar – Biaya Peluang',komp:'Penerapan',subkomp:'Menghitung besaran ekonomi berdasarkan data atau rumus yang relevan',level:'Medium',
+passage:'Seorang pemilik perlengkapan produksi video memiliki beberapa pilihan untuk satu tahun ke depan:\n• Bekerja penuh waktu di perusahaan media dengan gaji Rp6.000.000/bulan.\n• Membuka jasa produksi video dengan estimasi laba bersih Rp8.000.000/bulan.\n• Menyewakan kamera dan perlengkapan sebesar Rp4.500.000/bulan.\n• Mengikuti program beasiswa pelatihan profesional selama satu tahun, tanpa biaya pendidikan dan mendapat uang saku Rp2.000.000/bulan.',
+text:'Jika orang tersebut memutuskan untuk mengikuti program beasiswa pelatihan profesional, maka biaya peluang dari keputusan tersebut adalah....',
+opts:['Rp72.000.000, karena gaji kerja selama satu tahun menjadi pilihan yang dikorbankan.',
+'Rp96.000.000, karena laba jasa video adalah alternatif terbaik yang tidak dipilih.',
+'Rp54.000.000, karena sewa alat menjadi pemasukan pasif yang tidak diperoleh.',
+'Rp222.000.000, karena seluruh pendapatan alternatif yang tidak dipilih dijumlahkan.',
+'Rp24.000.000, karena uang saku beasiswa menjadi manfaat dari pilihan yang diambil.'],
+answer:1,
+expl:'Biaya peluang adalah nilai dari alternatif terbaik yang dikorbankan.\n\nAlternatif tidak dipilih:\n• Bekerja penuh: Rp6.000.000 × 12 = Rp72.000.000\n• Jasa produksi video: Rp8.000.000 × 12 = Rp96.000.000 (TERTINGGI)\n• Sewa kamera: Rp4.500.000 × 12 = Rp54.000.000\n\nBiaya peluang = nilai tertinggi yang dikorbankan = Rp96.000.000\n\nOpsi A salah → itu nilai pekerjaan kantoran, bukan alternatif terbaik.\nOpsi C salah → nilai sewa lebih rendah dari jasa video.\nOpsi D salah → biaya peluang hanya dari satu alternatif terbaik, bukan dijumlahkan semua.\nOpsi E salah → uang saku adalah manfaat pilihan yang diambil, bukan biaya peluang.'},
+// 3
+{no:3,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Konsep Dasar – Prinsip Ekonomi',komp:'Penalaran',subkomp:'Mengevaluasi efektivitas suatu kebijakan atau keputusan ekonomi dengan mempertimbangkan konteks dan kondisi sosial-ekonomi',level:'Medium',
+passage:'Sebuah usaha katering sehat rumahan mengalami tekanan karena muncul banyak pesaing yang menjual menu serupa dengan harga lebih murah. Harga bahan baku bergizi seperti ayam, telur, dan sayuran meningkat. Modal usaha pemilik terbatas. Namun, usaha tersebut sudah dikenal memiliki rasa stabil, bahan segar, dan pelanggan tetap dari pekerja kantor serta keluarga muda.',
+text:'Berdasarkan ilustrasi tersebut, manakah tindakan yang paling tepat diambil oleh pemilik usaha dengan mempertimbangkan prinsip ekonomi?',
+opts:['Menurunkan harga sampai sama dengan pesaing walaupun keuntungan tipis dan kualitas bahan harus dikurangi.',
+'Menghentikan usaha sementara sampai harga bahan turun dan persaingan di pasar menjadi lebih longgar.',
+'Mempertahankan kualitas utama, menekan biaya lain-lain, dan fokus pada pelanggan yang menghargai nilai produk.',
+'Meminjam modal besar untuk membuka cabang baru agar usaha terlihat lebih kuat daripada para pesaing.',
+'Mengurangi promosi dan variasi produk supaya biaya usaha menurun tanpa melihat kebutuhan konsumen.'],
+answer:2,
+expl:'Prinsip ekonomi berarti mendapatkan hasil terbaik dengan pengorbanan tertentu, mempertimbangkan manfaat, biaya, risiko, dan kondisi sumber daya.\n\nOpsi A Salah → Mengurangi kualitas menghilangkan keunggulan kompetitif utama usaha ini.\n\nOpsi B Salah → Menghentikan usaha membuat pelanggan tetap berpindah ke pesaing secara permanen.\n\nOpsi C Benar → Mempertahankan kualitas, efisiensi biaya non-inti, dan mempertahankan segmen pelanggan loyal adalah langkah paling rasional.\n\nOpsi D Salah → Ekspansi dengan utang besar saat modal terbatas berisiko tinggi.\n\nOpsi E Salah → Mengurangi promosi tanpa memperhatikan kebutuhan konsumen dapat menurunkan penjualan.'},
+// 4
+{no:4,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Konsep Dasar – Biaya Peluang & Skala Prioritas',komp:'Penerapan',subkomp:'Mengevaluasi efektivitas suatu kebijakan atau keputusan ekonomi dengan mempertimbangkan konteks dan kondisi sosial-ekonomi',level:'HOTS',
+passage:'Bu Maya memiliki tabungan Rp60 juta dan harus memilih satu kegiatan untuk satu tahun ke depan:\n• Tetap bekerja sebagai staf administrasi dengan gaji Rp5.000.000/bulan.\n• Membuka usaha katering sehat dengan proyeksi laba Rp8.000.000/bulan, membutuhkan modal awal Rp60 juta, risiko cukup tinggi.\n• Mengikuti beasiswa pelatihan digital selama satu tahun, tanpa biaya pendidikan, uang saku Rp2.000.000/bulan.\n• Menyewakan peralatan dapur kepada UMKM dengan pendapatan Rp3.000.000/bulan.\n\nBu Maya akhirnya memilih beasiswa karena ingin meningkatkan keterampilan, menjaga tabungan tetap aman, dan membuka peluang kerja lebih baik setelah lulus.',
+text:'Evaluasi keputusan Bu Maya berdasarkan konsep biaya peluang dan skala prioritas adalah....',
+opts:['Keputusan Bu Maya tidak tepat karena laba katering Rp96.000.000 per tahun merupakan nilai terbesar yang pasti harus dipilih.',
+'Keputusan Bu Maya tepat karena beasiswa memberi uang saku, sehingga tidak ada biaya peluang yang dikorbankan sama sekali.',
+'Biaya peluang Bu Maya adalah Rp96.000.000 per tahun, tetapi pilihannya tetap dapat tepat jika prioritasnya adalah peningkatan keterampilan dan risiko rendah.',
+'Biaya peluang Bu Maya adalah Rp60.000.000 per tahun, karena gaji sebagai staf administrasi menjadi satu-satunya pendapatan yang hilang.',
+'Keputusan Bu Maya tidak perlu dianalisis dengan biaya peluang karena beasiswa bukan kegiatan ekonomi yang menghasilkan laba usaha.'],
+answer:2,
+expl:'Biaya peluang dihitung dari alternatif terbaik yang ditinggalkan:\n• Staf admin: Rp5 jt × 12 = Rp60 jt\n• Katering: Rp8 jt × 12 = Rp96 jt ← TERTINGGI\n• Sewa peralatan: Rp3 jt × 12 = Rp36 jt\n\nBiaya peluang = Rp96.000.000.\n\nNamun, keputusan Bu Maya tetap rasional karena skala prioritasnya adalah pengembangan keterampilan dan minimasi risiko, bukan memaksimalkan pendapatan jangka pendek.\n\nOpsi A Salah → Pendapatan terbesar bukan selalu pilihan terbaik jika risiko dan modal yang dibutuhkan sangat besar.\nOpsi B Salah → Tetap ada biaya peluang meskipun beasiswa memberi uang saku.\nOpsi D Salah → Rp60 juta adalah nilai gaji staf admin, bukan biaya peluang karena masih ada alternatif yang lebih tinggi.\nOpsi E Salah → Beasiswa tetap mengandung trade-off ekonomi dan dapat dianalisis dengan biaya peluang.'},
+// 5
+{no:5,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Kegiatan Ekonomi & Mekanisme Pasar',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Mudah',
+chartFn:'makeTableQ5',
+text:'Pasangan yang tepat antara fenomena ekonomi (A) dan faktor penyebabnya (B) adalah....',
+opts:['1-A, 2-D, 3-B, 4-E, 5-C',
+'1-B, 2-D, 3-A, 4-E, 5-C',
+'1-A, 2-C, 3-B, 4-D, 5-E',
+'1-D, 2-A, 3-B, 4-E, 5-C',
+'1-A, 2-E, 3-B, 4-C, 5-D'],
+answer:0,
+expl:'Nomor 1 → Hukum Permintaan: harga tiket naik → jumlah yang diminta turun (perubahan harga sendiri menyebabkan perubahan jumlah diminta).\n\nNomor 2 → Faktor musim/momen: permintaan daging naik bukan karena harga, tetapi karena hari raya (faktor non-harga permintaan).\n\nNomor 3 → Hukum Penawaran: harga jagung naik → produsen tawarkan lebih banyak (perubahan harga mendorong kenaikan jumlah ditawarkan).\n\nNomor 4 → Kenaikan biaya produksi: harga pupuk naik → biaya produksi naik → penawaran turun (faktor non-harga penawaran).\n\nNomor 5 → Perubahan selera: informasi kesehatan mengubah preferensi konsumen tanpa perubahan harga (faktor non-harga permintaan).'},
+// 6
+{no:6,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Kegiatan Ekonomi & Mekanisme Pasar – Struktur Pasar',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Mudah',
+passage:'Di sebuah kota besar, layanan internet rumah didominasi oleh empat perusahaan besar. Konsumen masih memiliki pilihan untuk berpindah penyedia, tetapi pilihannya terbatas karena pembangunan jaringan membutuhkan modal besar, izin wilayah, dan infrastruktur mahal. Ketika satu perusahaan menurunkan harga paket atau menambah bonus layanan, perusahaan lain biasanya segera merespons dengan promo serupa.',
+text:'Berdasarkan ilustrasi tersebut, struktur pasar yang paling tepat adalah....',
+opts:['Persaingan sempurna, karena banyak perusahaan kecil menjual produk yang sama dan tidak ada penjual yang memengaruhi harga pasar.',
+'Monopoli, karena hanya ada satu perusahaan yang menguasai seluruh pasar dan konsumen tidak memiliki alternatif penyedia lain.',
+'Oligopoli, karena pasar dikuasai beberapa perusahaan besar yang saling memengaruhi strategi harga, paket, dan promosi.',
+'Persaingan monopolistik, karena banyak penjual menawarkan produk berbeda dan setiap penjual bebas masuk pasar tanpa hambatan besar.',
+'Monopsoni, karena hanya ada satu pembeli utama yang menguasai pasar dan mampu menentukan harga dari banyak penjual.'],
+answer:2,
+expl:'Oligopoli ditandai: pasar dikuasai beberapa perusahaan (empat), hambatan masuk tinggi (modal, infrastruktur, izin), perusahaan saling memperhatikan strategi satu sama lain, dan konsumen punya pilihan terbatas.\n\nOpsi A Salah → Persaingan sempurna memiliki banyak penjual dan hambatan masuk rendah.\nOpsi B Salah → Monopoli hanya ada satu penjual; di sini ada empat perusahaan.\nOpsi D Salah → Persaingan monopolistik hambatan masuk rendah; di sini hambatan sangat tinggi.\nOpsi E Salah → Monopsoni berkaitan dengan satu pembeli dominan, bukan kondisi ini.'},
+// 7
+{no:7,type:'pg',topic:'Masyarakat, Pasar, dan Terbentuknya Harga Pasar',sub:'Keseimbangan Pasar – Pajak & Subsidi',komp:'Penerapan',subkomp:'Menghitung besaran ekonomi berdasarkan data atau rumus yang relevan',level:'Medium',
+passage:'Fungsi permintaan: Qd = −½P + 70\nFungsi penawaran: Qs = ½P − 10\nPemerintah mempertimbangkan dua kebijakan terpisah: pajak Rp20,00/unit atau subsidi Rp20,00/unit kepada produsen.',
+text:'Berdasarkan data tersebut, kesimpulan yang tepat adalah....',
+opts:['Jika pajak diterapkan, titik keseimbangan menjadi (Q,P) = (25, 90); jika subsidi diterapkan, menjadi (Q,P) = (35, 70).',
+'Pajak menyebabkan harga keseimbangan naik sebesar Rp20,00 karena seluruh beban pajak ditanggung konsumen.',
+'Subsidi menyebabkan harga keseimbangan turun sebesar Rp20,00 karena seluruh subsidi diteruskan kepada konsumen.',
+'Pajak menyebabkan kuantitas keseimbangan turun 10 unit, sedangkan subsidi menyebabkan kuantitas naik 10 unit dari kondisi awal.',
+'Setelah pajak dan setelah subsidi, kuantitas keseimbangan tetap sama karena intervensi hanya memengaruhi harga pasar.'],
+answer:0,
+expl:'Keseimbangan awal: Qd=Qs → −½P+70 = ½P−10 → P=80, Q=30.\n\nSetelah pajak Rp20: Qd = Qs(P−t) → −½P+70 = ½(P−20)−10 → P=90, Q=25.\n\nSetelah subsidi Rp20: Qd = Qs(P+s) → −½P+70 = ½(P+20)−10 → P=70, Q=35.\n\nOpsi A BENAR sesuai perhitungan.\n\nOpsi B Salah → Harga konsumen hanya naik Rp10 (dari 80→90), bukan Rp20 penuh.\nOpsi C Salah → Harga hanya turun Rp10 (dari 80→70), bukan Rp20 penuh.\nOpsi D Salah → Perubahan kuantitas hanya 5 unit (30→25 dan 30→35), bukan 10 unit.\nOpsi E Salah → Kuantitas berubah: pajak Q turun jadi 25, subsidi Q naik jadi 35.'},
+// 8
+{no:8,type:'mcma',topic:'Masyarakat, Pasar, dan Terbentuknya Harga Pasar',sub:'Keseimbangan Pasar – Pajak & Subsidi',komp:'Penerapan',subkomp:'Menghitung besaran ekonomi berdasarkan data atau rumus yang relevan',level:'Medium',
+passage:'Pada suatu pasar, pada harga Rp30,00 penawaran 20 unit; pada harga Rp50,00 penawaran 40 unit. Fungsi permintaan: Qd = 100 − P. Pemerintah mempertimbangkan pajak Rp10,00/unit atau subsidi Rp10,00/unit kepada produsen.',
+text:'Pernyataan yang tepat adalah.... (Jawaban benar lebih dari satu)',
+opts:['Fungsi penawaran pasar adalah Qs = P − 10.',
+'Harga keseimbangan pasar sebelum intervensi adalah Rp55,00 dengan jumlah keseimbangan 45 unit.',
+'Jika pemerintah mengenakan pajak Rp10,00/unit, harga yang dibayar konsumen menjadi Rp60,00 dan jumlah keseimbangan menjadi 40 unit.',
+'Jika pemerintah memberikan subsidi Rp10,00/unit, harga yang dibayar konsumen turun menjadi Rp45,00 dan jumlah keseimbangan menjadi 55 unit.',
+'Pajak kepada produsen menyebabkan kurva penawaran bergeser ke kiri atas, sedangkan subsidi menyebabkan kurva penawaran bergeser ke kanan bawah.'],
+answers:[0,1,2,4],
+expl:'Pernyataan 1 BENAR: Interpolasi dua titik (30,20) dan (50,40): (P−30)/20=(Q−20)/20 → Q=P−10 → Qs=P−10.\n\nPernyataan 2 BENAR: Qd=Qs → 100−P=P−10 → P=55, Q=45.\n\nPernyataan 3 BENAR: Setelah pajak → Qs baru = P−20; 100−P=P−20 → P=60, Q=40.\n\nPernyataan 4 SALAH: Subsidi → Qs baru = P; 100−P=P → P=50, Q=50 (bukan P=45, Q=55).\n\nPernyataan 5 BENAR: Pajak menaikkan biaya efektif produsen → kurva S bergeser kiri atas. Subsidi menurunkan biaya efektif → kurva S bergeser kanan bawah.'},
+// 9
+{no:9,type:'pgk',topic:'Masyarakat, Pasar, dan Terbentuknya Harga Pasar',sub:'Keseimbangan Pasar – Pergeseran Kurva',komp:'Penerapan',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena ekonomi berdasarkan data atau kasus',level:'HOTS',
+passage:'Di pasar telur ayam: permintaan naik sebesar 35% (menjelang musim liburan), sedangkan penawaran turun sebesar 20% (kenaikan harga pakan dan gangguan produksi).',
+text:'Tentukan pernyataan berikut Benar atau Salah!',
+stmts:['Harga keseimbangan pasar yang baru pasti akan naik dibandingkan harga semula.','Jumlah keseimbangan akan meningkat karena kenaikan permintaan lebih besar daripada penurunan penawaran.','Kenaikan jumlah transaksi terjadi karena permintaan dan penawaran sama-sama meningkat.','Pergeseran kurva permintaan ke kanan lebih besar dibandingkan pergeseran kurva penawaran ke kiri.','Titik keseimbangan yang baru akan berada di sebelah kanan atas dari titik keseimbangan awal.'],
+answers:[true,true,false,true,true],
+expl:'Permintaan naik (D bergeser kanan), penawaran turun (S bergeser kiri).\n\nPernyataan 1 BENAR → Kenaikan D dan penurunan S keduanya mendorong harga naik.\n\nPernyataan 2 BENAR → Karena kenaikan D (35%) > penurunan S (20%), secara net kuantitas keseimbangan meningkat.\n\nPernyataan 3 SALAH → Penawaran bukan naik, melainkan turun sebesar 20%.\n\nPernyataan 4 BENAR → Pergeseran D ke kanan (35%) > pergeseran S ke kiri (20%).\n\nPernyataan 5 BENAR → Harga naik (ke atas) dan kuantitas bertambah (ke kanan) → titik baru di kanan atas.'},
+// 10
+{no:10,type:'pg',topic:'Masyarakat, Pasar, dan Terbentuknya Harga Pasar',sub:'Elastisitas',komp:'Penerapan',subkomp:'Menghitung besaran ekonomi berdasarkan data atau rumus yang relevan',level:'Medium',
+passage:'Diketahui fungsi permintaan suatu barang: Qd = −3P + 480. Harga barang saat ini Rp100,00/unit.',
+text:'Berdasarkan hal tersebut, jenis barang dan jenis elastisitas yang tepat adalah....',
+opts:['Barang kebutuhan pokok, karena jenis elastisitas permintaannya inelastis.',
+'Barang kebutuhan pokok, karena permintaannya bersifat uniter.',
+'Barang kebutuhan pokok, karena permintaannya bersifat elastis sempurna.',
+'Barang mewah, karena jenis elastisitas permintaannya elastis.',
+'Barang mewah, karena nilai elastisitasnya menunjukkan angka nol.'],
+answer:3,
+expl:'Menghitung Q: Qd = −3(100)+480 = 180.\n\nElastisitas: Ed = Q′ × P/Q = −3 × 100/180 = −1,67 → |Ed| = 1,67 > 1 → ELASTIS.\n\nKarena |Ed| > 1, permintaan bersifat elastis — khas barang mewah atau barang yang punya banyak substitusi dan pembeliannya mudah ditunda.\n\nOpsi A/B/C Salah → nilai elastisitas 1,67 bukan inelastis atau uniter.\nOpsi E Salah → nilai elastisitas bukan nol.'},
+// 11
+{no:11,type:'pg',topic:'Masyarakat, Pasar, dan Terbentuknya Harga Pasar',sub:'Kebijakan Harga',komp:'Penalaran',subkomp:'Menilai dampak suatu kebijakan atau keputusan ekonomi terhadap pelaku ekonomi',level:'Medium',
+passage:'Pemerintah menerapkan tiga kebijakan harga sekaligus: (1) HET di bawah harga keseimbangan untuk bahan pangan, (2) HPP di atas harga keseimbangan untuk hasil panen petani tetapi pemerintah tidak membeli seluruh kelebihan panen, (3) upah minimum di atas upah keseimbangan sementara produktivitas pekerja belum meningkat signifikan.',
+text:'Berdasarkan analisis struktur pasar, dampak ekonomi yang paling mungkin terjadi adalah....',
+opts:['Pasar bahan pangan mengalami kelangkaan dan berpotensi memunculkan pasar gelap, pasar hasil panen mengalami kelebihan penawaran, dan sebagian perusahaan dapat mengurangi jumlah tenaga kerja.',
+'Pasar bahan pangan menjadi stabil karena harga ditetapkan lebih rendah, petani menikmati keuntungan maksimal, dan perusahaan akan menambah tenaga kerja.',
+'HET menyebabkan produsen meningkatkan produksi, HPP menyebabkan seluruh hasil panen terserap, dan upah minimum langsung menurunkan pengangguran.',
+'Semua pasar akan kembali ke keseimbangan baru secara otomatis karena intervensi pemerintah membuat harga lebih adil.',
+'HET menyebabkan surplus barang, HPP menyebabkan kelangkaan hasil panen, dan upah minimum membuat semua perusahaan mendapat laba lebih besar.'],
+answer:0,
+expl:'HET di bawah keseimbangan → harga resmi lebih murah → permintaan naik, penawaran turun → kelebihan permintaan → barang langka → antrean/pasar gelap.\n\nHPP di atas keseimbangan → harga jual lebih tinggi → penawaran naik, permintaan turun → kelebihan penawaran. Jika pemerintah tidak menyerap semua, terjadi surplus panen.\n\nUpah minimum di atas keseimbangan → biaya produksi naik → permintaan tenaga kerja turun → sebagian perusahaan mengurangi pegawai.\n\nOpsi A menggambarkan ketiga dampak ini dengan tepat.'},
+// 12
+{no:12,type:'pg',topic:'Pertumbuhan dan Pembangunan Ekonomi',sub:'Pertumbuhan vs Pembangunan Ekonomi',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Mudah',
+passage:'Perhatikan pernyataan mengenai kondisi ekonomi suatu negara:\n1) PDB riil meningkat 6% dan jumlah barang/jasa yang dihasilkan semakin besar.\n2) Terjadi perubahan struktur ekonomi dari pertanian tradisional menuju industri dan jasa modern.\n3) Pendapatan nasional meningkat, tetapi ketimpangan antarwilayah masih tinggi dan sebagian masyarakat belum menikmati perbaikan.\n4) Akses masyarakat terhadap pendidikan, layanan kesehatan, air bersih, dan kesempatan kerja semakin merata.',
+text:'Dari pernyataan di atas, yang merupakan ciri Pembangunan Ekonomi adalah....',
+opts:['1 dan 2','1 dan 3','2 dan 4','3 dan 4','1 dan 4'],
+answer:2,
+expl:'Pertumbuhan ekonomi menekankan kenaikan kuantitatif (PDB, output). Pembangunan ekonomi lebih luas: mencakup perubahan struktur, pemerataan, dan peningkatan kualitas hidup.\n\nPernyataan 1 → PERTUMBUHAN (hanya naik PDB dan output, belum ada pemerataan).\nPernyataan 2 → PEMBANGUNAN (transformasi struktural dari pertanian ke industri/jasa modern).\nPernyataan 3 → PERTUMBUHAN tanpa pembangunan (pendapatan naik tapi ketimpangan tinggi).\nPernyataan 4 → PEMBANGUNAN (pemerataan akses layanan dasar = peningkatan kualitas hidup).\n\nJadi ciri pembangunan ekonomi: 2 dan 4.'},
+// 13
+{no:13,type:'pg',topic:'Pendapatan Nasional, Kesenjangan Ekonomi, dan Pertumbuhan Ekonomi',sub:'Konsep Pendapatan Nasional',komp:'Penerapan',subkomp:'Menghitung besaran ekonomi berdasarkan data atau rumus yang relevan',level:'Medium',
+chartFn:'makeTableQ13',
+text:'Berdasarkan data tersebut, pernyataan yang tepat mengenai nilai Transfer Payment, NNP, NNI, dan PI adalah....',
+opts:['Nilai NNP adalah 2.800 triliun, NNI adalah 2.680 triliun, PI adalah 2.580 triliun, sehingga nilai Transfer Payment adalah 130 triliun.',
+'Nilai NNP adalah 2.950 triliun, NNI adalah 2.830 triliun, PI adalah 2.580 triliun, sehingga nilai Transfer Payment adalah 30 triliun.',
+'Nilai NNP adalah 2.800 triliun, NNI adalah 2.680 triliun, PI adalah 2.400 triliun, sehingga nilai Transfer Payment adalah 50 triliun.',
+'Nilai NNP adalah 3.050 triliun, NNI adalah 2.930 triliun, PI adalah 2.580 triliun, sehingga nilai Transfer Payment adalah 250 triliun.',
+'Nilai NNP adalah 2.800 triliun, NNI adalah 2.680 triliun, PI adalah 2.580 triliun, sehingga nilai Transfer Payment adalah 230 triliun.'],
+answer:0,
+expl:'Langkah 1: GNP = GDP + Pendapatan Neto LN = 3.200 + (−150) = 3.050\nLangkah 2: NNP = GNP − Penyusutan = 3.050 − 250 = 2.800\nLangkah 3: NNI = NNP − Pajak Tidak Langsung = 2.800 − 120 = 2.680\nLangkah 4: PI = DI + Pajak Langsung = 2.400 + 180 = 2.580\nLangkah 5: Transfer Payment = PI − NNI + (Pajak Perseroan + Laba Ditahan + Iuran Asuransi + Dana Sosial)\n= 2.580 − 2.680 + (90+70+40+30) = −100 + 230 = 130 triliun.'},
+// 14
+{no:14,type:'pg',topic:'Teori Uang, Indeks Harga, dan Inflasi',sub:'Menghitung Laju Inflasi',komp:'Penerapan',subkomp:'Membaca dan menginterpretasikan data tabel, grafik, atau diagram untuk menjelaskan suatu fenomena ekonomi',level:'Medium',
+chartFn:'makeTableQ14',
+text:'Berdasarkan data tersebut, kesimpulan yang tepat adalah....',
+opts:['Laju inflasi tahun 2026 sebesar 10%, pendapatan riil pegawai menurun, dan investor deposito mengalami kerugian riil sekitar 4%.',
+'Laju inflasi tahun 2026 sebesar 6%, pendapatan riil pegawai meningkat, dan investor deposito berada pada posisi impas.',
+'Laju inflasi tahun 2026 sebesar 10%, pendapatan riil pegawai tetap karena pendapatan nominal naik sebesar Rp360.000,00.',
+'Laju inflasi tahun 2026 sebesar 15%, sehingga pendapatan riil pegawai turun dan investor deposito tetap memperoleh keuntungan riil 6%.',
+'Tidak terjadi inflasi karena pendapatan nominal pegawai mengalami kenaikan dari tahun 2025 ke tahun 2026.'],
+answer:0,
+expl:'Laju inflasi 2026 = (165−150)/150 × 100% = 10%.\n\nPendapatan riil 2025 = 6.000.000/150×100 = Rp4.000.000\nPendapatan riil 2026 = 6.360.000/165×100 = Rp3.854.545\nPendapatan riil TURUN (kenaikan nominal 6% < inflasi 10%).\n\nKerugian riil deposito = bunga nominal − inflasi = 6% − 10% = −4% (rugi riil).\n\nOpsi B Salah → Inflasi 10%, bukan 6%; pendapatan riil turun, bukan naik.\nOpsi C Salah → Pendapatan riil turun, bukan tetap.\nOpsi D Salah → Inflasi 10%, bukan 15%.\nOpsi E Salah → Inflasi diukur dari IHK, bukan dari kenaikan pendapatan.'},
+// 15
+{no:15,type:'pgk',topic:'Ketenagakerjaan',sub:'Jenis Pengangguran & Kebijakan',komp:'Penerapan',subkomp:'Mengidentifikasi masalah ekonomi dan faktor penyebabnya melalui narasi kasus',level:'HOTS',
+passage:'Negara Sigma: (1) Permintaan ekspor dan konsumsi domestik melemah → pabrik tekstil mengurangi jam kerja dan merumahkan pekerja kontrak. (2) Sektor manufaktur mulai otomasi → banyak pekerja lama tidak sesuai kebutuhan keterampilan baru. (3) Lulusan baru dan pekerja muda punya kualifikasi yang dibutuhkan pasar, tetapi butuh 1–3 bulan untuk menemukan lowongan yang cocok.',
+text:'Tentukan pernyataan berikut Benar atau Salah!',
+stmts:['Pekerja pabrik yang dirumahkan akibat melemahnya permintaan ekspor dan konsumsi domestik termasuk pengangguran siklikal.','Pekerja lama yang kehilangan pekerjaan karena tidak sesuai kebutuhan mesin otomatis dan sistem digital termasuk pengangguran struktural.','Lulusan baru yang sedang mencari pekerjaan paling sesuai termasuk pengangguran friksional.','Program pelatihan ulang, reskilling, dan sertifikasi keterampilan digital paling tepat untuk mengatasi pengangguran siklikal.','Stimulus permintaan, proyek padat karya, dan pemulihan kegiatan ekonomi lebih relevan untuk mengatasi pengangguran akibat melemahnya permintaan.'],
+answers:[true,true,true,false,true],
+expl:'Pernyataan 1 BENAR → Merumahkan pekerja karena permintaan pasar turun = pengangguran siklikal (akibat siklus ekonomi melambat).\n\nPernyataan 2 BENAR → Pekerja tidak sesuai keterampilan baru akibat otomasi = pengangguran struktural (skill mismatch).\n\nPernyataan 3 BENAR → Masa pencarian pekerjaan yang sesuai = pengangguran friksional (transisi normal).\n\nPernyataan 4 SALAH → Pelatihan ulang/reskilling adalah solusi pengangguran STRUKTURAL, bukan siklikal. Pengangguran siklikal diatasi dengan stimulus ekonomi.\n\nPernyataan 5 BENAR → Stimulus permintaan dan proyek padat karya tepat untuk pengangguran siklikal (akibat lemahnya permintaan agregat).'},
+// 16
+{no:16,type:'mcma',topic:'Kebijakan Moneter dan Fiskal',sub:'Peran Bank Sentral',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Medium',
+text:'Bank Indonesia (BI) sebagai bank sentral memiliki fungsi dan peran yang berbeda dari bank umum (komersial). Manakah yang termasuk peran dan fungsi Bank Indonesia? (Jawaban benar lebih dari satu)',
+opts:['Menetapkan dan melaksanakan kebijakan moneter untuk menjaga stabilitas nilai rupiah.',
+'Memberikan pinjaman KPR kepada masyarakat umum dengan suku bunga subsidi.',
+'Mengatur dan mengawasi kelancaran sistem pembayaran nasional.',
+'Menerima tabungan dan deposito dari nasabah individu maupun korporasi.',
+'Bertindak sebagai lender of last resort bagi bank umum yang mengalami kesulitan likuiditas.'],
+answers:[0,2,4],
+expl:'Pernyataan 1 BENAR → Menetapkan kebijakan moneter adalah fungsi utama BI (UU No.23/1999 jo UU No.3/2004).\n\nPernyataan 2 SALAH → KPR adalah produk kredit bank umum/komersial (BTN, BRI, dll.). BI tidak melayani kredit langsung ke masyarakat.\n\nPernyataan 3 BENAR → Mengatur sistem pembayaran nasional adalah fungsi utama BI.\n\nPernyataan 4 SALAH → Menerima tabungan/deposito dari masyarakat adalah fungsi intermediasi bank umum, bukan BI.\n\nPernyataan 5 BENAR → Lender of last resort (pemberi pinjaman darurat terakhir) adalah fungsi klasik bank sentral.'},
+// 17
+{no:17,type:'pgk',topic:'Kebijakan Moneter dan Fiskal',sub:'Instrumen Kebijakan Moneter',komp:'Penalaran',subkomp:'Mengevaluasi efektivitas suatu kebijakan atau keputusan ekonomi dengan mempertimbangkan konteks dan kondisi sosial-ekonomi',level:'HOTS',
+passage:'Untuk merespons perlambatan ekonomi kuartal I-2025 (pertumbuhan 4,65%), Bank Indonesia memangkas BI Rate 25 basis poin. Kondisi saat kebijakan diambil: inflasi 2,3% (dalam target), kredit perbankan tumbuh melambat 8,1%, daya beli kelas menengah melemah, ketidakpastian global masih tinggi.',
+text:'Tentukan pernyataan berikut Benar atau Salah!',
+stmts:['Pemangkasan BI Rate berpotensi menurunkan suku bunga kredit perbankan, sehingga mendorong ekspansi kredit dan investasi yang dapat menstimulasi pertumbuhan ekonomi.','Kebijakan moneter ekspansif ini perlu dibarengi stimulus fiskal agar dampaknya lebih efektif dalam mendorong permintaan agregat.','Penurunan BI Rate secara otomatis dan langsung akan meningkatkan konsumsi rumah tangga tanpa jeda waktu apapun.'],
+answers:[true,true,false],
+expl:'Pernyataan 1 BENAR → Jalur transmisi standar: BI Rate turun → bunga kredit turun → kredit lebih murah → investasi/konsumsi naik → pertumbuhan terstimulasi.\n\nPernyataan 2 BENAR → Policy mix (moneter + fiskal) lebih efektif terutama saat daya beli lemah dan ketidakpastian tinggi (pendekatan Keynesian yang diakui IMF).\n\nPernyataan 3 SALAH → "Otomatis dan langsung tanpa jeda waktu" tidak realistis. Transmisi kebijakan moneter memiliki time lag 6–18 bulan dan tidak bekerja otomatis penuh.'},
+// 18
+{no:18,type:'pg',topic:'Kebijakan Moneter dan Fiskal',sub:'Perpajakan – Fungsi Regulasi',komp:'Penalaran',subkomp:'Menilai dampak suatu kebijakan atau keputusan ekonomi terhadap pelaku ekonomi',level:'Medium',
+passage:'Pemerintah menerapkan insentif pajak: PPh Badan turun dari 22% menjadi 15% bagi perusahaan yang berinvestasi di kawasan industri daerah tertinggal di luar Jawa. Bersamaan itu, tarif pajak lebih tinggi dikenakan pada perusahaan di kawasan padat (Jawa-Bali) yang tidak punya program pemberdayaan tenaga kerja lokal.',
+text:'Dampak yang paling tepat dari penerapan fungsi regulasi pajak dalam ilustrasi tersebut adalah....',
+opts:['Penerimaan pajak pemerintah akan meningkat drastis karena semua perusahaan kini dikenai tarif pajak lebih tinggi.',
+'Kebijakan ini mendorong redistribusi investasi ke daerah tertinggal, mengurangi kesenjangan antarwilayah, dan memberikan insentif bagi perusahaan untuk menyerap tenaga kerja lokal — sesuai fungsi regulasi pajak.',
+'Kebijakan ini hanya menguntungkan perusahaan besar yang mampu berinvestasi di daerah terpencil, sementara UMKM semakin terbebani.',
+'Perusahaan di Jawa-Bali akan segera bangkrut akibat beban pajak yang meningkat tanpa ada kompensasi apapun.',
+'Dampak kebijakan ini tidak signifikan karena pengurangan tarif pajak selalu diimbangi kenaikan di tempat lain sehingga hasilnya nol.'],
+answer:1,
+expl:'Fungsi regulasi (regulerend) pajak: pajak digunakan sebagai alat untuk mengarahkan perilaku pelaku ekonomi, bukan hanya mengumpulkan pendapatan.\n\nMekanisme:\n• Insentif (tarif 15% di daerah tertinggal) → biaya pajak berkurang → investasi di luar Jawa lebih menguntungkan → perusahaan terdorong membuka fasilitas di daerah tertinggal.\n• Disinsentif (tarif lebih tinggi di Jawa-Bali tanpa pemberdayaan lokal) → mendorong penyerapan tenaga kerja lokal.\n\nDampak kombinasi: redistribusi investasi, pengurangan kesenjangan antarwilayah, dan penyerapan tenaga kerja lokal.'},
+// 19
+{no:19,type:'mcma',topic:'Kebijakan Moneter dan Fiskal',sub:'Perpajakan – Jenis & Fungsi Pajak',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Medium',
+passage:'Pak Bowo: pengusaha restoran, omzet di atas Rp4,8 miliar/tahun, membayar PPh Badan, memungut PPN 11% dari konsumen dan menyetorkannya ke kas negara.\nBu Wati: desainer lepas, membayar PPh Pasal 21 secara self-assessment setiap mendapat proyek.',
+text:'Manakah pernyataan yang BENAR? (Jawaban benar lebih dari satu)',
+opts:['PPh Badan yang dibayar Pak Bowo adalah pajak langsung, sedangkan PPN yang dipungut dari tamu adalah pajak tidak langsung karena bebannya dialihkan ke konsumen.',
+'Bu Wati membayar pajak tidak langsung karena membayar sendiri (self-assessment) ke kantor pajak.',
+'Fungsi yang dijalankan oleh pajak Pak Bowo dan Bu Wati adalah fungsi budgeter karena keduanya berkontribusi pada penerimaan kas negara untuk membiayai pengeluaran publik.',
+'Sistem self-assessment yang digunakan Bu Wati mencerminkan prinsip kemudahan dan kemandirian wajib pajak dalam memenuhi kewajiban perpajakannya.',
+'PPN yang dipungut Pak Bowo dari tamu merupakan pajak langsung karena dipungut langsung saat transaksi terjadi.'],
+answers:[0,2,3],
+expl:'Pernyataan 1 BENAR → PPh Badan: pajak langsung (tidak dapat dialihkan). PPN: pajak tidak langsung (beban dialihkan ke konsumen).\n\nPernyataan 2 SALAH → Self-assessment adalah METODE pembayaran, bukan penentu jenis pajak. PPh Pasal 21 Bu Wati adalah pajak langsung (PPh orang pribadi).\n\nPernyataan 3 BENAR → PPh Badan + PPh Pasal 21 + PPN semuanya masuk kas negara = fungsi budgeter.\n\nPernyataan 4 BENAR → Self-assessment mencerminkan kepercayaan pemerintah kepada wajib pajak untuk menghitung dan melaporkan sendiri = prinsip kemudahan dan kemandirian.\n\nPernyataan 5 SALAH → PPN adalah pajak TIDAK LANGSUNG. Kata "langsung" dalam perpajakan merujuk pada apakah beban dapat dialihkan, bukan mekanisme pemungutan.'},
+// 20
+{no:20,type:'mcma',topic:'Kebijakan Moneter dan Fiskal',sub:'Analisis Kondisi Inflasi – Kebijakan Kontraktif',komp:'Penalaran',subkomp:'Menilai dampak suatu kebijakan atau keputusan ekonomi terhadap pelaku ekonomi',level:'Medium',
+passage:'Menjelang Hari Raya Idul Adha 2025, Bank Indonesia mengamati lonjakan konsumsi masyarakat. Peredaran uang tunai meningkat drastis karena THR dan belanja Lebaran, mendorong tekanan inflasi yang mulai melampaui batas atas target 4,5%.',
+text:'Kebijakan moneter apa yang tepat diambil Bank Indonesia? (Jawaban benar lebih dari satu)',
+opts:['Menaikkan BI Rate untuk membuat kredit lebih mahal dan mendorong masyarakat menabung.',
+'Melakukan operasi pasar terbuka dengan menjual SBI kepada perbankan untuk menyerap kelebihan likuiditas.',
+'Menurunkan Giro Wajib Minimum (GWM) agar perbankan memiliki lebih banyak dana untuk kredit konsumsi.',
+'Menaikkan Giro Wajib Minimum (GWM) sehingga likuiditas perbankan berkurang dan ekspansi kredit tertahan.',
+'Memberikan fasilitas kredit likuiditas tambahan kepada bank umum agar meningkatkan kapasitas penyaluran kredit.'],
+answers:[0,1,3],
+expl:'Situasi: inflasi di atas target → perlu kebijakan moneter KONTRAKTIF (tight money policy) untuk mengurangi jumlah uang beredar.\n\nPernyataan 1 BENAR → Naikkan BI Rate → kredit mahal → konsumsi/investasi turun → inflasi tertekan.\n\nPernyataan 2 BENAR → Jual SBI (Operasi Pasar Terbuka) → uang bank masuk ke BI → likuiditas pasar berkurang → inflasi turun.\n\nPernyataan 3 SALAH → Turunkan GWM = EKSPANSIF (menambah likuiditas) → memperburuk inflasi.\n\nPernyataan 4 BENAR → Naikkan GWM → bank harus parkir lebih banyak di BI → dana kredit berkurang → inflasi turun.\n\nPernyataan 5 SALAH → Fasilitas kredit tambahan = EKSPANSIF → mendorong lebih banyak kredit → inflasi naik.'},
+// 21
+{no:21,type:'pg',topic:'Ekonomi Internasional',sub:'Perdagangan Internasional – CBAM',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena ekonomi berdasarkan data atau kasus',level:'Medium',
+passage:'Uni Eropa menerapkan kebijakan Carbon Border Adjustment Mechanism (CBAM) yang mewajibkan importir membayar biaya karbon untuk produk impor yang proses produksinya menghasilkan emisi tinggi. Ekspor baja dan aluminium Indonesia ke Eropa selama ini masih bergantung pada energi batu bara.',
+text:'Dampak logis terhadap daya saing ekspor baja dan aluminium Indonesia ke Eropa, KECUALI....',
+opts:['Harga produk baja dan aluminium Indonesia di pasar Eropa menjadi lebih mahal akibat tambahan biaya karbon.',
+'Kebijakan CBAM mendorong industri baja dan aluminium Indonesia untuk bertransisi ke energi terbarukan.',
+'Indonesia kehilangan daya saing harga di pasar Eropa dibandingkan negara produsen yang sudah menggunakan energi bersih.',
+'CBAM menguntungkan Indonesia karena menjadi peluang untuk menjual baja dengan harga premium di Eropa.',
+'Indonesia dapat mengajukan keberatan ke WTO jika CBAM dianggap sebagai hambatan perdagangan yang diskriminatif.'],
+answer:3,
+expl:'Soal meminta jawaban yang TIDAK tepat (kecuali).\n\nOpsi A BENAR → Biaya karbon ditambahkan ke harga produk → harga di pasar Eropa naik → daya saing harga turun.\nOpsi B BENAR → Tekanan CBAM mendorong produsen Indonesia bertransisi ke energi bersih untuk menghindari biaya karbon (efek insentif).\nOpsi C BENAR → Negara yang sudah pakai energi terbarukan tidak dikenai biaya CBAM → lebih kompetitif dibanding Indonesia.\nOpsi E BENAR → Indonesia bisa mempermasalahkan CBAM di WTO jika dianggap diskriminatif terhadap negara berkembang.\n\nOpsi D SALAH (jawaban "kecuali") → CBAM tidak menciptakan harga premium yang menguntungkan eksportir; justru biaya tambahan mengurangi margin dan daya saing Indonesia.'},
+// 22
+{no:22,type:'mcma',topic:'Ekonomi Internasional',sub:'Kebijakan Perdagangan Internasional',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena ekonomi berdasarkan data atau kasus',level:'Medium',
+passage:'Negara "Rimba" memiliki industri furnitur berbahan kayu yang maju. Dalam dua tahun terakhir, pasar furnitur domestik dibanjiri produk furnitur impor murah dari negara Y yang diduga dijual di bawah harga wajar (dumping). Pabrik furnitur Rimba kehilangan pangsa pasar, merugi, dan mulai melakukan PHK.',
+text:'Kebijakan perdagangan internasional yang paling tepat untuk mengatasi situasi tersebut adalah.... (Jawaban benar lebih dari satu)',
+opts:['Mengenakan bea masuk anti-dumping terhadap furnitur impor dari negara Y setelah melalui proses investigasi sesuai prosedur WTO.',
+'Menutup total semua jalur impor furnitur dari negara manapun secara permanen tanpa terkecuali.',
+'Memberikan subsidi ekspor kepada produsen furnitur Rimba untuk meningkatkan daya saing mereka di pasar internasional.',
+'Menetapkan standar teknis dan sertifikasi kualitas produk furnitur yang ketat sebagai persyaratan impor yang berlaku non-diskriminatif.',
+'Mengajukan gugatan resmi ke Dispute Settlement Body (DSB) WTO berdasarkan bukti praktik dumping oleh negara Y.'],
+answers:[0,3,4],
+expl:'Pernyataan 1 BENAR → Anti-dumping duty adalah instrumen sah WTO untuk merespons praktik dumping yang terbukti merugikan industri domestik.\n\nPernyataan 2 SALAH → Menutup total semua impor melanggar prinsip akses pasar WTO dan tidak proporsional (masalahnya hanya dari negara Y).\n\nPernyataan 3 SALAH → Subsidi ekspor membantu daya saing di luar negeri, tetapi tidak langsung menjawab masalah dumping di pasar domestik.\n\nPernyataan 4 BENAR → Standar teknis non-diskriminatif (Technical Barriers to Trade) adalah instrumen sah WTO selama tidak bersifat proteksionisme tersembunyi.\n\nPernyataan 5 BENAR → Gugatan ke DSB WTO adalah mekanisme penyelesaian sengketa dagang resmi yang sah.'},
+// 23
+{no:23,type:'pg',topic:'Badan Usaha dalam Perekonomian',sub:'BUMN – Perum',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Mudah',
+text:'Berikut ini yang termasuk dalam karakteristik Badan Usaha Milik Negara (BUMN) berbentuk Perum adalah....',
+opts:['Seluruh modalnya dimiliki oleh negara dan status pegawainya merupakan Pegawai Negeri Sipil (PNS).',
+'Modal terbagi atas saham dan tujuan utamanya memberikan pelayanan publik tanpa mengutamakan laba.',
+'Sebagian besar modalnya merupakan kekayaan negara yang dipisahkan dan dipimpin oleh Direksi yang bertanggung jawab kepada Menteri.',
+'Berstatus badan hukum yang diatur dalam Undang-Undang Perseroan Terbatas dan bertujuan mencari keuntungan sebesar-besarnya.',
+'Modalnya tidak terbagi atas saham, melayani kepentingan umum, serta dipimpin oleh dewan direksi yang diangkat Presiden.'],
+answer:0,
+expl:'Ciri BUMN berbentuk Perum (Perusahaan Umum):\n• Seluruh modal dimiliki oleh negara (tidak terbagi atas saham).\n• Pegawai berstatus PNS.\n• Tujuan utama: pelayanan publik (bukan semata-mata mencari laba).\n• Didirikan dengan Peraturan Pemerintah.\n\nOpsi A paling sesuai dengan ciri khas Perum.\nOpsi B keliru karena Perum tidak memiliki modal saham.\nOpsi C dan D lebih cocok untuk Persero.\nOpsi E salah karena direksi Perum diangkat oleh Menteri, bukan Presiden.'},
+// 24
+{no:24,type:'pg',topic:'Badan Usaha dalam Perekonomian',sub:'Koperasi – Perhitungan SHU',komp:'Penerapan',subkomp:'Menghitung besaran ekonomi berdasarkan data atau rumus yang relevan',level:'Medium',
+chartFn:'makeTableQ24',
+text:'Berdasarkan data tersebut, berapa SHU yang diterima Bu Sari?',
+opts:['Rp1.680.000,00','Rp2.040.000,00','Rp1.440.000,00','Rp960.000,00','Rp1.200.000,00'],
+answer:4,
+expl:'Rumus SHU anggota = (Simpanan anggota/Total simpanan × SHU Jasa Modal) + (Pinjaman anggota/Total pinjaman × SHU Jasa Usaha)\n\nRasio simpanan Bu Sari = 4.000.000 / 200.000.000 = 2%\nRasio pinjaman Bu Sari = 8.000.000 / 400.000.000 = 2%\n\nSHU Jasa Modal untuk Bu Sari = 2% × 24.000.000 = Rp480.000\nSHU Jasa Usaha untuk Bu Sari = 2% × 36.000.000 = Rp720.000\n\nTotal SHU Bu Sari = 480.000 + 720.000 = Rp1.200.000'},
+// 25
+{no:25,type:'pg',topic:'Badan Usaha dalam Perekonomian',sub:'Manajemen Badan Usaha – SDM',komp:'Penerapan',subkomp:'Mengidentifikasi masalah ekonomi dan faktor penyebabnya melalui narasi kasus',level:'Medium',
+passage:'PT "Langit Digital" (startup teknologi): tingkat turnover karyawan 45%/tahun meski gaji di atas rata-rata industri. Exit interview: 68% karyawan resign menyebut kurangnya kesempatan pengembangan karier, 22% menyebut lingkungan kerja tidak mendukung inovasi, 10% alasan pribadi.',
+text:'Solusi manajemen yang paling tepat untuk mengatasi permasalahan tersebut adalah....',
+opts:['Menaikkan gaji seluruh karyawan minimal 20% agar tidak ada yang merasa kurang dihargai secara finansial.',
+'Merancang jalur pengembangan karier yang jelas, program mentoring, peluang rotasi jabatan, dan membangun budaya inovasi melalui program ide karyawan yang diapresiasi secara nyata.',
+'Memperketat prosedur resign dengan klausa kontrak yang mengikat karyawan minimal 3 tahun.',
+'Merekrut lebih banyak karyawan baru untuk menggantikan yang keluar agar kapasitas produksi tetap terjaga.',
+'Memberikan bonus tahunan besar kepada karyawan yang bertahan minimal satu tahun tanpa memperbaiki aspek lainnya.'],
+answer:1,
+expl:'Akar masalah bukan moneter (gaji sudah kompetitif), melainkan motivasi intrinsik:\n• 68% → kurang kesempatan pengembangan karier.\n• 22% → lingkungan tidak mendukung inovasi.\n\nOpsi B tepat karena menyerang akar masalah 68%+22%:\n(1) Career path yang jelas → menjawab kebutuhan pertumbuhan karier.\n(2) Mentoring + rotasi → mempercepat pengembangan kompetensi.\n(3) Budaya inovasi + apresiasi ide → menyelesaikan keluhan lingkungan kerja.\n\nOpsi A salah → gaji sudah kompetitif; masalahnya bukan finansial.\nOpsi C salah → mempersulit resign tidak menyentuh akar masalah, bahkan kontraproduktif.\nOpsi D salah → merekrut terus tanpa memperbaiki masalah = pemborosan biaya.\nOpsi E salah → bonus finansial tidak menyelesaikan masalah karier dan lingkungan kerja.'},
+// 26
+{no:26,type:'mcma',topic:'Akuntansi',sub:'Persamaan Dasar Akuntansi',komp:'Penerapan',subkomp:'Membaca dan menginterpretasikan data tabel, grafik, atau diagram untuk menjelaskan suatu fenomena ekonomi',level:'Medium',
+passage:'Transaksi keuangan "Studio Foto Abadi" bulan Januari 2025:\n1. Terima tunai Rp8.000.000 dari klien atas jasa foto pernikahan.\n2. Beli kamera baru Rp15.000.000 secara kredit.\n3. Bayar cicilan utang kepada supplier Rp5.000.000 tunai.\n4. Pemilik setor investasi tambahan tunai Rp10.000.000.\n5. Terima tagihan listrik Rp750.000 yang belum dibayar.',
+text:'Manakah transaksi yang menyebabkan perubahan pada ASET sekaligus KEWAJIBAN secara bersamaan? (Jawaban benar lebih dari satu)',
+opts:['Transaksi 1','Transaksi 2','Transaksi 3','Transaksi 4','Transaksi 5'],
+answers:[1,2],
+expl:'Persamaan dasar: ASET = KEWAJIBAN + MODAL\n\nTransaksi 1 → Kas naik (Aset+), Pendapatan→Modal naik. Kewajiban TIDAK BERUBAH. ✗\n\nTransaksi 2 → Peralatan naik (Aset+), Utang usaha naik (Kewajiban+). Aset DAN Kewajiban berubah. ✓\n\nTransaksi 3 → Kas turun (Aset−), Utang turun (Kewajiban−). Aset DAN Kewajiban berubah. ✓\n\nTransaksi 4 → Kas naik (Aset+), Modal naik. Kewajiban TIDAK BERUBAH. ✗\n\nTransaksi 5 → Kewajiban naik (Utang beban akrual), Modal turun (beban dicatat). Aset TIDAK BERUBAH (kas belum keluar). ✗'},
+// 27
+{no:27,type:'pg',topic:'Akuntansi',sub:'Jurnal Umum',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Medium',
+passage:'"Servis Motor Cepat" pada 10 Maret 2025 menerima pendapatan jasa servis dari Pelanggan Andi sebesar Rp2.500.000,00. Andi membayar tunai Rp1.000.000,00, sisanya akan dibayar minggu depan.',
+text:'Pencatatan jurnal umum yang benar atas transaksi tersebut adalah....',
+opts:['Kas Rp1.000.000 (D) | Pendapatan jasa Rp2.500.000 (K) | Piutang usaha Rp1.500.000 (K)',
+'Kas Rp1.500.000 (D) | Piutang usaha Rp1.000.000 (D) | Pendapatan jasa Rp2.500.000 (K)',
+'Piutang usaha Rp1.500.000 (D) | Kas Rp1.000.000 (K) | Pendapatan jasa Rp2.500.000 (K)',
+'Kas Rp1.000.000 (D) | Piutang usaha Rp1.500.000 (D) | Pendapatan jasa Rp2.500.000 (K)',
+'Pendapatan jasa Rp2.500.000 (D) | Kas Rp1.500.000 (K) | Piutang usaha Rp1.000.000 (K)'],
+answer:3,
+expl:'Analisis transaksi:\n• Pendapatan jasa Rp2.500.000 → KREDIT (pendapatan bertambah)\n• Diterima tunai Rp1.000.000 → Kas DEBIT\n• Sisa Rp1.500.000 belum diterima → Piutang Usaha DEBIT\n\nJurnal yang benar:\nDebit: Kas Rp1.000.000\nDebit: Piutang Usaha Rp1.500.000\nKredit: Pendapatan Jasa Rp2.500.000\n\nTotal Debit = Total Kredit = Rp2.500.000 ✓'},
+// 28
+{no:28,type:'pg',topic:'Akuntansi',sub:'Jurnal Penyesuaian',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena ekonomi berdasarkan data atau kasus',level:'HOTS',
+chartFn:'makeTableQ28',
+passage:'Data penyesuaian per 31 Desember 2025:\n• Perlengkapan servis tersisa di gudang Rp1.200.000.\n• Asuransi dibayar di muka pada 1 Mei 2025 untuk 1 tahun.\n• Peralatan servis disusutkan 10%/tahun dari harga perolehan (garis lurus, tanpa nilai residu).\n• Masih harus membayar beban gaji Desember 2025 sebesar Rp1.500.000.\n• Pendapatan jasa Rp800.000 sudah selesai dikerjakan tetapi belum dicatat dan belum diterima.',
+text:'Pernyataan yang tepat untuk transaksi jurnal penyesuaian di atas adalah....',
+opts:['Jurnal penyesuaian perlengkapan: debit Beban perlengkapan Rp1.200.000, kredit Perlengkapan servis Rp1.200.000.',
+'Jurnal penyesuaian asuransi: debit Beban asuransi Rp6.000.000, kredit Asuransi dibayar di muka Rp6.000.000.',
+'Jurnal penyesuaian beban gaji: debit Beban gaji Rp1.500.000, kredit Utang gaji Rp1.500.000, sehingga total beban gaji setelah penyesuaian menjadi Rp6.500.000.',
+'Jurnal penyesuaian penyusutan peralatan: debit Beban penyusutan Rp5.000.000, kredit Akumulasi penyusutan Rp5.000.000.',
+'Jurnal penyesuaian pendapatan belum dicatat: debit Piutang usaha Rp800.000, kredit Pendapatan jasa Rp800.000, sehingga total pendapatan setelah penyesuaian menjadi Rp17.200.000.'],
+answer:2,
+expl:'Perlengkapan: Terpakai = 4.500.000 − 1.200.000 = Rp3.300.000 (bukan Rp1.200.000). Opsi A SALAH.\n\nAsuransi: Dibayar 1 Mei 2025, per 31 Des sudah lewat 8 bulan (Mei-Des). Beban = 8/12 × 6.000.000 = Rp4.000.000 (bukan Rp6.000.000). Opsi B SALAH.\n\nBeban gaji: Rp1.500.000 belum dibayar → Debit Beban Gaji, Kredit Utang Gaji. Total beban gaji = 5.000.000 + 1.500.000 = Rp6.500.000. Opsi C BENAR ✓\n\nPenyusutan: 10% × 30.000.000 = Rp3.000.000 (bukan Rp5.000.000). Opsi D SALAH.\n\nPendapatan: Total setelah penyesuaian = 18.000.000 + 800.000 = Rp18.800.000 (bukan Rp17.200.000). Opsi E SALAH.'},
+// 29
+{no:29,type:'pg',topic:'Akuntansi',sub:'Jurnal Penyesuaian – Sewa Dibayar di Muka',komp:'Penalaran',subkomp:'Menganalisis hubungan sebab-akibat suatu fenomena ekonomi berdasarkan data atau kasus',level:'Medium',
+passage:'"PT Nusantara" membayar sewa gedung pada 1 Oktober 2025 untuk periode 1 Oktober 2025 s.d. 30 September 2026 sebesar Rp18.000.000,00. Pada saat pembayaran dicatat sebagai "Sewa Dibayar di Muka". Laporan keuangan dibuat per 31 Desember 2025.',
+text:'Jurnal penyesuaian yang dibuat per 31 Desember 2025 adalah....',
+opts:['Beban sewa Rp18.000.000 (D) | Sewa dibayar di muka Rp18.000.000 (K)',
+'Beban sewa Rp4.500.000 (D) | Sewa dibayar di muka Rp4.500.000 (K)',
+'Sewa dibayar di muka Rp13.500.000 (D) | Beban sewa Rp13.500.000 (K)',
+'Beban sewa Rp13.500.000 (D) | Sewa dibayar di muka Rp13.500.000 (K)',
+'Sewa dibayar di muka Rp4.500.000 (D) | Beban sewa Rp4.500.000 (K)'],
+answer:1,
+expl:'Total sewa = Rp18.000.000 untuk 12 bulan (Okt 2025 – Sep 2026).\nSewa per bulan = 18.000.000 / 12 = Rp1.500.000.\n\nPeriode yang sudah menjadi beban sampai 31 Des 2025:\nOktober, November, Desember = 3 bulan.\n\nBeban sewa yang harus diakui = 3 × Rp1.500.000 = Rp4.500.000.\n\nJurnal penyesuaian:\nDebit: Beban Sewa Rp4.500.000\nKredit: Sewa Dibayar di Muka Rp4.500.000\n\nSisa Sewa Dibayar di Muka (aset) = 18.000.000 − 4.500.000 = Rp13.500.000 (untuk 9 bulan ke depan).'},
+// 30
+{no:30,type:'pg',topic:'Akuntansi',sub:'Laporan Keuangan – Modal Awal',komp:'Penerapan',subkomp:'Membaca dan menginterpretasikan data tabel, grafik, atau diagram untuk menjelaskan suatu fenomena ekonomi',level:'Medium',
+chartFn:'makeTableQ30',
+text:'Besarnya modal awal Bengkel Las "Karya Mandiri" adalah....',
+opts:['Rp106.300.000,00','Rp109.800.000,00','Rp102.800.000,00','Rp113.300.000,00','Rp110.300.000,00'],
+answer:4,
+expl:'Rumus: Modal Awal = Modal Akhir − Laba Bersih + Prive\n\nLangkah 1 – Total Pendapatan:\n= Jasa las + Sewa alat = 72.000.000 + 8.000.000 = 80.000.000\n\nLangkah 2 – Total Beban:\n= Gaji + Bahan + Sewa bengkel + Listrik & air\n= 22.000.000 + 12.000.000 + 6.000.000 + 1.800.000 = 41.800.000\n\nLangkah 3 – Laba Bersih:\n= 80.000.000 − 41.800.000 = 38.200.000\n\nLangkah 4 – Modal Awal:\n= 145.000.000 − 38.200.000 + 3.500.000\n= 145.000.000 − 34.700.000\n= Rp110.300.000'}
+];
+
+// ── STATE ───────────────────────────────────────────────
+var cur=0,rev=false,done=false,tint=null,tLeft=75*60;
+var UA=[];
+function initUA(){UA=[];for(var i=0;i<Q.length;i++){var q=Q[i];if(q.type==='pg')UA.push(null);else if(q.type==='mcma')UA.push([]);else{var arr=[];for(var j=0;j<q.stmts.length;j++)arr.push(null);UA.push(arr);}}}
+initUA();
+
+// ── START ───────────────────────────────────────────────
+function startExam(){document.getElementById('ws').style.display='none';document.getElementById('es').style.display='block';buildGrid();renderQ(0);startTimer();}
+function buildGrid(){var g=document.getElementById('qgrid');g.innerHTML='';for(var i=0;i<Q.length;i++){var b=document.createElement('button');b.className='qdot';b.textContent=i+1;b.id='qd'+i;(function(idx){b.onclick=function(){goTo(idx);};})(i);g.appendChild(b);}}
+
+// ── RENDER ──────────────────────────────────────────────
+function renderQ(idx){
+  cur=idx;var q=Q[idx],isc=done||rev;
+  document.getElementById('qh').className='qhead '+q.type;
+  document.getElementById('qnum').innerHTML=idx+1+'<span>dari '+Q.length+'</span>';
+  document.getElementById('q-topic-line').textContent=q.topic;
+  document.getElementById('q-subtopic-line').textContent=q.sub||'';
+  var tl={pg:'Pilihan Ganda',mcma:'Multi-Jawab (MCMA)',pgk:'Benar / Salah (PGK)'};
+  document.getElementById('q-type-pill').textContent=tl[q.type]||q.type;
+  var lp=document.getElementById('q-level-pill');lp.textContent=q.level;lp.className='q-level-pill lv-'+q.level;
+  var lm={Mudah:1,Medium:2,HOTS:3},lv=lm[q.level]||2;
+  var de=document.getElementById('qdif');de.innerHTML='';
+  for(var i=1;i<=3;i++){var s=document.createElement('span');s.className='d'+(i<=lv?' on':'');de.appendChild(s);}
+  var body=document.getElementById('qbody');body.innerHTML='';
+  var ks=document.createElement('div');ks.className='komp-strip';
+  ks.innerHTML='<span class="ks-label">Kompetensi:</span><span class="ks-val ks-komp">'+q.komp+'</span><span class="ks-label" style="margin-left:4px">Subkompetensi:</span><span class="ks-val ks-sub">'+q.subkomp+'</span>';
+  body.appendChild(ks);
+  if(q.chartFn){var cw=document.createElement('div');
+    if(q.chartFn==='makeTableQ5')cw.innerHTML=makeTableQ5();
+    else if(q.chartFn==='makeTableQ13')cw.innerHTML=makeTableQ13();
+    else if(q.chartFn==='makeTableQ14')cw.innerHTML=makeTableQ14();
+    else if(q.chartFn==='makeTableQ24')cw.innerHTML=makeTableQ24();
+    else if(q.chartFn==='makeTableQ28')cw.innerHTML=makeTableQ28();
+    else if(q.chartFn==='makeTableQ30')cw.innerHTML=makeTableQ30();
+    body.appendChild(cw);}
+  if(q.passage&&q.passage.trim()){var pb=document.createElement('div');pb.className='passage';pb.innerHTML=q.passage.replace(/\n/g,'<br>');body.appendChild(pb);}
+  var qt=document.createElement('p');qt.className='qtext';qt.innerHTML=q.text.replace(/\n/g,'<br>');body.appendChild(qt);
+  if(q.type==='pg')renderPG(body,q,idx,isc);
+  else if(q.type==='mcma')renderMCMA(body,q,idx,isc);
+  else renderPGK(body,q,idx,isc);
+  if(isc&&q.expl){var ex=document.createElement('div');ex.className='expl show';ex.innerHTML='<strong>📖 Pembahasan</strong>'+q.expl.replace(/\n/g,'<br>');body.appendChild(ex);}
+  document.getElementById('bprev').disabled=(idx===0);
+  var isLast=(idx===Q.length-1);
+  var bn=document.getElementById('bnext'),bf=document.getElementById('bfin');
+  bn.style.display=isLast?'none':'flex';bf.style.display=isLast?'flex':'none';
+  if(rev){bf.textContent='Kembali ke Hasil';bf.onclick=function(){showResultScreen();};}
+  else{bf.textContent='Selesai Latihan';bf.onclick=function(){finishExam();};}
+  updGrid();updStats();
+}
+function renderPG(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill ppg';p.textContent='Pilih satu jawaban';body.appendChild(p);
+  var w=document.createElement('div');w.className='opts';var labs=['A','B','C','D','E'];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.createElement('button');b.className='opt';
+    if(isc){b.disabled=true;if(i===q.answer)b.classList.add('correct');if(UA[idx]===i&&i!==q.answer)b.classList.add('wrong');}
+    else{if(UA[idx]===i)b.classList.add('sel');(function(ii){b.onclick=function(){UA[idx]=ii;renderQ(idx);};})(i);}
+    b.innerHTML='<span class="olbl">'+labs[i]+'</span><span>'+q.opts[i]+'</span>';w.appendChild(b);}
+  body.appendChild(w);}
+function renderMCMA(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill pmc';p.textContent='Pilih semua jawaban yang benar';body.appendChild(p);
+  if(!isc){var h=document.createElement('div');h.className='mhint';h.innerHTML='⚡ Klik untuk memilih / batalkan pilihan.';body.appendChild(h);}
+  var w=document.createElement('div');w.className='mcopts';var sel=UA[idx]||[];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.createElement('button');b.className='mcopt';
+    if(isc){b.disabled=true;var ic=q.answers.indexOf(i)>=0,is=sel.indexOf(i)>=0;if(is&&ic)b.classList.add('correct');else if(is&&!ic)b.classList.add('wrong');else if(!is&&ic)b.classList.add('missed');}
+    else{if(sel.indexOf(i)>=0)b.classList.add('sel');(function(ii){b.onclick=function(){var a=UA[idx]||[];var ni=a.indexOf(ii);if(ni>=0)a.splice(ni,1);else a.push(ii);UA[idx]=a;renderQ(idx);};})(i);}
+    b.innerHTML='<span class="mchk">✓</span><span>'+q.opts[i]+'</span>';w.appendChild(b);}
+  body.appendChild(w);}
+function renderPGK(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill ppk';p.textContent='Pilih Benar atau Salah untuk setiap pernyataan';body.appendChild(p);
+  var t=document.createElement('div');t.className='pkwrap';
+  var h=document.createElement('div');h.className='pkh';h.innerHTML='<span>Pernyataan</span><span style="text-align:center">Benar</span><span style="text-align:center">Salah</span>';t.appendChild(h);
+  if(!Array.isArray(UA[idx])||UA[idx].length!==q.stmts.length){var arr=[];for(var j=0;j<q.stmts.length;j++)arr.push(null);UA[idx]=arr;}
+  for(var si=0;si<q.stmts.length;si++){
+    var row=document.createElement('div');row.className='pkrow';var uv=UA[idx][si],cv=q.answers[si];
+    if(isc)row.classList.add(uv===cv?'rc':'rw');
+    var sd=document.createElement('div');sd.className='pkstmt';sd.textContent=q.stmts[si];
+    var ct=document.createElement('div');ct.className='pkcol';var bt=document.createElement('button');bt.className='pkbtn';bt.textContent='Benar';
+    var cf=document.createElement('div');cf.className='pkcol';var bf2=document.createElement('button');bf2.className='pkbtn';bf2.textContent='Salah';
+    if(isc){bt.disabled=true;bf2.disabled=true;if(cv===true)bt.classList.add('ok');else if(uv===true)bt.classList.add('bad');if(cv===false)bf2.classList.add('ok');else if(uv===false)bf2.classList.add('bad');}
+    else{if(uv===true)bt.classList.add('st');if(uv===false)bf2.classList.add('sf');
+      (function(sii){bt.onclick=function(){var a=UA[idx].slice();a[sii]=a[sii]===true?null:true;UA[idx]=a;renderQ(idx);};bf2.onclick=function(){var a=UA[idx].slice();a[sii]=a[sii]===false?null:false;UA[idx]=a;renderQ(idx);};})(si);}
+    ct.appendChild(bt);cf.appendChild(bf2);row.appendChild(sd);row.appendChild(ct);row.appendChild(cf);t.appendChild(row);}
+  body.appendChild(t);}
+
+// ── HELPERS ─────────────────────────────────────────────
+function isAns(i){var q=Q[i],a=UA[i];if(q.type==='pg')return a!==null;if(q.type==='mcma')return Array.isArray(a)&&a.length>0;if(!Array.isArray(a))return false;for(var j=0;j<a.length;j++)if(a[j]!==null)return true;return false;}
+function isCor(i){var q=Q[i],a=UA[i];if(q.type==='pg')return a===q.answer;if(q.type==='mcma'){if(!Array.isArray(a)||!a.length)return false;var sa=a.slice().sort().join(','),sa2=q.answers.slice().sort().join(',');return sa===sa2;}if(q.type==='pgk'){if(!Array.isArray(a))return false;for(var j=0;j<q.answers.length;j++)if(a[j]!==q.answers[j])return false;return true;}return false;}
+function isPart(i){var q=Q[i],a=UA[i];if(q.type==='mcma'&&Array.isArray(a)&&a.length){var hasCor=false;for(var j=0;j<a.length;j++)if(q.answers.indexOf(a[j])>=0){hasCor=true;break;}return hasCor&&!isCor(i);}if(q.type==='pgk'&&Array.isArray(a)){var hasCor2=false;for(var j=0;j<q.answers.length;j++)if(a[j]===q.answers[j]){hasCor2=true;break;}return hasCor2&&!isCor(i);}return false;}
+function nav(d){var n=cur+d;if(n>=0&&n<Q.length)renderQ(n);}
+function goTo(i){renderQ(i);}
+function updGrid(){for(var i=0;i<Q.length;i++){var dot=document.getElementById('qd'+i);dot.className='qdot';if(i===cur){dot.classList.add('active');continue;}if(!isAns(i))continue;if(done||rev){if(isCor(i))dot.classList.add('cc');else if(isPart(i))dot.classList.add('cp');else dot.classList.add('cw');}else dot.classList.add('ans');}}
+function updStats(){var n=0;for(var i=0;i<Q.length;i++)if(isAns(i))n++;document.getElementById('sdon').textContent=n;document.getElementById('slft').textContent=Q.length-n;document.getElementById('pf').style.width=(n/Q.length*100)+'%';document.getElementById('ptx').textContent=n+' / '+Q.length+' dijawab';}
+function startTimer(){tint=setInterval(function(){tLeft--;var m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');var el=document.getElementById('timer');el.textContent=m+':'+s;el.className='';if(tLeft<=300)el.classList.add('warn');if(tLeft<=60)el.classList.add('danger');if(tLeft<=0){clearInterval(tint);finishExam(true);}},1000);}
+function finishExam(tu){clearInterval(tint);done=true;showResultScreen(tu);}
+function showResultScreen(tu){
+  document.getElementById('es').style.display='none';document.getElementById('rs').style.display='block';window.scrollTo(0,0);
+  var cor=0,wrg=0,skp=0;for(var i=0;i<Q.length;i++){if(!isAns(i))skp++;else if(isCor(i))cor++;else wrg++;}
+  var sc=Math.round(cor/Q.length*100),KKM=75,lulus=sc>=KKM;
+  var badge=document.getElementById('rbadge');badge.textContent=sc;badge.className='rb '+(lulus?'lulus':'gagal');
+  var kb=document.getElementById('kkm-badge');kb.className='kkm-badge '+(lulus?'lulus':'gagal');
+  kb.innerHTML=lulus?'✅ LULUS &nbsp;·&nbsp; KKM 75 tercapai':'❌ TIDAK LULUS &nbsp;·&nbsp; KKM 75 tidak tercapai';
+  document.getElementById('rcor').textContent=cor;document.getElementById('rwrg').textContent=wrg;document.getElementById('rskp').textContent=skp;document.getElementById('rsco').textContent=sc;
+  var msg='',bg='',cl='',bd='';
+  if(sc>=85){msg='🏆 Sangat Baik — Penguasaan materi sangat baik!';bg='#DCFCE7';cl='#14532D';bd='#A7F3C1';}
+  else if(sc>=75){msg='✅ Baik — Hasil memuaskan, KKM tercapai!';bg='#EFF6FF';cl='#1E40AF';bd='#BFDBFE';}
+  else if(sc>=55){msg='📚 Cukup — Belum mencapai KKM. Beberapa materi perlu dipelajari lagi.';bg='#FFFBEB';cl='#92400E';bd='#FCD34D';}
+  else{msg='💪 Perlu Belajar Lebih — Pelajari kembali materi yang belum dikuasai!';bg='#FEF2F2';cl='#991B1B';bd='#FCA5A5';}
+  var pb=document.getElementById('pred');pb.textContent=msg;pb.style.cssText='background:'+bg+';color:'+cl+';border:1px solid '+bd+';border-radius:var(--radius);padding:.85rem 1.4rem;margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5';
+  document.getElementById('rtit').textContent=(tu?'Waktu Habis!':'Latihan Selesai');
+  document.getElementById('rsub').textContent='Nilai: '+sc+' / 100 · '+cor+' benar, '+wrg+' salah, '+skp+' tidak dijawab dari '+Q.length+' soal';
+  buildAnalisisSoal();buildAnalisisKomp();buildAnalisisSubkomp();
+}
+function switchTab(id,el){var panels=document.querySelectorAll('.tab-panel');for(var i=0;i<panels.length;i++)panels[i].classList.remove('active');var tabs=document.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');document.getElementById(id).classList.add('active');el.classList.add('active');}
+function buildAnalisisSoal(){
+  var panel=document.getElementById('tab-soal');panel.innerHTML='';
+  var groups={},order=[];
+  for(var i=0;i<Q.length;i++){var q=Q[i];if(!groups[q.topic]){groups[q.topic]={topic:q.topic,items:[]};order.push(q.topic);}groups[q.topic].items.push({q:q,i:i});}
+  for(var t=0;t<order.length;t++){
+    var g=groups[order[t]];var cor=0;for(var x=0;x<g.items.length;x++)if(isCor(g.items[x].i))cor++;
+    var tot=g.items.length,pct=Math.round(cor/tot*100);var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
+    var sec=document.createElement('div');sec.className='ana-section';var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
+    for(var x=0;x<g.items.length;x++){
+      var qi=g.items[x].q,ii=g.items[x].i;var ans=isAns(ii),cor2=isCor(ii);
+      var cls='ai-cor',icon='✅',status='Benar';if(!ans){cls='ai-skp';icon='⬜';status='Tidak Dijawab';}else if(!cor2){cls='ai-wrg';icon='❌';status='Salah';}
+      var item=document.createElement('div');item.className='ana-item '+cls;
+      item.innerHTML='<span>'+icon+'</span><div class="ai-content"><strong>Soal '+qi.no+' · '+status+' · '+qi.level+'</strong><span>'+qi.sub+' — '+qi.komp+': '+qi.subkomp+'</span></div>';
+      bodyDiv.appendChild(item);}
+    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:13.5px">📌 '+g.topic+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' benar ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
+    sec.appendChild(bodyDiv);panel.appendChild(sec);}
+}
+function toggleSec(el){var body=el.nextElementSibling;var arr=el.querySelector('span:last-child');if(body.style.display==='none'){body.style.display='flex';arr.textContent='▾';}else{body.style.display='none';arr.textContent='▸';}}
+function buildAnalisisSubkomp(){
+  var panel=document.getElementById('tab-subkomp');panel.innerHTML='';
+  // group by subkomp
+  var subMap={},subOrder=[];
+  for(var i=0;i<Q.length;i++){var q=Q[i];var key=q.subkomp;if(!subMap[key]){subMap[key]={subkomp:key,items:[]};subOrder.push(key);}subMap[key].items.push({q:q,i:i});}
+  var h=document.createElement('h3');h.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.5rem;color:var(--ink)';h.textContent='Capaian per Subkompetensi';panel.appendChild(h);
+  var desc=document.createElement('p');desc.style.cssText='font-size:12.5px;color:var(--ink-muted);margin-bottom:1rem;line-height:1.6';desc.textContent='Tabel ini menunjukkan seberapa baik penguasaan setiap subkompetensi. Soal tidak dijawab dihitung sebagai salah.';panel.appendChild(desc);
+  for(var si=0;si<subOrder.length;si++){
+    var sm=subMap[subOrder[si]];var cor=0,wrg=0,skp=0;
+    for(var x=0;x<sm.items.length;x++){var ii=sm.items[x].i;if(isCor(ii))cor++;else if(!isAns(ii))skp++;else wrg++;}
+    var tot=sm.items.length,pct=Math.round(cor/tot*100);
+    var fillCls=pct>=70?'sf-good':pct>=40?'sf-mid':'sf-bad';
+    var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
+    var statusIcon=pct>=70?'✅':pct>=40?'⚠️':'❌';
+    var rec=pct>=70?'Sudah dikuasai dengan baik.':pct>=40?'Perlu pendalaman lebih lanjut.':'Perlu dipelajari ulang dari awal.';
+    var sec=document.createElement('div');sec.className='ana-section';
+    var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
+    // sub-header info
+    var info=document.createElement('div');info.style.cssText='display:flex;gap:1rem;flex-wrap:wrap;align-items:center;padding:.5rem .75rem;background:var(--bg);border-radius:8px;margin-bottom:4px;font-size:12.5px;color:var(--ink-muted)';
+    info.innerHTML='<span>📋 <b>'+tot+'</b> soal</span><span style="color:var(--correct)">✅ <b>'+cor+'</b> benar</span><span style="color:var(--wrong)">❌ <b>'+wrg+'</b> salah</span><span style="color:var(--skip)">⬜ <b>'+skp+'</b> tidak dijawab</span><span style="font-style:italic">'+rec+'</span>';
+    bodyDiv.appendChild(info);
+    // each item
+    for(var x=0;x<sm.items.length;x++){
+      var qi=sm.items[x].q,ii2=sm.items[x].i;var ans=isAns(ii2),cor2=isCor(ii2);
+      var cls='ai-cor',icon='✅',status='Benar';
+      if(!ans){cls='ai-skp';icon='⬜';status='Tidak Dijawab';}
+      else if(!cor2){cls='ai-wrg';icon='❌';status='Salah';}
+      var item=document.createElement('div');item.className='ana-item '+cls;
+      var tl={pg:'PG',mcma:'MCMA',pgk:'PGK'};
+      item.innerHTML='<span>'+icon+'</span><div class="ai-content"><strong>Soal '+qi.no+' ['+tl[qi.type]+'] · '+status+' · '+qi.level+'</strong><span>'+qi.topic+' › '+qi.sub+'</span></div>';
+      bodyDiv.appendChild(item);}
+    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:12.5px;line-height:1.4">'+statusIcon+' '+sm.subkomp+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
+    sec.appendChild(bodyDiv);panel.appendChild(sec);}
+}
+function buildAnalisisKomp(){
+  var panel=document.getElementById('tab-komp');panel.innerHTML='';
+  var kompMap={},kompOrder=[];
+  for(var i=0;i<Q.length;i++){var q=Q[i];if(!kompMap[q.komp]){kompMap[q.komp]={komp:q.komp,subs:{},subOrder:[]};kompOrder.push(q.komp);}if(!kompMap[q.komp].subs[q.subkomp]){kompMap[q.komp].subs[q.subkomp]={subkomp:q.subkomp,items:[]};kompMap[q.komp].subOrder.push(q.subkomp);}kompMap[q.komp].subs[q.subkomp].items.push({q:q,i:i});}
+  var h=document.createElement('h3');h.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h.textContent='Ringkasan per Kompetensi';panel.appendChild(h);
+  var wrap=document.createElement('div');wrap.style.cssText='background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem';
+  var html='<table class="komp-table"><thead><tr><th>Kompetensi</th><th>Soal</th><th>Benar</th><th>Skor</th><th>Capaian</th></tr></thead><tbody>';
+  for(var k=0;k<kompOrder.length;k++){var km=kompMap[kompOrder[k]];var allItems=[];for(var s in km.subs)allItems=allItems.concat(km.subs[s].items);var cor=0;for(var x=0;x<allItems.length;x++)if(isCor(allItems[x].i))cor++;var tot=allItems.length,pct=Math.round(cor/tot*100);var fillCls=pct>=70?'sf-good':pct>=40?'sf-mid':'sf-bad';html+='<tr><td style="font-weight:500">'+km.komp+'</td><td style="text-align:center">'+tot+'</td><td style="text-align:center;color:var(--correct);font-weight:600">'+cor+'</td><td style="text-align:center;font-weight:600">'+pct+'%</td><td style="min-width:100px"><div class="score-bar"><div class="score-fill '+fillCls+'" style="width:'+pct+'%"></div></div></td></tr>';}
+  html+='</tbody></table>';wrap.innerHTML=html;panel.appendChild(wrap);
+  var h2=document.createElement('h3');h2.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h2.textContent='Capaian per Level Kognitif';panel.appendChild(h2);
+  var lvlBox=document.createElement('div');lvlBox.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem';
+  var lvls=['Mudah','Medium','HOTS'];
+  for(var lv=0;lv<lvls.length;lv++){var lvName=lvls[lv],ids=[];for(var i=0;i<Q.length;i++)if(Q[i].level===lvName)ids.push(i);var cor=0;for(var x=0;x<ids.length;x++)if(isCor(ids[x]))cor++;var tot=ids.length,pct=tot>0?Math.round(cor/tot*100):0;var col=pct>=70?'var(--correct)':pct>=40?'#D97706':'var(--wrong)';lvlBox.innerHTML+='<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;text-align:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:5px">'+lvName+'</div><div style="font-family:Playfair Display,serif;font-size:26px;font-weight:700;color:'+col+'">'+pct+'%</div><div style="font-size:12px;color:var(--ink-muted)">'+cor+' / '+tot+' benar</div></div>';}
+  panel.appendChild(lvlBox);
+}
+function reviewMode(){rev=true;done=true;document.getElementById('rs').style.display='none';document.getElementById('es').style.display='block';document.getElementById('rev-banner').style.display='block';window.scrollTo(0,0);renderQ(0);updGrid();}
+function restartExam(){initUA();done=false;rev=false;cur=0;tLeft=75*60;clearInterval(tint);document.getElementById('rs').style.display='none';document.getElementById('es').style.display='none';document.getElementById('rev-banner').style.display='none';document.getElementById('ws').style.display='block';document.getElementById('timer').textContent='90:00';document.getElementById('timer').className='';window.scrollTo(0,0);}
+</script>
+</body>
+</html>
