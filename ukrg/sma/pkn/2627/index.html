@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Soal UKRG PKn SMA 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.no-select{-webkit-user-select:none;user-select:none}
+:root{
+  --bg:#F4F0EA;--surface:#FDFAF6;--ink:#18140F;--ink-muted:#6B6057;--ink-faint:#A89F96;
+  --accent:#1E5F74;--accent-light:#E8F4F8;--accent-mid:#2E86A0;
+  --correct:#166534;--correct-bg:#DCFCE7;--wrong:#991B1B;--wrong-bg:#FEE2E2;
+  --skip:#92400E;--skip-bg:#FFFBEB;--skip-bd:#FCD34D;
+  --border:#DDD5CA;--shadow:rgba(24,20,15,.08);--radius:14px;
+  --mc:#7C2D8F;--mc-bg:#F5F0FF;--mc-bd:#D8B4FE;
+  --pk:#C45D1C;--pk-bg:#FFF4EC;--pk-bd:#FDC89A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:16px;line-height:1.65}
+header{background:var(--ink);color:#F5F1EB;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--accent)}
+.hl{display:flex;flex-direction:column;gap:1px}
+.hle{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-mid);font-weight:600}
+.hlt{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#F5F1EB}
+#tbox{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:5px 14px}
+#tlbl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#A89F96}
+#timer{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;color:#F5F1EB;letter-spacing:.05em}
+#timer.warn{color:#FB923C}#timer.danger{color:#F87171;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.pw{background:var(--surface);border-bottom:1px solid var(--border);padding:.55rem 2rem;display:flex;align-items:center;gap:1rem}
+.pt{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+.pf{height:100%;background:var(--accent);border-radius:99px;transition:width .4s;width:0}
+.ptx{font-size:12px;color:var(--ink-muted);white-space:nowrap;font-weight:500}
+.wrap{max-width:980px;margin:0 auto;padding:1.75rem 1.5rem;display:grid;grid-template-columns:1fr 268px;gap:1.5rem;align-items:start}
+.qcard{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 20px var(--shadow)}
+.qhead{padding:.85rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.qhead.pg{background:var(--accent)}.qhead.mcma{background:var(--mc)}.qhead.pgk{background:var(--pk)}
+.qn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:rgba(255,255,255,.28);line-height:1}
+.qn span{font-size:12px;font-weight:400;color:rgba(255,255,255,.55);display:block;font-family:'DM Sans',sans-serif;margin-top:2px}
+.qm{border-left:1px solid rgba(255,255,255,.18);padding-left:1rem;flex:1;display:flex;flex-direction:column;gap:2px}
+.q-topic-line{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+.q-subtopic-line{font-size:11.5px;color:rgba(255,255,255,.8);font-weight:500}
+.q-meta-pills{display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap}
+.q-type-pill{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+.q-level-pill{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.lv-LOTS{background:rgba(134,239,172,.25);color:#A7F3C1}
+.lv-MOTS{background:rgba(252,211,77,.25);color:#FDE68A}
+.lv-HOTS{background:rgba(252,165,165,.25);color:#FCA5A5}
+.qdif{display:inline-flex;align-items:center;gap:3px}
+.d{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2)}.d.on{background:#FCD34D}
+.qbody{padding:1.25rem 1.5rem 1.5rem}
+.komp-strip{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:.9rem;padding:.6rem .85rem;background:#F4F0EA;border-radius:8px;border:1px solid var(--border)}
+.ks-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint)}
+.ks-val{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px}
+.ks-komp{background:var(--accent-light);color:var(--accent);border:1px solid #A3CDD8}
+.ks-sub{background:white;color:var(--ink-muted);border:1px solid var(--border)}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-bottom:.75rem}
+.ppg{background:var(--accent-light);color:var(--accent);border:1px solid #A3CDD8}
+.pmc{background:var(--mc-bg);color:var(--mc);border:1px solid var(--mc-bd)}
+.ppk{background:var(--pk-bg);color:var(--pk);border:1px solid var(--pk-bd)}
+.passage{background:#EDE7DD;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin-bottom:1rem;font-size:14px;color:var(--ink-muted);font-style:italic;line-height:1.72}
+.qtext{font-size:15.5px;color:var(--ink);margin-bottom:1.1rem;line-height:1.78}
+.mhint{display:flex;align-items:center;gap:7px;background:var(--mc-bg);border:1px solid var(--mc-bd);border-radius:8px;padding:.55rem .9rem;margin-bottom:.9rem;font-size:12.5px;color:var(--mc);font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:.75rem 1rem;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;background:white;transition:all .18s;text-align:left;width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);line-height:1.55}
+.opt:hover:not(:disabled){border-color:var(--accent-mid);background:var(--accent-light)}
+.opt.sel{border-color:var(--accent);background:var(--accent-light)}
+.opt.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.opt.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.opt:disabled{cursor:default}
+.olbl{flex-shrink:0;width:23px;height:23px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;color:var(--ink-muted);margin-top:1px}
+.opt.sel .olbl{border-color:var(--accent);color:var(--accent)}
+.opt.correct .olbl{border-color:var(--correct);color:var(--correct)}
+.opt.wrong .olbl{border-color:var(--wrong);color:var(--wrong)}
+.mcopts{display:flex;flex-direction:column;gap:8px}
+.mcopt{display:flex;align-items:flex-start;gap:11px;padding:.75rem 1rem;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;background:white;transition:all .18s;text-align:left;width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);line-height:1.55}
+.mcopt:hover:not(:disabled){border-color:var(--mc);background:var(--mc-bg)}
+.mcopt.sel{border-color:var(--mc);background:var(--mc-bg)}
+.mcopt.correct{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.mcopt.wrong{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.mcopt.missed{border-color:var(--correct);background:var(--correct-bg);opacity:.7}
+.mcopt:disabled{cursor:default}
+.mchk{flex-shrink:0;width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border);background:white;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;color:transparent}
+.mcopt.sel .mchk{border-color:var(--mc);background:var(--mc);color:white}
+.mcopt.correct .mchk{border-color:var(--correct);background:var(--correct);color:white}
+.mcopt.wrong .mchk{border-color:var(--wrong);background:var(--wrong);color:white}
+.mcopt.missed .mchk{border-color:var(--correct);background:transparent;color:var(--correct)}
+.pkwrap{border:1.5px solid var(--pk-bd);border-radius:10px;overflow:hidden}
+.pkh{display:grid;grid-template-columns:1fr 95px 95px;background:var(--pk);padding:.6rem 1rem;font-size:11px;font-weight:600;color:white;letter-spacing:.08em;text-transform:uppercase;gap:.5rem}
+.pkrow{display:grid;grid-template-columns:1fr 95px 95px;padding:.75rem 1rem;border-top:1px solid var(--pk-bd);background:white;align-items:center;gap:.5rem}
+.pkrow.rc{background:var(--correct-bg)}.pkrow.rw{background:var(--wrong-bg)}
+.pkstmt{font-size:14px;color:var(--ink);line-height:1.55}
+.pkcol{display:flex;justify-content:center}
+.pkbtn{padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);background:white;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;color:var(--ink-muted);transition:all .15s}
+.pkbtn:hover:not(:disabled){border-color:var(--pk);color:var(--pk)}
+.pkbtn.st{border-color:var(--pk);background:var(--pk);color:white}
+.pkbtn.sf{border-color:var(--ink-muted);background:var(--ink-muted);color:white}
+.pkbtn.ok{border-color:var(--correct);background:var(--correct);color:white}
+.pkbtn.bad{border-color:var(--wrong);background:var(--wrong);color:white}
+.pkbtn:disabled{cursor:default}
+.expl{margin-top:1rem;padding:.9rem 1.1rem;border-radius:9px;background:#F0FAF4;border:1px solid #A7F3C1;font-size:14px;color:#14532D;display:none;line-height:1.65}
+.expl.show{display:block}
+.expl strong{display:block;margin-bottom:5px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--correct)}
+.navb{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;border-top:1px solid var(--border);gap:.75rem;flex-wrap:wrap}
+.btn{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;padding:.55rem 1.15rem;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);background:white;color:var(--ink-muted);transition:all .18s;display:flex;align-items:center;gap:5px}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btnp{background:var(--accent);color:white;border-color:var(--accent)}
+.btnp:hover{background:#174F63;border-color:#174F63;color:white}
+.btn:disabled{opacity:.33;cursor:default;pointer-events:none}
+.sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:82px}
+.sc{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 10px var(--shadow)}
+.stit{font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--ink)}
+.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:.8rem}
+.qdot{aspect-ratio:1;border-radius:7px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:11.5px;font-weight:500;color:var(--ink-muted);display:flex;align-items:center;justify-content:center;transition:all .15s;font-family:'DM Sans',sans-serif}
+.qdot:hover{border-color:var(--accent);color:var(--accent)}
+.qdot.active{border-color:var(--accent);background:var(--accent);color:white}
+.qdot.ans{border-color:var(--accent-mid);background:var(--accent-light);color:var(--accent)}
+.qdot.cc{border-color:var(--correct);background:var(--correct-bg);color:var(--correct)}
+.qdot.cw{border-color:var(--wrong);background:var(--wrong-bg);color:var(--wrong)}
+.qdot.cs{border-color:var(--skip);background:var(--skip-bg);color:var(--skip)}
+.qdot.cp{border-color:#D97706;background:#FEF3C7;color:#92400E}
+.leg{padding:0 .8rem .8rem;display:flex;flex-direction:column;gap:4px}
+.legi{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink-muted)}
+.legd{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.stg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.sti{background:var(--surface);padding:.7rem 1rem;text-align:center}
+.stv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);display:block}
+.stl{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:500}
+/* WELCOME */
+#ws{max-width:660px;margin:3rem auto;padding:0 1.5rem}
+.wc{background:var(--surface);border-radius:18px;border:1px solid var(--border);overflow:hidden;box-shadow:0 6px 32px var(--shadow)}
+.wt{background:var(--ink);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.wt::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:var(--accent);opacity:.12}
+.wte{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-mid);font-weight:600;margin-bottom:8px}
+.wth{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#F5F1EB;letter-spacing:-.02em;line-height:1.15;margin-bottom:.4rem}
+.wts{color:rgba(245,241,235,.5);font-size:15px}
+.wb{padding:2rem}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.5rem}
+.ii{background:var(--bg);border-radius:10px;padding:.85rem 1rem;display:flex;align-items:flex-start;gap:9px}
+.iico{font-size:19px;flex-shrink:0;margin-top:1px}
+.ilb{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:500}
+.ivl{font-size:14.5px;font-weight:500;color:var(--ink)}
+.tr{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.75rem}
+.tag{font-size:11.5px;padding:3px 11px;border-radius:99px;background:var(--accent-light);color:var(--accent);font-weight:500;border:1px solid rgba(30,95,116,.15)}
+.tag.mc{background:var(--mc-bg);color:var(--mc);border-color:var(--mc-bd)}
+.tag.pk{background:var(--pk-bg);color:var(--pk);border-color:var(--pk-bd)}
+.bst{width:100%;padding:.875rem;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;background:var(--accent);color:white;border:none;border-radius:10px;cursor:pointer}
+.bst:hover{background:#174F63}
+/* RESULT */
+#rs{display:none;max-width:860px;margin:2.5rem auto;padding:0 1.5rem}
+.rb{width:108px;height:108px;border-radius:50%;margin:0 auto .75rem;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:white}
+.rb.lulus{background:var(--correct);box-shadow:0 8px 30px rgba(22,101,52,.35)}
+.rb.gagal{background:var(--wrong);box-shadow:0 8px 30px rgba(153,27,27,.35)}
+.kkm-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:5px 16px;border-radius:99px;margin:0 auto .75rem;letter-spacing:.04em}
+.kkm-badge.lulus{background:var(--correct-bg);color:var(--correct);border:1.5px solid #86EFAC}
+.kkm-badge.gagal{background:var(--wrong-bg);color:var(--wrong);border:1.5px solid #FCA5A5}
+.rtit{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--ink);margin-bottom:.35rem;text-align:center}
+.rsub{color:var(--ink-muted);font-size:15px;margin-bottom:1.5rem;text-align:center}
+.rg{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem;border:1px solid var(--border)}
+.rst{background:var(--surface);padding:1rem;text-align:center}
+.rv{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);display:block;margin-bottom:3px}
+.rv.g{color:var(--correct)}.rv.r{color:var(--wrong)}.rv.s{color:var(--skip)}
+.rl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);font-weight:500}
+.pred{padding:.85rem 1.4rem;border-radius:var(--radius);margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5}
+.tabs{display:flex;gap:4px;margin-bottom:1rem;background:var(--bg);border-radius:10px;padding:4px}
+.tab{flex:1;padding:.6rem;border-radius:7px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;color:var(--ink-muted);transition:all .18s}
+.tab.active{background:var(--surface);color:var(--accent);box-shadow:0 1px 6px var(--shadow);font-weight:600}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.ana-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;margin-bottom:1rem}
+.ana-head{padding:.75rem 1.1rem;font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.ana-head-left{display:flex;align-items:center;gap:.5rem}
+.ana-badge{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px}
+.ab-ok{background:var(--correct-bg);color:var(--correct)}
+.ab-warn{background:var(--skip-bg);color:var(--skip)}
+.ab-bad{background:var(--wrong-bg);color:var(--wrong)}
+.ana-body{padding:0 .85rem .85rem;display:flex;flex-direction:column;gap:.4rem}
+.ana-item{display:flex;align-items:flex-start;gap:.65rem;padding:.6rem .75rem;border-radius:8px;font-size:13px;line-height:1.5}
+.ai-cor{background:var(--correct-bg);border:1px solid #A7F3C1;color:var(--correct)}
+.ai-wrg{background:var(--wrong-bg);border:1px solid #FCA5A5;color:var(--wrong)}
+.ai-skp{background:var(--skip-bg);border:1px solid var(--skip-bd);color:var(--skip)}
+.ai-content strong{display:block;font-weight:600;font-size:12.5px;margin-bottom:1px}
+.ai-content span{font-size:12px;opacity:.85}
+.komp-table{width:100%;border-collapse:collapse;font-size:13px}
+.komp-table th{background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:left;font-size:11.5px;font-weight:600}
+.komp-table td{padding:.55rem .75rem;border-bottom:1px solid var(--border)}
+.komp-table tr:last-child td{border-bottom:none}
+.komp-table tr:nth-child(even) td{background:#FAF7F3}
+.score-bar{height:6px;border-radius:99px;background:var(--border);overflow:hidden;margin-top:3px}
+.score-fill{height:100%;border-radius:99px}
+.sf-good{background:var(--correct)}.sf-mid{background:#F59E0B}.sf-bad{background:var(--wrong)}
+.rbtns{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.btr{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;padding:.75rem 1.75rem;border-radius:9px;cursor:pointer;transition:all .18s;border:none}
+.btr.pri{background:var(--accent);color:white}.btr.pri:hover{background:#174F63}
+.btr.out{background:white;color:var(--accent);border:1.5px solid var(--accent)}.btr.out:hover{background:var(--accent-light)}
+.rev-banner{background:linear-gradient(135deg,#1C1917,#292524);color:#F5F1EB;padding:.75rem 1.5rem;text-align:center;font-size:13px;font-weight:500}
+.rev-banner span{color:#FCD34D;font-weight:700}
+@media(max-width:720px){
+  .wrap{grid-template-columns:1fr;padding:1rem}.sidebar{position:static}
+  header{padding:1rem}.hlt{font-size:17px}.pw{padding:.55rem 1rem}
+  .wth{font-size:26px}.ig{grid-template-columns:1fr}
+  .rg{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- WELCOME -->
+<div id="ws">
+  <div class="wc">
+    <div class="wt">
+      <p class="wte">Tes Kemampuan Akademik · PKn SMA · UKRG Ruangguru</p>
+      <h1 class="wth">Latihan Soal UKRG Ruangguru<br>PKn SMA 2026</h1>
+      <p class="wts">Uji pemahaman PKn dari kelas 10–12 SMA</p>
+    </div>
+    <div class="wb">
+      <div class="ig">
+        <div class="ii"><span class="iico">📋</span><div><p class="ilb">Jumlah soal</p><p class="ivl">30 soal</p></div></div>
+        <div class="ii"><span class="iico">⏱</span><div><p class="ilb">Waktu</p><p class="ivl">75 menit</p></div></div>
+        <div class="ii"><span class="iico">🎯</span><div><p class="ilb">Penilaian</p><p class="ivl">Benar +1 · Salah/Kosong 0</p></div></div>
+        <div class="ii"><span class="iico">🏫</span><div><p class="ilb">KKM</p><p class="ivl">75 · Lulus / Tidak Lulus</p></div></div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Tipe Soal</p>
+      <div class="tr">
+        <span class="tag">20× Pilihan Ganda (PG)</span>
+        <span class="tag mc">5× PG Multi-Jawab (MCMA)</span>
+        <span class="tag pk">5× Benar / Salah (PGK)</span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Materi</p>
+      <div class="tr">
+        <span class="tag">Pancasila</span>
+        <span class="tag">UUD NRI Tahun 1945</span>
+        <span class="tag">Bhinneka Tunggal Ika</span>
+        <span class="tag">NKRI</span>
+        <span class="tag">HAM dalam Pancasila</span>
+        <span class="tag">Sistem Demokrasi</span>
+        <span class="tag">Integrasi Nasional</span>
+        <span class="tag">Wawasan Nusantara</span>
+      </div>
+      <button class="bst" onclick="startExam()">Mulai Latihan →</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM -->
+<div id="es" style="display:none">
+  <header>
+    <div class="hl">
+      <span class="hle">Tes Kemampuan Akademik · PKn SMA · UKRG Ruangguru</span>
+      <span class="hlt">Latihan Soal UKRG Ruangguru PKn SMA 2026</span>
+    </div>
+    <div id="tbox"><span id="tlbl">Sisa Waktu</span><span id="timer">75:00</span></div>
+  </header>
+  <div class="pw">
+    <div class="pt"><div class="pf" id="pf"></div></div>
+    <span class="ptx" id="ptx">0 / 30 dijawab</span>
+  </div>
+  <div id="rev-banner" class="rev-banner" style="display:none">
+    Mode Review — <span>Pembahasan tersedia di setiap soal</span>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="qcard">
+        <div class="qhead pg" id="qh">
+          <div class="qn" id="qnum">1<span>dari 30</span></div>
+          <div class="qm">
+            <div class="q-topic-line" id="q-topic-line">Topik</div>
+            <div class="q-subtopic-line" id="q-subtopic-line">Subtopik</div>
+            <div class="q-meta-pills">
+              <span class="q-type-pill" id="q-type-pill">PG</span>
+              <span class="q-level-pill" id="q-level-pill">LOTS</span>
+              <span class="qdif" id="qdif"></span>
+            </div>
+          </div>
+        </div>
+        <div class="qbody no-select" id="qbody"></div>
+        <div class="navb">
+          <button class="btn" id="bprev" onclick="nav(-1)">← Sebelumnya</button>
+          <div style="display:flex;gap:.5rem">
+            <button class="btn btnp" id="bnext" onclick="nav(1)">Selanjutnya →</button>
+            <button class="btn btnp" id="bfin" style="display:none">Selesai</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="sc">
+        <div class="stit">Navigasi Soal</div>
+        <div class="qgrid" id="qgrid"></div>
+        <div class="leg">
+          <div class="legi"><div class="legd" style="background:var(--accent)"></div>Sedang dikerjakan</div>
+          <div class="legi"><div class="legd" style="background:var(--accent-light);border:1.5px solid var(--accent-mid)"></div>Sudah dijawab</div>
+          <div class="legi"><div class="legd" style="background:white;border:1.5px solid var(--border)"></div>Belum dijawab</div>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="stit">Statistik</div>
+        <div class="stg">
+          <div class="sti"><span class="stv" id="sdon">0</span><span class="stl">Dijawab</span></div>
+          <div class="sti"><span class="stv" id="slft">30</span><span class="stl">Tersisa</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="rs">
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <div class="rb" id="rbadge">—</div>
+    <div class="kkm-badge" id="kkm-badge"></div>
+    <h2 class="rtit" id="rtit">Hasil Latihan</h2>
+    <p class="rsub" id="rsub"></p>
+  </div>
+  <div class="rg">
+    <div class="rst"><span class="rv g" id="rcor">0</span><span class="rl">Benar</span></div>
+    <div class="rst"><span class="rv r" id="rwrg">0</span><span class="rl">Salah</span></div>
+    <div class="rst"><span class="rv s" id="rskp">0</span><span class="rl">Tidak Dijawab</span></div>
+    <div class="rst"><span class="rv" id="rsco" style="color:var(--accent)">0</span><span class="rl">Nilai (100)</span></div>
+  </div>
+  <div class="pred" id="pred"></div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('tab-soal',this)">📋 Analisis per Soal</button>
+    <button class="tab" onclick="switchTab('tab-komp',this)">📊 Kompetensi &amp; Subkompetensi</button>
+  </div>
+  <div id="tab-soal" class="tab-panel active"></div>
+  <div id="tab-komp" class="tab-panel"></div>
+  <div class="rbtns">
+    <button class="btr out" onclick="reviewMode()">📖 Lihat Pembahasan</button>
+    <button class="btr pri" onclick="restartExam()">↺ Ulangi Latihan</button>
+  </div>
+</div>
+
+<script>
+var Q=[
+// ── SOAL 1 ─────────────────────────────────────────────
+{no:1,type:'pg',topic:'Pancasila',sub:'Hak asasi manusia dalam perspektif Pancasila',komp:'Penalaran',subkomp:'Menganalisis peran Pancasila dalam menyeimbangkan hak dan kewajiban warga negara',level:'HOTS',
+passage:'Kepentingan pedagang dan pengguna jalan sangat berbeda; pedagang ingin meningkatkan pendapatan dan menjual produk, sementara pengguna jalan membutuhkan kelancaran dan keamanan pergerakan di jalan umum. Namun, berjualan di fasilitas jalan seperti trotoar atau badan jalan dapat mengganggu fungsi jalan, membahayakan keselamatan, dan melanggar hukum.',
+text:'Peran Pancasila dalam memastikan bahwa semua individu memiliki akses yang sama terhadap keadilan berdasarkan ilustrasi tersebut adalah ....',
+opts:['memberi panduan kepada pedagang cara berjualan yang dapat menjamin hak mendapatkan penghidupan yang layak','mengarahkan pedagang dan pengguna jalan agar mengutamakan kepentingan bersama setelah kepentingan pribadi terlaksana','mengingatkan pentingnya kebersamaan dalam menjamin rasa keadilan dan keseimbangan antara hak dan kewajiban','mengupayakan agar kegiatan pedagang mengutamakan kepentingan pengguna jalan untuk kenyamanan dan ketertiban','menyelaraskan dua kepentingan untuk menciptakan harmoni sosial yang mengedepankan keseimbangan hak dan kewajiban'],
+answer:4,
+expl:'Jawaban yang tepat adalah E, yaitu menyelaraskan dua kepentingan untuk menciptakan harmoni sosial yang mengedepankan keseimbangan hak dan kewajiban. Ilustrasi menggambarkan dua kepentingan yang saling bertentangan antara pedagang dan pengguna jalan. Peran Pancasila dalam situasi ini bukan memihak salah satu pihak, melainkan menjadi landasan untuk menyelaraskan kedua kepentingan tersebut secara adil dan berimbang demi terciptanya harmoni sosial.\n\nPilihan A tidak tepat karena hanya berfokus pada kepentingan pedagang saja. Pilihan B tidak tepat karena mengisyaratkan kepentingan pribadi harus dipenuhi terlebih dahulu, yang bertentangan dengan nilai Pancasila. Pilihan C kurang tepat karena terlalu umum dan tidak secara spesifik menjawab peran Pancasila dalam konteks ilustrasi. Pilihan D tidak tepat karena hanya mengutamakan kepentingan pengguna jalan dan mengabaikan hak pedagang.'},
+
+// ── SOAL 2 ─────────────────────────────────────────────
+{no:2,type:'pg',topic:'Pancasila',sub:'Hak asasi manusia dalam perspektif Pancasila',komp:'Pemahaman',subkomp:'Menentukan respons perilaku yang mencerminkan hak asasi manusia sesuai dengan sila Pancasila',level:'LOTS',
+passage:'Dalam negara demokrasi, pemilihan umum merupakan sarana utama mewujudkan kedaulatan rakyat. Pemilu merupakan proses penting dalam sistem demokrasi yang memungkinkan rakyat untuk memilih wakil-wakil mereka dalam pemerintahan.',
+text:'Perilaku yang mencerminkan hak asasi manusia sesuai dengan sila keempat Pancasila berdasarkan ilustrasi tersebut adalah ....',
+opts:['menggunakan hak pilih sesuai dengan arah kebijakan dari partai politik','menghormati perbedaan pendapat dan pilihan politik dalam masyarakat','berpartisipasi aktif dengan cara mengikuti kampanye seluruh partai politik','mengikuti debat dalam pemilu untuk menilai strategi pemenangan para kandidat','menerima hasil dari setiap tahapan pemilu karena pelaksanaannya diawasi negara'],
+answer:1,
+expl:'Jawaban yang tepat adalah B, yaitu menghormati perbedaan pendapat dan pilihan politik dalam masyarakat. Sila keempat Pancasila menekankan bahwa setiap warga negara berhak menyampaikan pendapat dan membuat pilihan politiknya secara bebas. Menghormati perbedaan pendapat merupakan wujud nyata penghargaan HAM dalam konteks demokrasi.\n\nPilihan A tidak tepat karena menggunakan hak pilih berdasarkan arahan partai berarti tidak merdeka dalam berpolitik. Pilihan C tidak tepat karena mengikuti kampanye semua partai bukan kewajiban. Pilihan D tidak tepat karena menilai strategi pemenangan lebih bersifat teknis. Pilihan E tidak tepat karena menerima hasil pemilu seharusnya didorong oleh kesadaran berdemokrasi, bukan semata karena diawasi negara.'},
+
+// ── SOAL 3 ─────────────────────────────────────────────
+{no:3,type:'pg',topic:'Pancasila',sub:'Hak asasi manusia dalam perspektif Pancasila',komp:'Pemahaman',subkomp:'Menentukan nilai Pancasila yang diterapkan/dilanggar pada peristiwa pelaksanaan/pelanggaran hak asasi manusia',level:'LOTS',
+passage:'Warga di sebuah lingkungan perumahan hidup berdampingan dalam keberagaman agama, budaya, dan latar belakang sosial. Mereka saling menghargai, aktif dalam kegiatan sosial bersama, dan menjaga ketertiban dengan mematuhi aturan yang berlaku.',
+text:'Berdasarkan ilustrasi, nilai Pancasila yang paling tepat telah diterapkan pada kondisi tersebut adalah ....',
+opts:['Nilai Ketuhanan, karena setiap warga dapat menjalankan ibadah sesuai agama dan keyakinannya','Nilai Kemanusiaan, karena masyarakat saling membantu tanpa memandang latar belakangnya','Nilai Persatuan, karena perbedaan yang ada tidak menjadi penghalang untuk hidup rukun dan harmonis','Nilai Persatuan, karena warga berpartisipasi dalam kegiatan sosial sesuai peran kelompok budayanya','Nilai Keadilan Sosial, karena semua warga mendapatkan hak dan fasilitas secara merata tanpa kecuali'],
+answer:2,
+expl:'Jawaban yang tepat adalah C, yaitu Nilai Persatuan, karena perbedaan yang ada tidak menjadi penghalang untuk hidup rukun dan harmonis. Kondisi ini paling tepat mencerminkan sila ketiga Pancasila, yaitu Persatuan Indonesia, di mana keberagaman justru menjadi kekuatan hidup bersama secara damai.\n\nPilihan A kurang tepat karena penekanan soal bukan pada kebebasan beribadah melainkan pada kerukunan dalam perbedaan. Pilihan B kurang tepat karena ilustrasi tidak menekankan saling membantu. Pilihan D tidak tepat karena berpartisipasi sesuai peran kelompok budaya menunjukkan pemisahan, bukan persatuan. Pilihan E tidak tepat karena ilustrasi tidak membahas distribusi hak dan fasilitas.'},
+
+// ── SOAL 4 ─────────────────────────────────────────────
+{no:4,type:'pg',topic:'Pancasila',sub:'Pancasila sebagai Dasar Negara',komp:'Penerapan',subkomp:'Menentukan pentingnya Pancasila sebagai dasar negara dalam memecahkan masalah pada peristiwa ketatanegaraan di Indonesia',level:'MOTS',
+passage:'Terjadi perdebatan sengit di masyarakat dan parlemen terkait wacana amandemen UUD 1945 di mana sebagian pihak mengusulkan agar pemilihan presiden dikembalikan ke MPR, sedangkan sebagian lain ingin mempertahankan sistem pemilihan langsung oleh rakyat. Ketegangan ini menimbulkan kekhawatiran akan mundurnya demokrasi di Indonesia.',
+text:'Berdasarkan ilustrasi, pentingnya Pancasila untuk memecahkan masalah tersebut karena ....',
+opts:['menjadi dasar mempertimbangkan setiap perubahan agar tetap menjamin kedaulatan rakyat dan keadilan sosial secara seimbang','digunakan sebagai alat hukum tertinggi Indonesia agar perubahan aturan tidak menyalahi sistem pemerintahan yang sudah berlaku','menjadi acuan teknis lembaga legislatif di Indonesia dalam menentukan batasan perubahan agar tidak melewati kewenangan politik','digunakan oleh lembaga eksekutif agar pelaksanaan pemerintahan di Indonesia tetap stabil di tengah konflik politik yang terjadi','dijadikan dasar keputusan oleh lembaga yudikatif untuk menilai apakah usulan perubahan tersebut sesuai kepentingan negara'],
+answer:0,
+expl:'Jawaban yang tepat adalah A. Pancasila sebagai dasar negara berfungsi sebagai landasan filosofis dalam setiap keputusan ketatanegaraan, termasuk amandemen UUD 1945. Pancasila memastikan setiap perubahan tetap menjunjung kedaulatan rakyat (sila keempat) dan keadilan sosial (sila kelima).\n\nPilihan B tidak tepat karena Pancasila bukan sekadar alat hukum teknis. Pilihan C tidak tepat karena Pancasila bukan acuan teknis bagi legislatif saja. Pilihan D tidak tepat karena Pancasila berlaku untuk seluruh elemen bangsa, bukan hanya eksekutif. Pilihan E tidak tepat karena Pancasila bukan alat penilaian yudikatif semata.'},
+
+// ── SOAL 5 ─────────────────────────────────────────────
+{no:5,type:'pg',topic:'Pancasila',sub:'Makna dan hubungan sila-sila dalam Pancasila',komp:'Pemahaman',subkomp:'Mengidentifikasi perilaku yang berkaitan dengan antarsila dalam Pancasila',level:'LOTS',
+passage:'Bunyi sila kedua dan keempat Pancasila yaitu "Kemanusiaan yang Adil dan Beradab" dan "Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan Perwakilan".',
+text:'Perilaku yang berhubungan dengan kedua sila Pancasila tersebut adalah ....',
+opts:['menghormati perbedaan pendapat teman dan bekerja sama untuk menyelesaikan tugas kelompok dengan baik','memberikan perlakuan yang sama kepada semua orang tanpa membeda-bedakan latar belakang suku dan agama','bekerja sama dengan warga lain untuk membangun fasilitas umum yang dapat dinikmati oleh seluruh masyarakat','memberikan bantuan kepada korban banjir suatu daerah berdasarkan hasil musyawarah seluruh warga kampung','menghormati hak asasi manusia dengan bersikap adil dan beradab kepada sesama antarumat beragama'],
+answer:3,
+expl:'Jawaban yang tepat adalah D. Memberikan bantuan kepada korban banjir mencerminkan Kemanusiaan yang Adil dan Beradab (sila kedua), sementara pengambilan keputusan melalui musyawarah seluruh warga mencerminkan sila keempat. Kedua nilai ini terpadu dalam satu tindakan nyata.\n\nPilihan A hanya mencerminkan sila keempat. Pilihan B lebih dominan mencerminkan sila kedua saja tanpa unsur musyawarah. Pilihan C lebih dekat dengan sila ketiga dan kelima. Pilihan E hanya mencerminkan sila kedua tanpa keterlibatan nilai sila keempat.'},
+
+// ── SOAL 6 ─────────────────────────────────────────────
+{no:6,type:'pgk',topic:'Pancasila',sub:'Hak asasi manusia dalam perspektif Pancasila',komp:'Penerapan',subkomp:'Menentukan fungsi diterapkannya Pancasila dalam menegakkan prinsip hak asasi manusia',level:'MOTS',
+passage:'Sebuah desa sedang mengembangkan program ekonomi kerakyatan berbasis koperasi. Namun, keterbatasan modal membuat pengurus hanya mampu memberikan pinjaman kepada sebagian anggota yang dianggap paling produktif. Sebagian warga lain mengkritik hal ini karena dianggap tidak adil dan melanggar nilai kemanusiaan serta keadilan sosial.',
+text:'Tentukan Benar atau Salah untuk setiap pernyataan berikut berdasarkan nilai Pancasila dan prinsip Hak Asasi Manusia!',
+stmts:['Memberikan prioritas pinjaman hanya kepada anggota yang dianggap paling produktif karena sejalan dengan asas efisiensi ekonomi.','Mengarahkan sebagian keuntungan koperasi untuk beasiswa anak anggota tidak mampu.','Membatasi hak bicara anggota yang kurang aktif dalam rapat koperasi agar keputusan lebih cepat diambil.','Mengedepankan transparansi laporan keuangan koperasi kepada seluruh anggota.'],
+answers:[false,true,false,true],
+expl:'Pernyataan 1 Salah: menurut sila ke-5 Pancasila, keadilan bukan hanya soal efisiensi tetapi akses yang merata. Pembatasan yang menguntungkan kelompok tertentu tanpa memperhatikan anggota lain melanggar prinsip keadilan sosial.\n\nPernyataan 2 Benar: mengalokasikan keuntungan untuk beasiswa anak anggota tidak mampu mencerminkan sila ke-2 Pancasila dan mendukung HAM di bidang pendidikan. Ini merupakan bentuk keadilan distributif yang berpihak pada yang lemah.\n\nPernyataan 3 Salah: membatasi hak bicara menyalahi sila ke-4 Pancasila. Musyawarah menghendaki hak setiap anggota untuk menyampaikan pendapat tanpa terkecuali.\n\nPernyataan 4 Benar: transparansi laporan keuangan sejalan dengan prinsip demokrasi ekonomi sila ke-5 Pancasila dan Pasal 33 UUD 1945.'},
+
+// ── SOAL 7 ─────────────────────────────────────────────
+{no:7,type:'pg',topic:'Pancasila',sub:'Berpancasila dalam keseharian di masyarakat dan dalam kehidupan global',komp:'Penalaran',subkomp:'Menganalisis keunggulan nilai-nilai Pancasila dalam aktivitas internasional',level:'HOTS',
+passage:'Sejak 1957, Indonesia telah mengirim lebih dari 30.000 personel TNI ke berbagai negara konflik sebagai bagian dari misi perdamaian dunia. Peran serta Indonesia ini merupakan perwujudan nilai Pancasila dan amanat Pembukaan UUD NRI Tahun 1945 untuk mewujudkan perdamaian berdasarkan kemerdekaan, perdamaian abadi, dan keadilan sosial.',
+text:'Keunggulan nilai Pancasila dalam peran tersebut adalah....',
+opts:['mewujudkan solidaritas kemanusiaan melalui politik luar negeri bebas aktif','menunjukkan komitmen terhadap nilai persatuan dalam kerja sama internasional','menerapkan keadilan sosial dengan mewujudkan perdamaian di kancah global','memperkuat posisi Indonesia dalam persaingan geopolitik khususnya kawasan asia','mewujudkan tujuan nasional dengan berupaya menjaga kepentingan strategis global'],
+answer:0,
+expl:'Jawaban yang tepat adalah A. Pengiriman personel TNI ke negara konflik merupakan wujud nyata Kemanusiaan yang Adil dan Beradab (sila kedua), yang mendorong Indonesia bersolidaritas terhadap sesama manusia tanpa memihak blok manapun. Hal ini selaras dengan prinsip politik luar negeri bebas aktif.\n\nPilihan B kurang tepat karena nilai persatuan lebih bersifat ke dalam (internal bangsa). Pilihan C kurang tepat karena keadilan sosial dalam Pancasila lebih merujuk pada konteks kehidupan dalam negeri. Pilihan D tidak tepat karena misi perdamaian bukan bertujuan memperkuat posisi geopolitik. Pilihan E tidak tepat karena misi perdamaian bukan untuk menjaga kepentingan strategis.'},
+
+// ── SOAL 8 ─────────────────────────────────────────────
+{no:8,type:'pg',topic:'Pancasila',sub:'Pancasila sebagai Ideologi Negara',komp:'Penalaran',subkomp:'Menganalisis peran Pancasila sebagai ideologi negara yang menjadi pemersatu bangsa',level:'HOTS',
+passage:'Dinamika masyarakat multikultural di Indonesia merupakan interaksi kompleks antarberbagai kelompok etnis, budaya, agama, dan sistem nilai, yang menghasilkan berbagai tantangan. Salah satu permasalahan yang dihadapi masyarakat multikultural di Indonesia adalah konflik antaragama.',
+text:'Peran Pancasila sebagai ideologi negara yang menjadi pemersatu dalam kehidupan berbangsa berdasarkan ilustrasi di atas adalah ….',
+opts:['sebagai perekat hubungan umat beragama mayoritas dan minoritas serta pemerintah dalam kehidupan bernegara','menjadi pendorong adanya dialog sesama agama untuk meningkatkan kebersamaan umat dan mengurangi rasa curiga','menjadi dasar dalam melihat adanya perbedaan paham dari berbagai agama dan aliran kepercayaan dalam masyarakat','merupakan sarana untuk menguji kepekaan sosial dan rasa solidaritas kelompok dari umat beragama dalam masyarakat','sebagai dasar untuk menghargai dan menghormati perayaan hari-hari besar berbagai agama dalam masyarakat'],
+answer:0,
+expl:'Jawaban yang tepat adalah A. Dalam konteks konflik antaragama, Pancasila berperan sebagai ideologi pemersatu yang menjembatani perbedaan antara berbagai kelompok agama, baik mayoritas maupun minoritas, sekaligus menjadi landasan bagi pemerintah dalam mengelola keberagaman.\n\nPilihan B tidak tepat karena dialog sesama agama hanya bersifat internal satu komunitas. Pilihan C tidak tepat karena sekadar melihat perbedaan bukan peran aktif Pancasila sebagai pemersatu. Pilihan D tidak tepat karena Pancasila bukan sarana untuk menguji kepekaan sosial. Pilihan E kurang tepat karena menghormati perayaan hari besar lebih bersifat praktis.'},
+
+// ── SOAL 9 ─────────────────────────────────────────────
+{no:9,type:'pg',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Ketentuan UUD NRI Tahun 1945 dalam kehidupan berbangsa dan bernegara',komp:'Pemahaman',subkomp:'Memberikan contoh hak/kewajiban warga negara yang mencerminkan salah satu pasal UUD NRI Tahun 1945',level:'LOTS',
+passage:'Pasal 27 ayat (3) UUD NRI Tahun 1945 menyatakan bahwa "Setiap warga negara berhak dan wajib ikut serta dalam upaya pembelaan negara."',
+text:'Berdasarkan ilustrasi, hak warga negara yang mencerminkan pasal tersebut yaitu warga negara berhak ....',
+opts:['mengikuti kegiatan sosial dan wajib mematuhi peraturan yang ditetapkan oleh pemerintah dalam lingkungannya','memperoleh pendidikan dan wajib menerapkan nilai-nilai kebangsaan dalam kehidupan sehari-hari','menyampaikan aspirasi kepada pemerintah dan wajib menaati aturan hukum yang berlaku di masyarakat','terlibat dalam kegiatan kemasyarakatan dan wajib ikut menjaga ketertiban serta ketentraman lingkungan sekitarnya','memperoleh perlindungan negara dan wajib ikut berpartisipasi menjaga keamanan serta kedaulatan bangsa'],
+answer:4,
+expl:'Jawaban yang tepat adalah E. Pasal 27 ayat (3) mengatur hak dan kewajiban dalam konteks pembelaan negara. Hak memperoleh perlindungan negara dan kewajiban ikut berpartisipasi menjaga keamanan serta kedaulatan bangsa merupakan dua sisi dari konsep bela negara yang tidak dapat dipisahkan.\n\nPilihan A tidak tepat karena kegiatan sosial tidak berkaitan langsung dengan pembelaan negara. Pilihan B lebih mencerminkan Pasal 31 tentang hak pendidikan. Pilihan C lebih berkaitan dengan hak berpendapat dan kewajiban hukum secara umum. Pilihan D merupakan kewajiban sosial yang bersifat umum.'},
+
+// ── SOAL 10 ─────────────────────────────────────────────
+{no:10,type:'pg',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Ketentuan UUD NRI Tahun 1945 dalam kehidupan berbangsa dan bernegara',komp:'Pemahaman',subkomp:'Menjelaskan tantangan yang dihadapi dalam mengimplementasikan salah satu Pasal UUD NRI Tahun 1945',level:'LOTS',
+passage:'Pasal 27 ayat (2) UUD NRI Tahun 1945 menyatakan bahwa tiap-tiap warga negara berhak atas pekerjaan dan penghidupan yang layak bagi kemanusiaan.',
+text:'Tantangan yang dihadapi dalam mengimplementasikan pasal tersebut adalah ....',
+opts:['penyusunan regulasi di bidang ketenagakerjaan yang membutuhkan waktu yang lama','adanya keterbatasan akses terhadap pekerjaan akibat ketidaksetaraan dan infrastruktur','tingkat keterampilan dan pendidikan di kalangan pencari kerja yang merata dan setara','adanya perbedaan standar kualitas pekerja yang berbeda-beda dari pemberi kerja','lemahnya perlindungan hukum yang diberikan oleh negara kepada pekerja anak'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Tantangan terbesar dalam mengimplementasikan pasal ini adalah ketidaksetaraan akses terhadap lapangan pekerjaan yang disebabkan oleh berbagai faktor struktural, seperti ketimpangan infrastruktur antardaerah dan kesenjangan ekonomi.\n\nPilihan A merupakan tantangan teknis administratif, bukan tantangan substantif. Pilihan C justru menyatakan kondisi ideal, bukan tantangan. Pilihan D merupakan dinamika pasar tenaga kerja yang wajar. Pilihan E penting namun tidak secara langsung menjadi tantangan utama implementasi pasal tersebut.'},
+
+// ── SOAL 11 ─────────────────────────────────────────────
+{no:11,type:'pg',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Hubungan struktural pemerintah pusat dan daerah',komp:'Penerapan',subkomp:'Menentukan alasan kerja sama antara pemerintah pusat dengan pemerintah daerah dilakukan',level:'MOTS',
+passage:'Salah satu bentuk kerja sama antara pemerintah pusat dan pemerintah daerah adalah dalam hal Penanggulangan Kemiskinan. Kerja sama dalam penanggulangan kemiskinan melibatkan pemerintah pusat yang memberikan kebijakan dan program, sementara pemerintah daerah melaksanakan program tersebut di tingkat daerah termasuk bantuan sosial, pelatihan, dan pengembangan usaha mikro.',
+text:'Bentuk kerja sama ini dilakukan karena …..',
+opts:['Pemerintah pusat mengembangkan program-program yang dapat diimplementasikan oleh pemerintah daerah, seperti program pelatihan kerja, bantuan sosial, dan pengembangan ekonomi lokal','Pemerintah daerah dapat mengembangkan ekonomi lokal dengan menciptakan lapangan kerja, mendukung usaha kecil dan menengah, serta meningkatkan infrastruktur','Pemerintah daerah dapat menyediakan program bantuan sosial seperti bantuan pangan, bantuan biaya pendidikan, dan bantuan kesehatan untuk masyarakat miskin','Pemerintah daerah dapat mengidentifikasi dan memetakan kemiskinan di daerahnya, sehingga dapat mengajukan permohonan bantuan kepada pemerintah pusat untuk mengatasinya','Pemerintah daerah dapat meningkatkan kapasitas masyarakat melalui pelatihan dan pendidikan, sehingga masyarakat dapat meningkatkan keterampilan dan kemampuan mereka'],
+answer:3,
+expl:'Jawaban yang tepat adalah D. Alasan utama dilakukannya kerja sama adalah karena pemerintah daerah memiliki pemahaman yang lebih mendalam tentang kondisi kemiskinan di wilayahnya. Dengan kemampuan identifikasi dan pemetaan, pemerintah daerah dapat memberikan data akurat kepada pemerintah pusat agar kebijakan tepat sasaran.\n\nPilihan A menjelaskan peran pemerintah pusat, bukan alasan kerja sama. Pilihan B merupakan bagian dari pelaksanaan program. Pilihan C merupakan bentuk pelaksanaan program, bukan alasan mendasar. Pilihan E merupakan output dari kerja sama, bukan alasan dilakukannya.'},
+
+// ── SOAL 12 ─────────────────────────────────────────────
+{no:12,type:'pg',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Kewenangan lembaga-lembaga negara menurut UUD NRI Tahun 1945',komp:'Penalaran',subkomp:'Menganalisis cara menyelesaikan permasalahan dalam sistem ketatanegaraan dikaitkan dengan kewenangan lembaga negara Indonesia',level:'HOTS',
+passage:'Dalam pelaksanaan Pilkada Serentak tahun 2024 lalu, terjadi perselisihan hasil penghitungan suara salah satu daerah. Dua pasangan calon saling mengklaim kemenangan, sementara rekapitulasi suara oleh KPU daerah dituding tidak transparan. Salah satu pasangan calon kemudian menggugat hasil Pilkada tersebut karena diduga terjadi kecurangan yang bersifat terstruktur, sistematis, dan masif (TSM) yang dapat memengaruhi hasil akhir pemilihan.',
+text:'Berdasarkan sistem ketatanegaraan Indonesia, cara menyelesaikan permasalahan tersebut sesuai kewenangan lembaga negara adalah ....',
+opts:['Presiden menetapkan peraturan pemerintah untuk mengatur ketentuan penyelesaian perbedaan penghitungan suara','Mahkamah Konstitusi melaksanakan kewenangannya dengan memutus perselisihan tentang hasil pemilukada','Komisi Pemilihan Umum membuat aturan internal tentang penyelesaian perselisihan hasil perhitungan suara pemilukada','Badan Pengawas Pemilihan Umum memerintahkan dilakukannya pemungutan suara ulang untuk kepastian hasil','DPRD bersama Pemerintah Daerah membuat peraturan daerah yang mengatur pemilukada yang lebih lengkap'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Berdasarkan Pasal 24C UUD NRI Tahun 1945, salah satu kewenangan Mahkamah Konstitusi adalah memutus perselisihan tentang hasil pemilihan umum, termasuk Pilkada. Gugatan diajukan ke MK yang kemudian memutus perkara secara final dan mengikat.\n\nPilihan A tidak tepat karena Presiden tidak memiliki kewenangan untuk mengatur sengketa hasil pilkada secara spesifik. Pilihan C tidak tepat karena KPU hanya berwenang menyelenggarakan pemilu. Pilihan D tidak tepat karena Bawaslu tidak berwenang memerintahkan pemungutan suara ulang atas sengketa TSM. Pilihan E tidak tepat karena DPRD dan Pemda tidak berwenang menyelesaikan sengketa hasil pilkada.'},
+
+// ── SOAL 13 ─────────────────────────────────────────────
+{no:13,type:'pgk',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Sistem demokrasi menurut UUD NRI Tahun 1945',komp:'Penalaran',subkomp:'Menganalisis cara menyelesaikan permasalahan dalam sistem ketatanegaraan dikaitkan dengan sistem demokrasi berdasarkan UUD NRI Tahun 1945',level:'HOTS',
+passage:'Demokrasi di Indonesia berkembang seiring dengan perjalanan sejarah bangsa. Demokrasi tidak hanya dipahami sebagai sistem politik, tetapi juga sebagai nilai yang menekankan musyawarah, persamaan, dan tanggung jawab bersama dalam kehidupan berbangsa. Kehadiran lembaga perwakilan rakyat, pemilihan umum, serta kebebasan berorganisasi merupakan contoh nyata praktik demokrasi dalam sistem ketatanegaraan Indonesia.',
+text:'Berdasarkan pemahaman tentang demokrasi, tentukan apakah pernyataan berikut termasuk Benar atau Salah!',
+stmts:['Prinsip demokrasi menuntut adanya partisipasi aktif warga negara dalam proses pengambilan keputusan politik.','Demokrasi menjamin kebebasan berpendapat dan perlindungan hak asasi manusia.','Demokrasi di Indonesia memberi ruang besar bagi pemerintah sebagai pengambil keputusan utama dalam politik.','Demokrasi lebih menekankan peran masyarakat dalam bidang politik jika dibandingkan dengan bidang sosial budaya.'],
+answers:[true,true,false,false],
+expl:'Pernyataan 1 Benar: partisipasi rakyat melalui pemilu dan musyawarah merupakan ciri penting demokrasi, menunjukkan rakyat ikut serta dalam pengambilan keputusan politik.\n\nPernyataan 2 Benar: demokrasi menjamin kebebasan berpendapat dan perlindungan HAM sebagai fondasi agar setiap warga mendapat hak yang sama.\n\nPernyataan 3 Salah: pemerintah memang berperan dalam pengambilan keputusan, tetapi bukan sebagai pihak utama yang dominan. Demokrasi menekankan adanya kontrol dan pengawasan rakyat.\n\nPernyataan 4 Salah: demokrasi tidak hanya menekankan peran masyarakat di bidang politik. Ia juga berlaku dalam bidang sosial, budaya, dan ekonomi.'},
+
+// ── SOAL 14 ─────────────────────────────────────────────
+{no:14,type:'pg',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Generasi solutif mengatasi pelanggaran hak dan pengingkaran kewajiban',komp:'Penerapan',subkomp:'Menentukan solusi dalam mengatasi pelanggaran hak/pengingkaran kewajiban warga negara',level:'MOTS',
+passage:'Sekelompok pedagang kecil mengalami masalah karena tempat mereka mencari nafkah tiba-tiba dilarang digunakan. Hal ini terjadi tanpa kesepakatan ganti rugi, sehingga mereka merasa telah terjadi pelanggaran hak dan pengingkaran kewajiban untuk saling menghormati kepentingan masing-masing.',
+text:'Berdasarkan ilustrasi, solusi untuk mengatasi pelanggaran tersebut yaitu ....',
+opts:['mengirim perwakilan pedagang untuk menyampaikan usulan agar memperoleh tempat pengganti untuk berjualan','mengumpulkan dukungan dari masyarakat sebagai upaya mempertahankan haknya untuk berjualan','melakukan mediasi sehingga para pihak memahami hak dan kewajibannya yang melandasi kepentingannya','mengajukan advokasi kepada lembaga bantuan hukum untuk memastikan para pedagang berada di pihak yang benar','mewakilkan kepada lembaga swadaya masyarakat untuk membantu memperjuangkan hak-hak sebagai pengguna lahan'],
+answer:2,
+expl:'Jawaban yang tepat adalah C. Mediasi adalah proses penyelesaian sengketa secara damai yang melibatkan kedua belah pihak untuk saling memahami hak dan kewajiban masing-masing. Mediasi merupakan pendekatan yang mengedepankan dialog, saling menghormati, dan penyelesaian berkeadilan tanpa konfrontasi.\n\nPilihan A tidak menyelesaikan akar masalah yaitu tidak adanya pengakuan atas hak dan kewajiban kedua pihak. Pilihan B cenderung bersifat konfrontatif. Pilihan D lebih tepat ditempuh setelah mediasi gagal. Pilihan E tidak mendorong kedua pihak memahami hak dan kewajiban masing-masing secara langsung.'},
+
+// ── SOAL 15 ─────────────────────────────────────────────
+{no:15,type:'pg',topic:'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945',sub:'Perlindungan dan penegakkan hukum di Indonesia',komp:'Penerapan',subkomp:'Menentukan tantangan dalam penegakan hukum pada suatu peristiwa',level:'MOTS',
+passage:'Seorang pengusaha membuang limbah pabrik ke sungai yang mengalir di dekat pemukiman warga. Akibatnya, air menjadi tercemar dan banyak warga mengalami gangguan kesehatan. Meskipun masyarakat sudah melaporkan hal ini kepada pihak berwenang, proses hukum berjalan sangat lambat. Bahkan, muncul kabar bahwa perusahaan tersebut memberikan "uang pelicin" agar kasusnya tidak diproses lebih lanjut. Warga menjadi kecewa dan kehilangan kepercayaan terhadap lembaga penegak hukum.',
+text:'Berdasarkan ilustrasi tersebut, tantangan utama dalam penegakan hukum yang ditunjukkan adalah....',
+opts:['kurangnya partisipasi masyarakat dalam kegiatan pemeliharaan lingkungan hidup','lemahnya perlindungan hukum kepada terduga pelaku pencemaran lingkungan','maraknya pengaruh kekuasaan dan praktik suap dalam menjalankan proses hukum','maraknya pelanggaran hukum yang diselesaikan secara kekeluargaan','rendahnya kesadaran pengusaha dalam menjaga kelestarian lingkungan alam'],
+answer:2,
+expl:'Jawaban yang tepat adalah C. Ilustrasi secara eksplisit menyebutkan pemberian "uang pelicin" agar kasus tidak diproses. Ini merupakan gambaran nyata praktik suap dan korupsi yang menjadi tantangan serius penegakan hukum. Ketika uang mempengaruhi proses hukum, prinsip equality before the law tidak dapat terwujud.\n\nPilihan A tidak tepat karena masyarakat justru aktif melapor. Pilihan B tidak tepat dan terbalik karena yang terjadi adalah lemahnya penegakan hukum terhadap pelaku, bukan perlindungan terhadap terduga. Pilihan D tidak tepat karena kasus dihentikan melalui praktik suap, bukan kekeluargaan. Pilihan E kurang tepat karena tantangan utama ada pada penegakan hukumnya.'},
+
+// ── SOAL 16 ─────────────────────────────────────────────
+{no:16,type:'mcma',topic:'Bhinneka Tunggal Ika',sub:'Mengelola kebinekaan sebagai modal sosial pembangunan nasional',komp:'Penerapan',subkomp:'Menentukan sikap positif yang dapat dijadikan modal sosial untuk pembangunan nasional',level:'MOTS',
+passage:'Pasca gempa bumi, warga dari berbagai latar belakang agama dan suku di sebuah daerah mengadakan gotong royong. Sebagian warga mengutamakan pembangunan kembali rumah ibadah karena dianggap pusat spiritual. Sementara kelompok lain menilai balai desa harus diprioritaskan karena berfungsi sebagai pusat kegiatan sosial seluruh warga. Meski berbeda pandangan, akhirnya mereka sepakat bergotong royong membangun keduanya secara bergantian. Namun, terdapat pula sebagian warga yang memilih tidak ikut serta dengan alasan kesibukan pribadi dan keterbatasan tenaga, meskipun tetap mengaku mendukung kegiatan tersebut secara moral.',
+text:'Pilih jawaban yang benar! Jawaban benar lebih dari satu.',
+opts:['Perbedaan prioritas pembangunan rumah ibadah dan balai desa menandakan persatuan warga melemah.','Gotong royong membangun rumah ibadah oleh warga lintas agama menunjukkan penghormatan terhadap perbedaan keyakinan.','Pembangunan balai desa bersama mencerminkan kepedulian pada kepentingan umum di atas kepentingan kelompok.','Kesepakatan warga membangun secara bergantian merupakan wujud musyawarah dan kebersamaan.','Tidak ikut serta karena alasan pribadi tetap sejalan dengan nilai gotong royong, selama mendukung secara moral.'],
+answers:[1,2,3],
+expl:'Pernyataan A salah: perbedaan prioritas tidak berarti persatuan melemah. Justru perbedaan ini menjadi ruang musyawarah menemukan jalan tengah, dan mereka tetap sepakat membangun keduanya.\n\nPernyataan B benar: keterlibatan warga berbagai agama dalam pembangunan rumah ibadah menunjukkan sikap saling menghormati dan solidaritas lintas agama.\n\nPernyataan C benar: balai desa sebagai fasilitas publik untuk semua warga menunjukkan orientasi pada kepentingan bersama, bukan kelompok tertentu.\n\nPernyataan D benar: pilihan membangun secara bergantian lahir dari musyawarah dan kompromi, mencerminkan kebersamaan dalam perbedaan.\n\nPernyataan E salah: gotong royong menuntut partisipasi nyata. Dukungan moral saja tidak cukup karena esensi gotong royong adalah keterlibatan aktif.'},
+
+// ── SOAL 17 ─────────────────────────────────────────────
+{no:17,type:'pg',topic:'Bhinneka Tunggal Ika',sub:'Mengelola kebinekaan sebagai modal sosial pembangunan nasional',komp:'Penerapan',subkomp:'Menentukan latar belakang suatu peristiwa/aktivitas dapat menjadi modal sosial pembangunan Indonesia',level:'MOTS',
+passage:'Reog Ponorogo merupakan bagian tak terpisahkan dari kehidupan budaya masyarakat Ponorogo, Jawa Timur. Seiring perkembangannya, Reog tidak hanya menjadi simbol budaya masyarakat Ponorogo, tetapi juga bagian dari identitas budaya nasional Indonesia. Pada tahun 2024, Reog Ponorogo resmi diakui sebagai warisan budaya takbenda oleh UNESCO, sebagai langkah penting dalam pelestarian warisan budaya bangsa dan menjadi modal sosial pembangunan Indonesia.',
+text:'Alasan pelestarian Reog Ponorogo menjadi modal sosial pembangunan Indonesia adalah ....',
+opts:['tradisi lokal memperkuat promosi pariwisata untuk peningkatan ekonomi nasional','identitas budaya daerah yang diakui secara internasional mendatangkan modal pembangunan','kebudayaan menjadi identitas pembangunan bangsa di tengah maraknya gempuran budaya asing','pembangunan nasional membutuhkan identitas budaya lokal dalam menentukan prioritas pembangunan','pengakuan warisan budaya oleh UNESCO dapat menjadi modal pembangunan yang diakui dunia internasional'],
+answer:2,
+expl:'Jawaban yang tepat adalah C. Alasan utama adalah karena kebudayaan lokal berperan sebagai identitas bangsa di tengah derasnya pengaruh budaya asing. Reog Ponorogo adalah cerminan jati diri dan karakter bangsa yang kaya kearifan lokal, yang memperkuat rasa kebangsaan sebagai fondasi kuat pembangunan nasional.\n\nPilihan A fokus pada pariwisata dan ekonomi semata, bukan nilai sosial budaya. Pilihan B dan E menekankan pengakuan internasional sebagai sumber modal, yang lebih bersifat dampak. Pilihan D kurang tepat karena budaya lokal bukan penentu prioritas pembangunan secara langsung. Pilihan C paling tepat karena menyentuh inti: kebudayaan sebagai identitas bangsa menghadapi globalisasi.'},
+
+// ── SOAL 18 ─────────────────────────────────────────────
+{no:18,type:'mcma',topic:'Bhinneka Tunggal Ika',sub:'Mengelola kebinekaan sebagai modal sosial pembangunan nasional',komp:'Penalaran',subkomp:'Menunjukkan cara/upaya menjaga kebhinekaan yang dapat menjadi modal sosial pembangunan nasional',level:'HOTS',
+passage:'Dalam rangka menjaga kebinekaan, kerja sama dan toleransi merupakan konsep yang sangat penting dalam membangun hubungan yang harmonis dan damai antara individu, kelompok, dan masyarakat. Kerjasama dapat dilakukan dalam berbagai bidang, seperti ekonomi, politik, sosial, dan budaya untuk meningkatkan efisiensi, efektivitas, dan kualitas hasil kerja. Sedangkan toleransi dilakukan dalam rangka membangun hubungan yang harmonis dan damai antara individu dan kelompok yang berbeda.',
+text:'Berdasarkan ilustrasi tersebut, mana saja pernyataan berikut yang menunjukkan upaya menjaga kebinekaan untuk menjadi modal sosial pembangunan nasional?\n\nKlik pada setiap pilihan jawaban benar! Jawaban benar lebih dari satu.',
+opts:['Meningkatkan kualitas hidup masyarakat melalui pembangunan yang berbasis pada kebutuhan dan aspirasi masyarakat, sehingga masyarakat dapat merasa sejahtera dan bahagia.','Meningkatkan kreativitas dan inovasi melalui pertukaran ide dan pengalaman antar kelompok masyarakat, sehingga dapat mempromosikan pembangunan yang inovatif dan efektif.','Membantu meningkatkan interaksi dan pemahaman antara budaya yang berbeda serta kerja sama seni dan budaya dalam rangka meningkatkan penghargaan terhadap budaya lain.','Meningkatkan kesadaran dan rasa tanggung jawab masyarakat terhadap pembangunan nasional, sehingga masyarakat dapat merasa memiliki dan bertanggung jawab terhadap masa depan bangsa.','Menjalin kerja sama seni dan budaya dapat membantu meningkatkan penghargaan terhadap budaya serta penggunaan teknologi yang dapat meningkatkan komunikasi dan interaksi antara budaya yang berbeda.'],
+answers:[1,2,4],
+expl:'Pernyataan B benar: pertukaran ide dan pengalaman antarkelompok merupakan wujud nyata kerja sama yang memperkuat kebinekaan sekaligus mendorong inovasi pembangunan.\n\nPernyataan C sangat relevan karena secara eksplisit menyebutkan peningkatan interaksi antarbudaya dan kerja sama seni-budaya sebagai penghargaan terhadap keberagaman.\n\nPernyataan E juga tepat karena kerja sama seni dan budaya serta pemanfaatan teknologi untuk komunikasi lintas budaya merupakan upaya konkret menjaga kebinekaan.\n\nPernyataan A kurang tepat karena lebih bersifat umum dan tidak spesifik menyentuh aspek kebinekaan. Pernyataan D juga kurang tepat karena meningkatkan tanggung jawab terhadap pembangunan merupakan nilai kewarganegaraan umum, bukan upaya spesifik menjaga kebinekaan.'},
+
+// ── SOAL 19 ─────────────────────────────────────────────
+{no:19,type:'pg',topic:'Bhinneka Tunggal Ika',sub:'Integrasi nasional dalam bingkai Bhinneka Tunggal Ika',komp:'Pemahaman',subkomp:'Mengidentifikasi tantangan/hambatan yang dihadapi dalam menjaga integrasi nasional dalam bingkai Bhinneka Tunggal Ika',level:'LOTS',
+passage:'Di sebuah SMA multikultural, siswa rutin mengadakan lomba seni budaya. Awalnya kegiatan ini dirancang untuk menumbuhkan persatuan dalam keberagaman. Namun, dalam pelaksanaannya muncul ejekan antar kelompok budaya, bahkan ada yang merasa budayanya lebih tinggi derajatnya. Sebagian guru khawatir persaingan ini justru memperlebar jarak antar siswa, sementara guru lain menilai penghentian lomba akan menghilangkan kesempatan belajar menghargai keberagaman. Orang tua ikut mendesak agar sekolah segera mengambil langkah tegas, sebab mereka khawatir anak-anak terjebak pada sikap eksklusif terhadap kelompok budaya lain.',
+text:'Langkah yang paling mendukung integrasi nasional dalam situasi tersebut adalah ….',
+opts:['Menghentikan lomba untuk sementara sambil menyusun format baru yang lebih menekankan kerja sama antarkelompok, meski berarti kegiatan harus ditunda.','Tetap melanjutkan lomba dengan memberi pendampingan khusus agar siswa dapat belajar menghargai perbedaan melalui interaksi langsung.','Membiarkan lomba berjalan apa adanya karena persaingan akan mengajarkan ketangguhan, meski beberapa siswa mungkin merasa direndahkan.','Menyaring jenis budaya yang ditampilkan agar tidak menimbulkan ejekan, meski berisiko mengurangi keragaman yang ada.','Mengubah lomba menjadi pameran budaya bersama tanpa penilaian pemenang, meski daya tarik kompetisinya berkurang.'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Langkah paling mendukung integrasi nasional adalah tetap memberikan ruang kompetisi budaya sambil menyertakan pendampingan khusus. Pendekatan ini tidak hanya merawat kebanggaan identitas budaya, tetapi juga mengajarkan keterampilan hidup dalam keberagaman. Lomba menjadi sarana pembelajaran toleransi, bukan pemecah belah — keseimbangan antara ekspresi budaya dan persatuan nasional.\n\nPilihan A menyebabkan kegiatan tertunda tanpa solusi langsung. Pilihan C membiarkan konflik berlanjut tanpa penanganan. Pilihan D membatasi keragaman. Pilihan E menghilangkan esensi kompetisi yang bisa menjadi motivasi.'},
+
+// ── SOAL 20 ─────────────────────────────────────────────
+{no:20,type:'pgk',topic:'Bhinneka Tunggal Ika',sub:'Integrasi nasional dalam bingkai Bhinneka Tunggal Ika',komp:'Penalaran',subkomp:'Menganalisis upaya menjaga integrasi nasional dalam bingkai kebhinekaan',level:'HOTS',
+passage:'Bangsa Indonesia adalah bangsa yang memiliki keberagaman suku, agama, bahasa, adat istiadat, dan budaya yang hidup berdampingan. Kebinekaan dapat menjadi fondasi kokoh yang menopang persatuan dan kesatuan bangsa. Namun adanya perbedaan juga dapat menjadi ancaman persatuan dan kesatuan.',
+text:'Klik Benar atau Salah dari setiap pernyataan berikut yang menunjukkan upaya menjaga integrasi nasional dalam bingkai kebhinekaan!',
+stmts:['Menghormati dan melindungi hak asasi manusia untuk semua warga negara, tanpa membedakan latar belakang budaya, agama, atau suku bangsa.','Mengawasi dan menangani konflik yang berpotensi mengancam integrasi nasional, serta meningkatkan kerja sama antarlembaga dan masyarakat.','Meningkatkan dialog dan komunikasi antarkelompok masyarakat untuk memperkuat persatuan bangsa dengan menyesuaikan perkembangan budaya lain.'],
+answers:[true,true,false],
+expl:'Pernyataan 1 Benar: menghormati dan melindungi HAM tanpa diskriminasi merupakan pilar utama menjaga integrasi nasional. Sikap ini mencerminkan penghargaan terhadap keberagaman dan memperkuat rasa keadilan.\n\nPernyataan 2 Benar: mengawasi dan menangani konflik antarkelompok serta meningkatkan kerja sama antarlembaga merupakan langkah konkret mencegah perpecahan dan mempertahankan keutuhan bangsa.\n\nPernyataan 3 Salah: meskipun dialog dan komunikasi baik, frasa "menyesuaikan perkembangan budaya lain" bermasalah. Upaya menjaga integrasi seharusnya berlandaskan penguatan identitas dan budaya bangsa sendiri, bukan mengikuti perkembangan budaya lain yang dapat mengikis jati diri bangsa.'},
+
+// ── SOAL 21 ─────────────────────────────────────────────
+{no:21,type:'pg',topic:'Bhinneka Tunggal Ika',sub:'Integrasi nasional dalam bingkai Bhinneka Tunggal Ika',komp:'Pemahaman',subkomp:'Mengidentifikasi tantangan/hambatan yang dihadapi dalam menjaga integrasi nasional dalam bingkai "Bhinneka Tunggal Ika"',level:'LOTS',
+passage:'Kehidupan suku bangsa di Indonesia sangat kaya akan keberagaman, dipengaruhi oleh faktor geografis dan sejarah. Indonesia memiliki lebih dari 1.340 suku bangsa yang tersebar di berbagai pulau, masing-masing dengan bahasa, tradisi, dan adat istiadat yang unik.',
+text:'Berdasarkan ilustrasi, tantangan yang dihadapi dalam menjaga integrasi nasional dalam bingkai "Bhinneka Tunggal Ika" adalah ....',
+opts:['adanya ketimpangan kehidupan yang terjadi dalam masyarakat','munculnya sikap sukuisme dalam kehidupan bermasyarakat','hadirnya perasaan rendah diri suku tertentu dalam masyarakat','terjadinya kepunahan suku tertentu akibat kesenjangan sosial','munculnya perilaku modernisme suku tertentu yang berlebihan'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Tantangan terbesar adalah munculnya sikap sukuisme, yaitu sikap terlalu mengutamakan dan membanggakan suku sendiri secara berlebihan hingga merendahkan suku lain. Dengan lebih dari 1.340 suku bangsa, potensi sukuisme sangat besar dan dapat memicu konflik horizontal yang mengancam persatuan.\n\nPilihan A merupakan tantangan pembangunan ekonomi, bukan integrasi nasional secara spesifik. Pilihan C tidak secara langsung mengancam integrasi nasional. Pilihan D lebih berkaitan dengan isu pelestarian budaya. Pilihan E merupakan fenomena sosial budaya yang tidak langsung menjadi hambatan utama integrasi sebagaimana sukuisme.'},
+
+// ── SOAL 22 ─────────────────────────────────────────────
+{no:22,type:'pg',topic:'Bhinneka Tunggal Ika',sub:'Ancaman terhadap negara dalam Bhinneka Tunggal Ika',komp:'Penalaran',subkomp:'Menganalisis upaya untuk mencegah/menghadapi ancaman terhadap integrasi nasional',level:'HOTS',
+passage:'Diskriminasi adalah perlakuan yang tidak adil terhadap seseorang atau kelompok berdasarkan perbedaan suku, agama, ras, jenis kelamin, atau status sosial. Apabila dibiarkan, diskriminasi dapat memicu konflik dan menjadi ancaman serius bagi integrasi nasional Indonesia.',
+text:'Berdasarkan ilustrasi, upaya yang perlu dilakukan untuk menghadapi ancaman tersebut agar integrasi nasional tetap terjaga adalah....',
+opts:['mendorong tumbuhnya semangat memperjuangkan kebebasan individu dalam kehidupan bernegara','mengajak setiap individu untuk saling mengakui sebagai makhluk yang memiliki kebebasan dan merdeka','mengutamakan dialog antarwarga untuk memperkuat rasa saling pengertian dan mencegah prasangka','menempatkan orang lain sesuai posisi sosialnya sebagai bagian dari tatanan masyarakat yang teratur','menumbuhkan sikap saling menghormati karena setiap manusia memiliki harkat dan martabat yang sama'],
+answer:4,
+expl:'Jawaban yang tepat adalah E. Upaya paling tepat menghadapi diskriminasi adalah menumbuhkan sikap saling menghormati karena setiap manusia memiliki harkat dan martabat yang sama. Sikap ini langsung menyerang akar diskriminasi, yaitu anggapan bahwa seseorang atau kelompok lebih rendah dari yang lain.\n\nPilihan A dan B menekankan kebebasan individu yang tidak secara langsung menjawab diskriminasi. Pilihan C relevan karena dialog dapat mencegah prasangka, namun belum menyentuh akar masalah secara mendasar. Pilihan D justru berpotensi melanggengkan diskriminasi karena menempatkan orang sesuai posisi sosialnya memperkuat hierarki sosial yang menjadi sumber diskriminasi.'},
+
+// ── SOAL 23 ─────────────────────────────────────────────
+{no:23,type:'pg',topic:'Negara Kesatuan Republik Indonesia',sub:'Menjaga keutuhan NKRI dalam konteks Wawasan Nusantara',komp:'Penalaran',subkomp:'Menganalisis upaya untuk melindungi keutuhan NKRI dari dampak negatif ideologi tersebut',level:'HOTS',
+passage:'Penyebaran paham radikalisme di media sosial untuk merubah ideologi negara semakin marak terjadi. Hal ini memengaruhi generasi muda dan menciptakan konflik horizontal di masyarakat.',
+text:'Upaya terbaik untuk melindungi keutuhan NKRI dari dampak tersebut adalah....',
+opts:['mengadakan dialog terbuka dengan kelompok radikal untuk mencari titik temu dan mengurangi konflik ideologi','memperkuat pendidikan Pancasila dan literasi digital di sekolah serta melibatkan tokoh agama dalam edukasi masyarakat','meningkatkan pengawasan ketat terhadap aktivitas media sosial dan memberikan teguran bagi penyebar konten radikal','mengorganisir kampanye nasional anti radikalisme melalui berbagai platform media untuk membentuk opini publik','membentuk forum diskusi antargenerasi untuk membahas perbedaan pandangan ideologi secara demokratis'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Pendekatan ini menyasar dua lini: membangun fondasi ideologi kuat sejak dini melalui pendidikan Pancasila, dan meningkatkan literasi digital agar generasi muda mampu menyaring konten di media sosial secara kritis. Keterlibatan tokoh agama memperkuat pesan moderasi.\n\nPilihan A berisiko memberikan legitimasi pada paham radikal. Pilihan C hanya bersifat reaktif tanpa membangun ketahanan ideologi dari dalam. Pilihan D bermanfaat namun kurang menyentuh akar persoalan. Pilihan E cukup positif tetapi tidak cukup komprehensif. Pilihan B paling menyeluruh karena bersifat preventif, edukatif, dan melibatkan berbagai lapisan masyarakat.'},
+
+// ── SOAL 24 ─────────────────────────────────────────────
+{no:24,type:'pg',topic:'Negara Kesatuan Republik Indonesia',sub:'Menjaga keutuhan NKRI dalam konteks Wawasan Nusantara',komp:'Penalaran',subkomp:'Menganalisis pentingnya salah satu nilai gatra pada wawasan nusantara dalam menjaga keutuhan NKRI',level:'HOTS',
+passage:'Panca gatra adalah aspek sosial kemasyarakatan dalam wawasan nusantara yang bersifat dinamis meliputi ideologi, politik, ekonomi, sosial budaya dan pertahanan keamanan. Gatra ekonomi sebagai salah satu aspek dalam wawasan nusantara merujuk pada aspek ekonomi yang menjadi bagian integral dari cara pandang bangsa Indonesia terhadap wilayah dan potensi negaranya. Wawasan nusantara dalam bidang ekonomi juga mengamanatkan pelaksanaan demokrasi ekonomi.',
+text:'Pentingnya hal tersebut dalam menjaga keutuhan NKRI adalah ....',
+opts:['mewujudkan pembangunan yang menjamin terwujudnya pemerataan pendapatan','mendorong untuk terus mengembangkan kehidupan ekonomi yang kuat dan mandiri','menekankan pentingnya eksplorasi dan eksploitasi potensi ekonomi antardaerah di Indonesia','melibatkan potensi dan partisipasi dari seluruh masyarakat, bukan hanya pihak tertentu','mengeksplorasi seluruh kekayaan alam dan potensi ekonomi strategis Indonesia'],
+answer:3,
+expl:'Jawaban yang tepat adalah D. Gatra ekonomi dalam wawasan nusantara mengamanatkan demokrasi ekonomi, yang berarti melibatkan potensi dan partisipasi seluruh masyarakat, bukan hanya pihak tertentu. Ketika seluruh masyarakat dilibatkan dan mendapat manfaat adil dari pembangunan, rasa memiliki terhadap negara semakin kuat.\n\nPilihan A merupakan hasil dari demokrasi ekonomi, bukan esensinya. Pilihan B lebih mengarah pada kemandirian nasional umum. Pilihan C dan E mengenai eksploitasi tanpa pemerataan justru dapat menciptakan ketimpangan yang mengancam persatuan. Pilihan D paling sesuai karena merujuk langsung pada nilai demokrasi ekonomi.'},
+
+// ── SOAL 25 ─────────────────────────────────────────────
+{no:25,type:'mcma',topic:'Negara Kesatuan Republik Indonesia',sub:'Menjaga keutuhan NKRI dalam konteks Wawasan Nusantara',komp:'Penalaran',subkomp:'Menganalisis peran warga negara pada wawasan nusantara dalam menjaga keutuhan NKRI',level:'HOTS',
+passage:'Di sebuah daerah tambang, muncul konflik horizontal antara penduduk lokal dan pendatang. Penduduk lokal merasa termarjinalkan karena sebagian besar posisi kerja di perusahaan tambang diisi oleh pendatang, sementara mereka hanya mendapat pekerjaan kasar dengan upah rendah. Situasi ini memicu kecemburuan ekonomi dan bentrokan sosial, hingga berpotensi mengganggu stabilitas keamanan daerah.',
+text:'Berdasarkan ilustrasi tersebut, pernyataan berikut yang benar terkait peran warga negara dalam mendukung keutuhan NKRI adalah ….\n\nPilih jawaban yang benar! Jawaban benar lebih dari satu.',
+opts:['Mengadakan dialog terbuka antara warga lokal dan pendatang dengan difasilitasi tokoh masyarakat untuk mencegah eskalasi konflik.','Membentuk kelompok ronda atau swadaya warga yang bekerja sama dengan aparat keamanan untuk menjaga ketertiban lingkungan.','Menyebarkan kabar secara langsung dan cepat ke media sosial agar publik luar daerah segera mengetahui kondisi sebenarnya.','Menjalin komunikasi aktif dengan aparat keamanan setempat untuk melaporkan situasi dan mencari solusi yang adil.','Menghindari keterlibatan warga dalam penyelesaian konflik agar tidak dianggap memperkeruh suasana.'],
+answers:[0,1,3],
+expl:'Pernyataan A benar: dialog terbuka antarwarga membantu meredakan prasangka dan membangun solidaritas, sejalan dengan prinsip persatuan dalam NKRI.\n\nPernyataan B benar: kelompok ronda/swadaya yang terkoordinasi memperkuat keamanan lokal tanpa main hakim sendiri, bentuk nyata partisipasi warga.\n\nPernyataan C salah: menyebarkan informasi tanpa verifikasi ke media sosial rawan memicu disinformasi dan memperluas konflik; tidak sejalan dengan peran konstruktif warga negara.\n\nPernyataan D benar: komunikasi aktif dengan aparat penting untuk memastikan langkah hukum dan keamanan sesuai prosedur.\n\nPernyataan E salah: menghindari keterlibatan justru melemahkan peran warga; sikap pasif bukan solusi untuk menjaga keutuhan NKRI.'},
+
+// ── SOAL 26 ─────────────────────────────────────────────
+{no:26,type:'pg',topic:'Negara Kesatuan Republik Indonesia',sub:'Mewaspadai ancaman terhadap kedudukan NKRI',komp:'Pemahaman',subkomp:'Menganalisis cara warga negara dalam mengatasi tantangan indonesia dalam menjaga keutuhan NKRI',level:'HOTS',
+passage:'Indonesia sebagai negara kepulauan yang multietnis menghadapi tantangan disintegrasi yang sering dipicu oleh isu ketidakadilan, diskriminasi, dan penyebaran hoaks.',
+text:'Cara warga negara dalam mengatasi tantangan tersebut dapat dilakukan dengan ....',
+opts:['mengajak masyarakat menjaga budaya lokal dengan membatasi pengaruh budaya luar yang masuk','menyebarkan informasi yang benar dan membangun dialog antarkelompok untuk mencegah konflik','mendorong pembentukan kelompok sosial yang terdiri dari warga dengan latar belakang yang sama','berpartisipasi dalam diskusi di media sosial dengan menyuarakan pandangan kelompok minoritas','meminimalkan pernyataan atau aktivitas yang dapat menimbulkan gesekan antarkelompok di masyarakat'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Cara paling tepat adalah menyebarkan informasi yang benar dan membangun dialog antarkelompok untuk mencegah konflik. Penyebaran hoaks merupakan pemicu utama konflik horizontal. Dengan aktif menyebarkan informasi benar dan membangun dialog, warga berperan sebagai agen kontra-narasi yang meredam potensi konflik.\n\nPilihan A membatasi budaya luar secara berlebihan dapat menciptakan sikap tertutup yang tidak sesuai semangat kebhinekaan. Pilihan C mendorong pembentukan kelompok berdasarkan kesamaan latar belakang justru memperkuat sekat sosial. Pilihan D hanya menyuarakan pandangan satu kelompok tanpa dialog konstruktif. Pilihan E bersifat pasif tanpa secara aktif membangun persatuan.'},
+
+// ── SOAL 27 ─────────────────────────────────────────────
+{no:27,type:'pgk',topic:'Negara Kesatuan Republik Indonesia',sub:'Peran serta warga negara dalam menjaga keutuhan NKRI',komp:'Penerapan',subkomp:'Menentukan peran warga negara dalam menjaga keutuhan NKRI berdasarkan dinamika IPOLEKSOSBUDHANKAM',level:'MOTS',
+passage:'Globalisasi ekonomi mendorong masuknya berbagai produk luar negeri ke pasar Indonesia. Apabila tidak disikapi dengan bijak, hal ini dapat menurunkan daya saing produk lokal dan mengancam perekonomian nasional.',
+text:'Berdasarkan ilustrasi, tentukan Benar atau Salah dari setiap pernyataan berikut yang menunjukkan peran warga negara dalam menjaga keutuhan NKRI berdasarkan dinamika tersebut!',
+stmts:['Berperan sebagai konsumen yang mendukung produk dalam negeri untuk memperkuat perekonomian nasional.','Berpartisipasi dalam kegiatan ekonomi yang mendorong daya saing bangsa di tengah arus globalisasi.','Berpartisipasi dengan membeli produk-produk dalam negeri karena memiliki harga lebih murah.'],
+answers:[true,true,false],
+expl:'Pernyataan 1 Benar: mendukung produk dalam negeri sebagai konsumen merupakan wujud nyata peran warga negara dalam menjaga ketahanan ekonomi nasional di tengah gempuran globalisasi, langsung memperkuat daya saing industri lokal.\n\nPernyataan 2 Benar: berpartisipasi dalam kegiatan ekonomi yang mendorong daya saing bangsa merupakan peran strategis warga negara dalam menghadapi dinamika globalisasi ekonomi demi menjaga kemandirian NKRI.\n\nPernyataan 3 Salah: membeli produk dalam negeri karena harga lebih murah adalah motivasi pragmatis dan ekonomis semata, bukan didasari kesadaran nasionalisme. Peran warga negara yang sesungguhnya adalah mendukung produk lokal karena kesadaran pentingnya menjaga perekonomian nasional.'},
+
+// ── SOAL 28 ─────────────────────────────────────────────
+{no:28,type:'pgk',topic:'Negara Kesatuan Republik Indonesia',sub:'Peran serta warga negara dalam menjaga keutuhan NKRI',komp:'Penerapan',subkomp:'Menunjukkan bukti bahwa Bhinneka Tunggal Ika dapat mengatasi ancaman dalam perkembangan kehidupan global',level:'MOTS',
+passage:'Perubahan iklim dan lingkungan merupakan salah satu bagian dalam perkembangan masyarakat global yang dapat mengancam keberlangsungan hidup manusia dan ekosistem serta menciptakan ketidakstabilan sosial, ekonomi dan politik yang kerap memunculkan terjadinya konflik dalam masyarakat.',
+text:'Tentukan Benar atau Salah dari setiap pernyataan berikut yang menunjukkan bukti bahwa Bhinneka Tunggal Ika dapat mengatasi ancaman sebagaimana ilustrasi di atas!',
+stmts:['Bhinneka Tunggal Ika merupakan semboyan persatuan dan kesatuan yang mengakui persamaan suku, agama, bahasa, dan budaya serta identitas nasional dengan menghilangkan segala bentuk perbedaan.','Bhinneka Tunggal Ika meningkatkan penghormatan dan penghargaan terhadap perbedaan, sehingga dapat mengurangi konflik dan meningkatkan kesatuan dan persatuan sebagai bagian masyarakat global.','Bhinneka Tunggal Ika meningkatkan kesadaran terhadap keberagaman dan kesatuan, sehingga dapat meningkatkan partisipasi dan kontribusi masyarakat dalam membangun masyarakat global yang dinamis.'],
+answers:[false,true,true],
+expl:'Pernyataan 1 Salah: terdapat kekeliruan mendasar dalam frasa "dengan menghilangkan segala bentuk perbedaan." Bhinneka Tunggal Ika justru bermakna sebaliknya: mengakui dan menghargai perbedaan yang ada, bukan menghilangkannya. Semboyan ini mengajarkan meski berbeda-beda tetap satu.\n\nPernyataan 2 Benar: Bhinneka Tunggal Ika mendorong penghormatan terhadap perbedaan yang dapat meredam konflik dan memperkuat persatuan, termasuk dalam konteks masyarakat global yang beragam.\n\nPernyataan 3 Benar: nilai-nilai Bhinneka Tunggal Ika yang meningkatkan kesadaran keberagaman dan kesatuan mendorong masyarakat berpartisipasi aktif dalam membangun tatanan masyarakat global yang lebih harmonis.'},
+
+// ── SOAL 29 ─────────────────────────────────────────────
+{no:29,type:'pg',topic:'Negara Kesatuan Republik Indonesia',sub:'Memperkukuh persatuan dan kesatuan bangsa dalam konteks NKRI',komp:'Penerapan',subkomp:'Menentukan alasan suatu aktivitas/peristiwa dapat memperkukuh persatuan dan kesatuan bangsa',level:'MOTS',
+passage:'Pemerintah Indonesia mengadakan kegiatan Festival Budaya Nusantara yang melibatkan berbagai komunitas dari seluruh provinsi. Kegiatan ini mencakup pameran seni, pertunjukan tradisional, serta diskusi tentang keberagaman budaya Indonesia.',
+text:'Alasan kegiatan tersebut dapat memperkukuh persatuan dan kesatuan bangsa adalah ....',
+opts:['memperkenalkan produk lokal untuk meningkatkan perekonomian setiap daerah','mengedepankan keberagaman budaya Indonesia yang mempererat hubungan antarwarga negara','menciptakan peluang kerja baru untuk masyarakat yang terlibat dalam pameran dan pertunjukan','memberi kesempatan kepada wisatawan lokal dan asing untuk menikmati budaya Indonesia','promosi pariwisata lokal di setiap daerah untuk menarik lebih banyak wisatawan domestik'],
+answer:1,
+expl:'Jawaban yang tepat adalah B. Alasan utama Festival Budaya Nusantara dapat memperkukuh persatuan dan kesatuan adalah karena kegiatan ini mengedepankan keberagaman budaya yang mempererat hubungan antarwarga negara. Melalui pameran seni dan pertunjukan dari seluruh provinsi, festival ini membangun rasa saling mengenal, menghargai, dan mencintai keragaman yang dimiliki bangsa.\n\nPilihan A, C, D, dan E merupakan dampak positif yang lebih bersifat ekonomi dan pariwisata, bukan pada penguatan persatuan dan kesatuan bangsa secara langsung. Pilihan B satu-satunya yang menunjukkan hubungan kausal antara festival dengan penguatan persatuan melalui nilai keberagaman budaya.'},
+
+// ── SOAL 30 ─────────────────────────────────────────────
+{no:30,type:'mcma',topic:'Negara Kesatuan Republik Indonesia',sub:'Menjadi pelopor pemilih pemula dalam demokrasi Indonesia',komp:'Penerapan',subkomp:'Menerapkan tujuan partisipasi pemilih pemula dalam kehidupan demokrasi',level:'MOTS',
+passage:'Seorang mahasiswa aktif di organisasi kemahasiswaan kampus melihat data bahwa di daerahnya, angka golput pemilih pemula (17-21 tahun) mencapai 45% pada pemilu terakhir. Banyak teman sebayanya menganggap politik itu kotor dan merasa suara mereka tidak berpengaruh. Mahasiswa tersebut ingin mengajak pemilih pemula lebih aktif berpartisipasi dalam demokrasi, tapi bingung caranya.',
+text:'Jika kamu mengalami situasi seperti mahasiswa tersebut, upaya yang paling tepat untuk meningkatkan partisipasi pemilih pemula dalam demokrasi adalah…\n\nPilih jawaban yang benar! Jawaban benar lebih dari satu.',
+opts:['Mengampanyekan salah satu calon tertentu kepada pemilih pemula agar mereka termotivasi memilih.','Menyelenggarakan diskusi dan simulasi pemilu di kampus untuk mengedukasi pentingnya hak pilih.','Membuat konten media sosial yang menjelaskan dampak konkret kebijakan terhadap kehidupan pemuda.','Mengajak pemilih pemula untuk tidak memilih sebagai bentuk protes terhadap sistem politik yang korup.','Memfasilitasi dialog antara pemilih pemula dengan calon pemimpin untuk mendengar visi dan program mereka.'],
+answers:[1,2,4],
+expl:'Pernyataan A salah: mengampanyekan calon tertentu bukan cara tepat untuk meningkatkan partisipasi secara umum. Ini lebih ke kampanye politik yang memihak, bukan edukasi demokrasi yang netral.\n\nPernyataan B benar: edukasi melalui diskusi dan simulasi adalah cara efektif membangun kesadaran politik. Dengan simulasi, pemilih pemula bisa merasakan langsung prosesnya.\n\nPernyataan C benar: membuat konten yang menjelaskan dampak konkret kebijakan terhadap kehidupan pemuda membuat mereka melihat bahwa keputusan politik langsung mempengaruhi hidup mereka.\n\nPernyataan D salah: mengajak golput kontraproduktif dan tidak menyelesaikan masalah. Jika pemuda idealis memilih golput, pemimpin dipilih hanya oleh kelompok tertentu.\n\nPernyataan E benar: dialog langsung antara pemilih pemula dengan calon pemimpin membangun kepercayaan dan membuat pemuda merasa dilibatkan dan dihargai.'}
+];
+
+// ── STATE ───────────────────────────────────────────────
+var cur=0,rev=false,done=false,tint=null,tLeft=75*60;
+var UA=[];
+function initUA(){UA=[];for(var i=0;i<Q.length;i++){var q=Q[i];if(q.type==='pg')UA.push(null);else if(q.type==='mcma')UA.push([]);else{var arr=[];for(var j=0;j<q.stmts.length;j++)arr.push(null);UA.push(arr);}}}
+initUA();
+
+function startExam(){document.getElementById('ws').style.display='none';document.getElementById('es').style.display='block';buildGrid();renderQ(0);startTimer();}
+function buildGrid(){var g=document.getElementById('qgrid');g.innerHTML='';for(var i=0;i<Q.length;i++){var b=document.createElement('button');b.className='qdot';b.textContent=i+1;b.id='qd'+i;(function(idx){b.onclick=function(){goTo(idx);};})(i);g.appendChild(b);}}
+
+function renderQ(idx){
+  cur=idx;var q=Q[idx],isc=done||rev;
+  document.getElementById('qh').className='qhead '+q.type;
+  document.getElementById('qnum').innerHTML=idx+1+'<span>dari '+Q.length+'</span>';
+  document.getElementById('q-topic-line').textContent=q.topic;
+  document.getElementById('q-subtopic-line').textContent=q.sub||'';
+  var tl={pg:'Pilihan Ganda',mcma:'Multi-Jawab (MCMA)',pgk:'Benar / Salah (PGK)'};
+  document.getElementById('q-type-pill').textContent=tl[q.type]||q.type;
+  var lp=document.getElementById('q-level-pill');lp.textContent=q.level;lp.className='q-level-pill lv-'+q.level;
+  var lm={LOTS:1,MOTS:2,HOTS:3},lv=lm[q.level]||2;
+  var de=document.getElementById('qdif');de.innerHTML='';
+  for(var i=1;i<=3;i++){var s=document.createElement('span');s.className='d'+(i<=lv?' on':'');de.appendChild(s);}
+  var body=document.getElementById('qbody');body.innerHTML='';
+  var ks=document.createElement('div');ks.className='komp-strip';
+  ks.innerHTML='<span class="ks-label">Kompetensi:</span><span class="ks-val ks-komp">'+q.komp+'</span>'+'<span class="ks-label" style="margin-left:4px">Subkompetensi:</span><span class="ks-val ks-sub">'+q.subkomp+'</span>';
+  body.appendChild(ks);
+  if(q.passage&&q.passage.trim()){var pb=document.createElement('div');pb.className='passage';pb.innerHTML=q.passage.replace(/\n/g,'<br>');body.appendChild(pb);}
+  var qt=document.createElement('p');qt.className='qtext';qt.innerHTML=q.text.replace(/\n/g,'<br>');body.appendChild(qt);
+  if(q.type==='pg')renderPG(body,q,idx,isc);
+  else if(q.type==='mcma')renderMCMA(body,q,idx,isc);
+  else renderPGK(body,q,idx,isc);
+  if(isc&&q.expl){var ex=document.createElement('div');ex.className='expl show';ex.innerHTML='<strong>📖 Pembahasan</strong>'+q.expl.replace(/\n/g,'<br>');body.appendChild(ex);}
+  document.getElementById('bprev').disabled=(idx===0);
+  var isLast=(idx===Q.length-1);
+  var bn=document.getElementById('bnext'),bf=document.getElementById('bfin');
+  bn.style.display=isLast?'none':'flex';bf.style.display=isLast?'flex':'none';
+  if(rev){bf.textContent='Kembali ke Hasil';bf.onclick=function(){showResultScreen();};}
+  else{bf.textContent='Selesai Latihan';bf.onclick=function(){finishExam();};}
+  updGrid();updStats();
+}
+
+function renderPG(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill ppg';p.textContent='Pilih satu jawaban';body.appendChild(p);
+  var w=document.createElement('div');w.className='opts';
+  var labs=['A','B','C','D','E'];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.createElement('button');b.className='opt';
+    if(isc){b.disabled=true;if(i===q.answer)b.classList.add('correct');if(UA[idx]===i&&i!==q.answer)b.classList.add('wrong');}
+    else{if(UA[idx]===i)b.classList.add('sel');(function(ii){b.onclick=function(){UA[idx]=ii;renderQ(idx);};})(i);}
+    b.innerHTML='<span class="olbl">'+labs[i]+'</span><span>'+q.opts[i]+'</span>';w.appendChild(b);
+  }
+  body.appendChild(w);
+}
+
+function renderMCMA(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill pmc';p.textContent='Pilih semua jawaban yang benar (bisa lebih dari satu)';body.appendChild(p);
+  if(!isc){var h=document.createElement('div');h.className='mhint';h.innerHTML='⚡ Klik untuk memilih / batalkan pilihan.';body.appendChild(h);}
+  var w=document.createElement('div');w.className='mcopts';
+  var sel=UA[idx]||[];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.createElement('button');b.className='mcopt';
+    if(isc){b.disabled=true;var ic=q.answers.indexOf(i)>=0,is=sel.indexOf(i)>=0;if(is&&ic)b.classList.add('correct');else if(is&&!ic)b.classList.add('wrong');else if(!is&&ic)b.classList.add('missed');}
+    else{if(sel.indexOf(i)>=0)b.classList.add('sel');(function(ii){b.onclick=function(){var a=UA[idx]||[];var ni=a.indexOf(ii);if(ni>=0)a.splice(ni,1);else a.push(ii);UA[idx]=a;renderQ(idx);};})(i);}
+    b.innerHTML='<span class="mchk">✓</span><span>'+q.opts[i]+'</span>';w.appendChild(b);
+  }
+  body.appendChild(w);
+}
+
+function renderPGK(body,q,idx,isc){
+  var p=document.createElement('div');p.className='pill ppk';p.textContent='Pilih Benar atau Salah untuk setiap pernyataan';body.appendChild(p);
+  var t=document.createElement('div');t.className='pkwrap';
+  var h=document.createElement('div');h.className='pkh';
+  h.innerHTML='<span>Pernyataan</span><span style="text-align:center">Benar</span><span style="text-align:center">Salah</span>';
+  t.appendChild(h);
+  if(!Array.isArray(UA[idx])||UA[idx].length!==q.stmts.length){var arr=[];for(var j=0;j<q.stmts.length;j++)arr.push(null);UA[idx]=arr;}
+  for(var si=0;si<q.stmts.length;si++){
+    var row=document.createElement('div');row.className='pkrow';
+    var uv=UA[idx][si],cv=q.answers[si];
+    if(isc)row.classList.add(uv===cv?'rc':'rw');
+    var sd=document.createElement('div');sd.className='pkstmt';sd.textContent=q.stmts[si];
+    var ct=document.createElement('div');ct.className='pkcol';
+    var bt=document.createElement('button');bt.className='pkbtn';bt.textContent='Benar';
+    var cf=document.createElement('div');cf.className='pkcol';
+    var bf2=document.createElement('button');bf2.className='pkbtn';bf2.textContent='Salah';
+    if(isc){bt.disabled=true;bf2.disabled=true;if(cv===true)bt.classList.add('ok');else if(uv===true)bt.classList.add('bad');if(cv===false)bf2.classList.add('ok');else if(uv===false)bf2.classList.add('bad');}
+    else{if(uv===true)bt.classList.add('st');if(uv===false)bf2.classList.add('sf');(function(sii){bt.onclick=function(){var a=UA[idx].slice();a[sii]=a[sii]===true?null:true;UA[idx]=a;renderQ(idx);};bf2.onclick=function(){var a=UA[idx].slice();a[sii]=a[sii]===false?null:false;UA[idx]=a;renderQ(idx);};})(si);}
+    ct.appendChild(bt);cf.appendChild(bf2);
+    row.appendChild(sd);row.appendChild(ct);row.appendChild(cf);t.appendChild(row);
+  }
+  body.appendChild(t);
+}
+
+function isAns(i){var q=Q[i],a=UA[i];if(q.type==='pg')return a!==null;if(q.type==='mcma')return Array.isArray(a)&&a.length>0;if(!Array.isArray(a))return false;for(var j=0;j<a.length;j++)if(a[j]!==null)return true;return false;}
+
+function isCor(i){
+  var q=Q[i],a=UA[i];
+  if(q.type==='pg')return a===q.answer;
+  if(q.type==='mcma'){if(!Array.isArray(a)||!a.length)return false;return a.slice().sort().join(',')===q.answers.slice().sort().join(',');}
+  if(q.type==='pgk'){if(!Array.isArray(a))return false;for(var j=0;j<q.answers.length;j++)if(a[j]!==q.answers[j])return false;return true;}
+  return false;
+}
+
+function isPart(i){
+  var q=Q[i],a=UA[i];
+  if(q.type==='mcma'&&Array.isArray(a)&&a.length){var hasCor=false;for(var j=0;j<a.length;j++)if(q.answers.indexOf(a[j])>=0){hasCor=true;break;}return hasCor&&!isCor(i);}
+  if(q.type==='pgk'&&Array.isArray(a)){var hasCor2=false;for(var j=0;j<q.answers.length;j++)if(a[j]===q.answers[j]){hasCor2=true;break;}return hasCor2&&!isCor(i);}
+  return false;
+}
+
+function nav(d){var n=cur+d;if(n>=0&&n<Q.length)renderQ(n);}
+function goTo(i){renderQ(i);}
+
+function updGrid(){
+  for(var i=0;i<Q.length;i++){
+    var dot=document.getElementById('qd'+i);dot.className='qdot';
+    if(i===cur){dot.classList.add('active');continue;}
+    if(!isAns(i))continue;
+    if(done||rev){if(isCor(i))dot.classList.add('cc');else if(isPart(i))dot.classList.add('cp');else dot.classList.add('cw');}
+    else dot.classList.add('ans');
+  }
+}
+
+function updStats(){var n=0;for(var i=0;i<Q.length;i++)if(isAns(i))n++;document.getElementById('sdon').textContent=n;document.getElementById('slft').textContent=Q.length-n;document.getElementById('pf').style.width=(n/Q.length*100)+'%';document.getElementById('ptx').textContent=n+' / '+Q.length+' dijawab';}
+
+function startTimer(){tint=setInterval(function(){tLeft--;var m=String(Math.floor(tLeft/60)).padStart(2,'0'),s=String(tLeft%60).padStart(2,'0');var el=document.getElementById('timer');el.textContent=m+':'+s;el.className='';if(tLeft<=300)el.classList.add('warn');if(tLeft<=60)el.classList.add('danger');if(tLeft<=0){clearInterval(tint);finishExam(true);}},1000);}
+
+function finishExam(tu){clearInterval(tint);done=true;showResultScreen(tu);}
+
+function showResultScreen(tu){
+  document.getElementById('es').style.display='none';
+  document.getElementById('rs').style.display='block';
+  window.scrollTo(0,0);
+  var cor=0,wrg=0,skp=0;
+  for(var i=0;i<Q.length;i++){
+    if(!isAns(i))skp++;
+    else if(isCor(i))cor++;
+    else wrg++;
+  }
+  var sc=Math.round(cor/Q.length*100),KKM=75,lulus=sc>=KKM;
+  var badge=document.getElementById('rbadge');badge.textContent=sc;badge.className='rb '+(lulus?'lulus':'gagal');
+  var kb=document.getElementById('kkm-badge');kb.className='kkm-badge '+(lulus?'lulus':'gagal');
+  kb.innerHTML=lulus?'✅ LULUS &nbsp;·&nbsp; KKM 75 tercapai':'❌ TIDAK LULUS &nbsp;·&nbsp; KKM 75 tidak tercapai';
+  document.getElementById('rcor').textContent=cor;
+  document.getElementById('rwrg').textContent=wrg;
+  document.getElementById('rskp').textContent=skp;
+  document.getElementById('rsco').textContent=sc;
+  var msg='',bg='',cl='',bd='';
+  if(sc>=85){msg='🏆 Sangat Baik — Penguasaan materi sangat baik!';bg='#DCFCE7';cl='#14532D';bd='#A7F3C1';}
+  else if(sc>=75){msg='✅ Baik — Hasil memuaskan, KKM tercapai!';bg='#EFF6FF';cl='#1E40AF';bd='#BFDBFE';}
+  else if(sc>=55){msg='📚 Cukup — Belum mencapai KKM. Beberapa materi perlu dipelajari lagi.';bg='#FFFBEB';cl='#92400E';bd='#FCD34D';}
+  else{msg='💪 Perlu Belajar Lebih — Belum mencapai KKM. Pelajari kembali materi yang belum dikuasai!';bg='#FEF2F2';cl='#991B1B';bd='#FCA5A5';}
+  var pb=document.getElementById('pred');pb.textContent=msg;
+  pb.style.cssText='background:'+bg+';color:'+cl+';border:1px solid '+bd+';border-radius:var(--radius);padding:.85rem 1.4rem;margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5';
+  document.getElementById('rtit').textContent=(tu?'Waktu Habis!':'Latihan Selesai');
+  document.getElementById('rsub').textContent='Nilai: '+sc+' / 100 · '+cor+' benar, '+wrg+' salah, '+skp+' tidak dijawab dari '+Q.length+' soal';
+  buildAnalisisSoal();
+  buildAnalisisKomp();
+}
+
+function switchTab(id,el){var panels=document.querySelectorAll('.tab-panel');for(var i=0;i<panels.length;i++)panels[i].classList.remove('active');var tabs=document.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');document.getElementById(id).classList.add('active');el.classList.add('active');}
+
+function buildAnalisisSoal(){
+  var panel=document.getElementById('tab-soal');panel.innerHTML='';
+  var groups={},order=[];
+  for(var i=0;i<Q.length;i++){var q=Q[i];if(!groups[q.topic]){groups[q.topic]={topic:q.topic,items:[]};order.push(q.topic);}groups[q.topic].items.push({q:q,i:i});}
+  for(var t=0;t<order.length;t++){
+    var g=groups[order[t]];
+    var cor=0;for(var x=0;x<g.items.length;x++)if(isCor(g.items[x].i))cor++;
+    var tot=g.items.length,pct=Math.round(cor/tot*100);
+    var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
+    var sec=document.createElement('div');sec.className='ana-section';
+    var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
+    for(var x=0;x<g.items.length;x++){
+      var qi=g.items[x].q,ii=g.items[x].i;
+      var ans=isAns(ii),cor2=isCor(ii);
+      var cls='ai-cor',icon='✅',status='Benar';
+      if(!ans){cls='ai-skp';icon='⬜';status='Tidak Dijawab';}
+      else if(!cor2){cls='ai-wrg';icon='❌';status='Salah';}
+      var item=document.createElement('div');item.className='ana-item '+cls;
+      item.innerHTML='<span>'+icon+'</span><div class="ai-content"><strong>Soal '+qi.no+' · '+status+' · '+qi.level+'</strong><span>'+qi.sub+' — '+qi.komp+': '+qi.subkomp+'</span></div>';
+      bodyDiv.appendChild(item);
+    }
+    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:13.5px">📌 '+g.topic+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' benar ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
+    sec.appendChild(bodyDiv);panel.appendChild(sec);
+  }
+}
+
+function toggleSec(el){var body=el.nextElementSibling;var arr=el.querySelector('span:last-child');if(body.style.display==='none'){body.style.display='flex';arr.textContent='▾';}else{body.style.display='none';arr.textContent='▸';}}
+
+function buildAnalisisKomp(){
+  var panel=document.getElementById('tab-komp');panel.innerHTML='';
+  var kompMap={},kompOrder=[];
+  for(var i=0;i<Q.length;i++){var q=Q[i];if(!kompMap[q.komp]){kompMap[q.komp]={komp:q.komp,subs:{},subOrder:[]};kompOrder.push(q.komp);}if(!kompMap[q.komp].subs[q.subkomp]){kompMap[q.komp].subs[q.subkomp]={subkomp:q.subkomp,items:[]};kompMap[q.komp].subOrder.push(q.subkomp);}kompMap[q.komp].subs[q.subkomp].items.push({q:q,i:i});}
+  var h=document.createElement('h3');h.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h.textContent='Ringkasan per Kompetensi';panel.appendChild(h);
+  var wrap=document.createElement('div');wrap.style.cssText='background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem';
+  var html='<table class="komp-table"><thead><tr><th>Kompetensi</th><th>Soal</th><th>Benar</th><th>Skor</th><th>Capaian</th></tr></thead><tbody>';
+  for(var k=0;k<kompOrder.length;k++){
+    var km=kompMap[kompOrder[k]];var allItems=[];for(var s in km.subs)allItems=allItems.concat(km.subs[s].items);
+    var cor=0;for(var x=0;x<allItems.length;x++)if(isCor(allItems[x].i))cor++;
+    var tot=allItems.length,pct=Math.round(cor/tot*100);
+    var fillCls=pct>=70?'sf-good':pct>=40?'sf-mid':'sf-bad';
+    html+='<tr><td style="font-weight:500">'+km.komp+'</td><td style="text-align:center">'+tot+'</td><td style="text-align:center;color:var(--correct);font-weight:600">'+cor+'</td><td style="text-align:center;font-weight:600">'+pct+'%</td><td style="min-width:100px"><div class="score-bar"><div class="score-fill '+fillCls+'" style="width:'+pct+'%"></div></div></td></tr>';
+  }
+  html+='</tbody></table>';wrap.innerHTML=html;panel.appendChild(wrap);
+
+  var h2=document.createElement('h3');h2.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h2.textContent='Capaian per Level Kognitif';panel.appendChild(h2);
+  var lvlBox=document.createElement('div');lvlBox.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem';
+  var lvls=['LOTS','MOTS','HOTS'];
+  for(var lv=0;lv<lvls.length;lv++){
+    var lvName=lvls[lv],ids=[];for(var i=0;i<Q.length;i++)if(Q[i].level===lvName)ids.push(i);
+    var cor=0;for(var x=0;x<ids.length;x++)if(isCor(ids[x]))cor++;
+    var tot=ids.length,pct=tot>0?Math.round(cor/tot*100):0;
+    var col=pct>=70?'var(--correct)':pct>=40?'#D97706':'var(--wrong)';
+    lvlBox.innerHTML+='<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;text-align:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:5px">'+lvName+'</div><div style="font-family:Playfair Display,serif;font-size:26px;font-weight:700;color:'+col+'">'+pct+'%</div><div style="font-size:12px;color:var(--ink-muted)">'+cor+' / '+tot+' benar</div></div>';
+  }
+  panel.appendChild(lvlBox);
+
+  var h3=document.createElement('h3');h3.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h3.textContent='Detail per Subkompetensi';panel.appendChild(h3);
+  for(var k=0;k<kompOrder.length;k++){
+    var km=kompMap[kompOrder[k]];var allItems=[];for(var s=0;s<km.subOrder.length;s++)allItems=allItems.concat(km.subs[km.subOrder[s]].items);
+    var cor=0;for(var x=0;x<allItems.length;x++)if(isCor(allItems[x].i))cor++;
+    var tot=allItems.length,pct=Math.round(cor/tot*100);
+    var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
+    var sec=document.createElement('div');sec.className='ana-section';
+    var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
+    for(var s=0;s<km.subOrder.length;s++){
+      var sm=km.subs[km.subOrder[s]];var sc2=0;for(var x=0;x<sm.items.length;x++)if(isCor(sm.items[x].i))sc2++;
+      var st2=sm.items.length,p2=Math.round(sc2/st2*100);
+      var fillCls=p2>=70?'sf-good':p2>=40?'sf-mid':'sf-bad';
+      var badges='';
+      for(var x=0;x<sm.items.length;x++){
+        var qi2=sm.items[x].q,ii2=sm.items[x].i;
+        var cor3=isCor(ii2),ans3=isAns(ii2);
+        var col=cor3?'var(--correct)':ans3?'var(--wrong)':'var(--skip)';
+        var ic=cor3?'✅':ans3?'❌':'⬜';
+        badges+='<span style="display:inline-flex;align-items:center;gap:3px;font-size:11.5px;padding:2px 7px;border-radius:99px;border:1px solid '+col+';color:'+col+';background:white">'+ic+' No.'+qi2.no+'</span>';
+      }
+      var subDiv=document.createElement('div');
+      subDiv.style.cssText='background:#FAF7F3;border:1px solid var(--border);border-radius:8px;padding:.65rem .85rem;margin-bottom:.35rem';
+      subDiv.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:500;color:var(--ink)">'+sm.subkomp+'</span><span style="font-size:12px;font-weight:600;color:'+(p2>=70?'var(--correct)':p2>=40?'#D97706':'var(--wrong)')+'">'+sc2+'/'+st2+' ('+p2+'%)</span></div><div class="score-bar"><div class="score-fill '+fillCls+'" style="width:'+p2+'%"></div></div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px">'+badges+'</div>';
+      bodyDiv.appendChild(subDiv);
+      // Rekomendasi untuk semua yang tidak benar (salah + tidak dijawab)
+      var wrong=[],skipped=[];
+      for(var x=0;x<sm.items.length;x++){var ii3=sm.items[x].i;if(!isAns(ii3))skipped.push(sm.items[x].q);else if(!isCor(ii3))wrong.push(sm.items[x].q);}
+      if(wrong.length||skipped.length){
+        var rec=document.createElement('div');
+        rec.style.cssText='background:#FEF9E7;border:1px solid var(--skip-bd);border-radius:7px;padding:.55rem .75rem;margin-bottom:.35rem;font-size:12.5px;color:var(--skip)';
+        var txt='💡 Perlu ditingkatkan: ';
+        if(skipped.length){var ns=[];for(var x=0;x<skipped.length;x++)ns.push(skipped[x].no);txt+='Soal '+ns.join(', ')+' <strong>tidak dijawab</strong> (dihitung salah). ';}
+        if(wrong.length){var nw=[];for(var x=0;x<wrong.length;x++)nw.push(wrong[x].no);txt+='Soal '+nw.join(', ')+' <strong>dijawab salah</strong>. ';}
+        txt+='Pelajari kembali: <strong>'+sm.subkomp+'</strong>';
+        rec.innerHTML=txt;bodyDiv.appendChild(rec);
+      }
+    }
+    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:13.5px">🎯 '+km.komp+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' benar ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
+    sec.appendChild(bodyDiv);panel.appendChild(sec);
+  }
+}
+
+function reviewMode(){rev=true;done=true;document.getElementById('rs').style.display='none';document.getElementById('es').style.display='block';document.getElementById('rev-banner').style.display='block';window.scrollTo(0,0);renderQ(0);updGrid();}
+function restartExam(){initUA();done=false;rev=false;cur=0;tLeft=75*60;clearInterval(tint);document.getElementById('rs').style.display='none';document.getElementById('es').style.display='none';document.getElementById('rev-banner').style.display='none';document.getElementById('ws').style.display='block';document.getElementById('timer').textContent='75:00';document.getElementById('timer').className='';window.scrollTo(0,0);}
+</script>
+</body>
+</html>
