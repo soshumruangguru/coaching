@@ -231,8 +231,8 @@ header{background:var(--ink);color:#F5F1EB;padding:1.1rem 2rem;display:flex;alig
       <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Tipe Soal</p>
       <div class="tr">
         <span class="tag">21× Pilihan Ganda (PG)</span>
-        <span class="tag pk">3× PG Benar / Salah (PGK)</span>
         <span class="tag mc">6× PG Multi-Jawab (MCMA)</span>
+        <span class="tag pk">3× Benar / Salah (PGK)</span>
       </div>
       <p style="font-size:12px;color:var(--ink-muted);margin-bottom:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Materi</p>
       <div class="tr">
@@ -329,11 +329,9 @@ header{background:var(--ink);color:#F5F1EB;padding:1.1rem 2rem;display:flex;alig
   <div class="tabs">
     <button class="tab active" onclick="switchTab('tab-soal',this)">📋 Analisis per Soal</button>
     <button class="tab" onclick="switchTab('tab-komp',this)">📊 Kompetensi</button>
-    <button class="tab" onclick="switchTab('tab-subkomp',this)">🎯 Subkompetensi</button>
   </div>
   <div id="tab-soal" class="tab-panel active"></div>
   <div id="tab-komp" class="tab-panel"></div>
-  <div id="tab-subkomp" class="tab-panel"></div>
   <div class="rbtns">
     <button class="btr out" onclick="reviewMode()">📖 Lihat Pembahasan</button>
     <button class="btr pri" onclick="restartExam()">↺ Ulangi Latihan</button>
@@ -836,7 +834,7 @@ function showResultScreen(tu){
   var pb=document.getElementById('pred');pb.textContent=msg;pb.style.cssText='background:'+bg+';color:'+cl+';border:1px solid '+bd+';border-radius:var(--radius);padding:.85rem 1.4rem;margin-bottom:1.25rem;font-size:14.5px;font-weight:500;line-height:1.5';
   document.getElementById('rtit').textContent=(tu?'Waktu Habis!':'Latihan Selesai');
   document.getElementById('rsub').textContent='Nilai: '+sc+' / 100 · '+cor+' benar, '+wrg+' salah, '+skp+' tidak dijawab dari '+Q.length+' soal';
-  buildAnalisisSoal();buildAnalisisKomp();buildAnalisisSubkomp();
+  buildAnalisisSoal();buildAnalisisKomp();
 }
 function switchTab(id,el){var panels=document.querySelectorAll('.tab-panel');for(var i=0;i<panels.length;i++)panels[i].classList.remove('active');var tabs=document.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');document.getElementById(id).classList.add('active');el.classList.add('active');}
 function buildAnalisisSoal(){
@@ -857,40 +855,6 @@ function buildAnalisisSoal(){
     sec.appendChild(bodyDiv);panel.appendChild(sec);}
 }
 function toggleSec(el){var body=el.nextElementSibling;var arr=el.querySelector('span:last-child');if(body.style.display==='none'){body.style.display='flex';arr.textContent='▾';}else{body.style.display='none';arr.textContent='▸';}}
-function buildAnalisisSubkomp(){
-  var panel=document.getElementById('tab-subkomp');panel.innerHTML='';
-  // group by subkomp
-  var subMap={},subOrder=[];
-  for(var i=0;i<Q.length;i++){var q=Q[i];var key=q.subkomp;if(!subMap[key]){subMap[key]={subkomp:key,items:[]};subOrder.push(key);}subMap[key].items.push({q:q,i:i});}
-  var h=document.createElement('h3');h.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.5rem;color:var(--ink)';h.textContent='Capaian per Subkompetensi';panel.appendChild(h);
-  var desc=document.createElement('p');desc.style.cssText='font-size:12.5px;color:var(--ink-muted);margin-bottom:1rem;line-height:1.6';desc.textContent='Tabel ini menunjukkan seberapa baik penguasaan setiap subkompetensi. Soal tidak dijawab dihitung sebagai salah.';panel.appendChild(desc);
-  for(var si=0;si<subOrder.length;si++){
-    var sm=subMap[subOrder[si]];var cor=0,wrg=0,skp=0;
-    for(var x=0;x<sm.items.length;x++){var ii=sm.items[x].i;if(isCor(ii))cor++;else if(!isAns(ii))skp++;else wrg++;}
-    var tot=sm.items.length,pct=Math.round(cor/tot*100);
-    var fillCls=pct>=70?'sf-good':pct>=40?'sf-mid':'sf-bad';
-    var badgeCls=pct>=70?'ab-ok':pct>=40?'ab-warn':'ab-bad';
-    var statusIcon=pct>=70?'✅':pct>=40?'⚠️':'❌';
-    var rec=pct>=70?'Sudah dikuasai dengan baik.':pct>=40?'Perlu pendalaman lebih lanjut.':'Perlu dipelajari ulang dari awal.';
-    var sec=document.createElement('div');sec.className='ana-section';
-    var bodyDiv=document.createElement('div');bodyDiv.className='ana-body';
-    // sub-header info
-    var info=document.createElement('div');info.style.cssText='display:flex;gap:1rem;flex-wrap:wrap;align-items:center;padding:.5rem .75rem;background:var(--bg);border-radius:8px;margin-bottom:4px;font-size:12.5px;color:var(--ink-muted)';
-    info.innerHTML='<span>📋 <b>'+tot+'</b> soal</span><span style="color:var(--correct)">✅ <b>'+cor+'</b> benar</span><span style="color:var(--wrong)">❌ <b>'+wrg+'</b> salah</span><span style="color:var(--skip)">⬜ <b>'+skp+'</b> tidak dijawab</span><span style="font-style:italic">'+rec+'</span>';
-    bodyDiv.appendChild(info);
-    // each item
-    for(var x=0;x<sm.items.length;x++){
-      var qi=sm.items[x].q,ii2=sm.items[x].i;var ans=isAns(ii2),cor2=isCor(ii2);
-      var cls='ai-cor',icon='✅',status='Benar';
-      if(!ans){cls='ai-skp';icon='⬜';status='Tidak Dijawab';}
-      else if(!cor2){cls='ai-wrg';icon='❌';status='Salah';}
-      var item=document.createElement('div');item.className='ana-item '+cls;
-      var tl={pg:'PG',mcma:'MCMA',pgk:'PGK'};
-      item.innerHTML='<span>'+icon+'</span><div class="ai-content"><strong>Soal '+qi.no+' ['+tl[qi.type]+'] · '+status+' · '+qi.level+'</strong><span>'+qi.topic+' › '+qi.sub+'</span></div>';
-      bodyDiv.appendChild(item);}
-    sec.innerHTML='<div class="ana-head" onclick="toggleSec(this)"><div class="ana-head-left"><span style="font-size:12.5px;line-height:1.4">'+statusIcon+' '+sm.subkomp+'</span><span class="ana-badge '+badgeCls+'">'+cor+'/'+tot+' ('+pct+'%)</span></div><span style="font-size:16px;color:var(--ink-muted)">▾</span></div>';
-    sec.appendChild(bodyDiv);panel.appendChild(sec);}
-}
 function buildAnalisisKomp(){
   var panel=document.getElementById('tab-komp');panel.innerHTML='';
   var kompMap={},kompOrder=[];
@@ -905,9 +869,26 @@ function buildAnalisisKomp(){
   var lvls=['Mudah','Medium','HOTS'];
   for(var lv=0;lv<lvls.length;lv++){var lvName=lvls[lv],ids=[];for(var i=0;i<Q.length;i++)if(Q[i].level===lvName)ids.push(i);var cor=0;for(var x=0;x<ids.length;x++)if(isCor(ids[x]))cor++;var tot=ids.length,pct=tot>0?Math.round(cor/tot*100):0;var col=pct>=70?'var(--correct)':pct>=40?'#D97706':'var(--wrong)';lvlBox.innerHTML+='<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem;text-align:center"><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:5px">'+lvName+'</div><div style="font-family:Playfair Display,serif;font-size:26px;font-weight:700;color:'+col+'">'+pct+'%</div><div style="font-size:12px;color:var(--ink-muted)">'+cor+' / '+tot+' benar</div></div>';}
   panel.appendChild(lvlBox);
+
+  // ── Ringkasan per Subkompetensi ──
+  var h3=document.createElement('h3');h3.style.cssText='font-family:Playfair Display,serif;font-size:16px;margin-bottom:.85rem;color:var(--ink)';h3.textContent='Ringkasan per Subkompetensi';panel.appendChild(h3);
+  var subMap={},subOrder=[];
+  for(var i=0;i<Q.length;i++){var q=Q[i];if(!subMap[q.subkomp]){subMap[q.subkomp]={subkomp:q.subkomp,items:[],komps:{}};subOrder.push(q.subkomp);}subMap[q.subkomp].items.push({q:q,i:i});subMap[q.subkomp].komps[q.komp]=true;}
+  var subWrap=document.createElement('div');subWrap.style.cssText='background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem';
+  var sh='<table class="komp-table"><thead><tr><th>Subkompetensi</th><th>Kompetensi</th><th>Soal</th><th>Benar</th><th>Skor</th><th>Capaian</th></tr></thead><tbody>';
+  for(var s=0;s<subOrder.length;s++){
+    var sm=subMap[subOrder[s]];var cor2=0;for(var x=0;x<sm.items.length;x++)if(isCor(sm.items[x].i))cor2++;
+    var tot2=sm.items.length,pct2=Math.round(cor2/tot2*100);var fillCls2=pct2>=70?'sf-good':pct2>=40?'sf-mid':'sf-bad';
+    var kompLabels=Object.keys(sm.komps).join(', ');
+    var statusIcon=pct2>=70?'✅':pct2>=40?'⚠️':'❌';
+    sh+='<tr><td style="font-size:12.5px">'+statusIcon+' '+sm.subkomp+'</td><td style="font-size:11.5px;color:var(--ink-muted)">'+kompLabels+'</td><td style="text-align:center">'+tot2+'</td><td style="text-align:center;color:var(--correct);font-weight:600">'+cor2+'</td><td style="text-align:center;font-weight:600">'+pct2+'%</td><td style="min-width:90px"><div class="score-bar"><div class="score-fill '+fillCls2+'" style="width:'+pct2+'%"></div></div></td></tr>';}
+  sh+='</tbody></table>';
+  var legend=document.createElement('div');legend.style.cssText='padding:.6rem 1rem;background:#F8F5F0;border-top:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap;font-size:11.5px;color:var(--ink-muted)';
+  legend.innerHTML='<span>✅ Dikuasai (≥70%)</span><span>⚠️ Perlu Perhatian (40–69%)</span><span>❌ Perlu Dipelajari Lagi (&lt;40%)</span>';
+  subWrap.innerHTML=sh;subWrap.appendChild(legend);panel.appendChild(subWrap);
 }
 function reviewMode(){rev=true;done=true;document.getElementById('rs').style.display='none';document.getElementById('es').style.display='block';document.getElementById('rev-banner').style.display='block';window.scrollTo(0,0);renderQ(0);updGrid();}
-function restartExam(){initUA();done=false;rev=false;cur=0;tLeft=75*60;clearInterval(tint);document.getElementById('rs').style.display='none';document.getElementById('es').style.display='none';document.getElementById('rev-banner').style.display='none';document.getElementById('ws').style.display='block';document.getElementById('timer').textContent='90:00';document.getElementById('timer').className='';window.scrollTo(0,0);}
+function restartExam(){initUA();done=false;rev=false;cur=0;tLeft=75*60;clearInterval(tint);document.getElementById('rs').style.display='none';document.getElementById('es').style.display='none';document.getElementById('rev-banner').style.display='none';document.getElementById('ws').style.display='block';document.getElementById('timer').textContent='90:00';tLeft=90*60;document.getElementById('timer').className='';window.scrollTo(0,0);}
 </script>
 </body>
 </html>
