@@ -341,17 +341,38 @@ header{background:var(--ink);color:#F5F1EB;padding:1.1rem 2rem;display:flex;alig
 <script>
 // ── CHART HELPERS ───────────────────────────────────────
 function makeTableQ5(){
-  var rows=[
-    ['1','Harga tiket konser naik → jumlah tiket dibeli turun','Hukum Permintaan'],
-    ['2','Menjelang hari raya, permintaan daging ayam meningkat meski harga tetap','Faktor Musim/Momen'],
-    ['3','Harga jagung naik → petani perluas lahan dan tingkatkan produksi','Hukum Penawaran'],
-    ['4','Harga pupuk naik → petani kurangi jumlah sayur yang ditawarkan','Faktor Kenaikan Biaya Produksi'],
-    ['5','Berita dampak buruk minuman berpemanis → konsumen kurangi pembelian meski harga tetap','Perubahan Selera/Preferensi']
+  var fenomena=[
+    ['1','Harga tiket konser musik naik dari Rp500.000 menjadi Rp750.000, lalu jumlah tiket yang dibeli masyarakat menurun.'],
+    ['2','Menjelang hari raya, permintaan daging ayam meningkat meskipun harga daging ayam di pasar relatif tetap.'],
+    ['3','Harga jagung naik cukup tinggi, sehingga banyak petani memperluas lahan dan meningkatkan produksi jagung.'],
+    ['4','Kenaikan harga pupuk membuat sebagian petani mengurangi jumlah sayur yang ditawarkan ke pasar.'],
+    ['5','Berita tentang dampak buruk minuman berpemanis membuat sebagian konsumen mengurangi pembelian meskipun harga tidak berubah.']
   ];
-  var h='<table class="data-table"><thead><tr><th>No</th><th style="text-align:left">Fenomena Ekonomi (A)</th><th style="text-align:left">Faktor Penyebab (B)</th></tr></thead><tbody>';
-  for(var i=0;i<rows.length;i++) h+='<tr><td style="text-align:center;font-weight:700">'+rows[i][0]+'</td><td>'+rows[i][1]+'</td><td>'+rows[i][2]+'</td></tr>';
+  var faktor=[
+    ['A','Hukum permintaan'],
+    ['B','Hukum penawaran'],
+    ['C','Perubahan selera atau preferensi'],
+    ['D','Faktor musim tertentu'],
+    ['E','Faktor kenaikan biaya produksi']
+  ];
+  var h='<table style="width:100%;border-collapse:collapse;font-size:13px">'
+    +'<thead><tr>'
+    +'<th style="background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:center;width:36px">No.</th>'
+    +'<th style="background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:left">Fenomena Ekonomi</th>'
+    +'<th style="background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:center;width:36px">No.</th>'
+    +'<th style="background:var(--ink);color:#F5F1EB;padding:.5rem .75rem;text-align:left">Faktor Penyebab</th>'
+    +'</tr></thead><tbody>';
+  for(var i=0;i<5;i++){
+    var bg=i%2===1?'background:#FAF7F3;':'';
+    h+='<tr style="'+bg+'">'
+      +'<td style="padding:.6rem .75rem;text-align:center;font-weight:700;border-bottom:1px solid var(--border);vertical-align:top">'+fenomena[i][0]+'</td>'
+      +'<td style="padding:.6rem .75rem;border-bottom:1px solid var(--border);line-height:1.55;vertical-align:top">'+fenomena[i][1]+'</td>'
+      +'<td style="padding:.6rem .75rem;text-align:center;font-weight:700;border-bottom:1px solid var(--border);vertical-align:top">'+faktor[i][0]+'</td>'
+      +'<td style="padding:.6rem .75rem;border-bottom:1px solid var(--border);vertical-align:top">'+faktor[i][1]+'</td>'
+      +'</tr>';
+  }
   h+='</tbody></table>';
-  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'+h+'<p style="font-size:11px;color:var(--ink-faint);padding:.5rem .85rem;font-style:italic">Cocokkan fenomena di kolom A dengan faktor penyebab di kolom B!</p></div>';
+  return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'+h+'</div>';
 }
 function makeTableQ13(){
   return '<div style="background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem">'
@@ -467,7 +488,7 @@ expl:'Biaya peluang dihitung dari alternatif terbaik yang ditinggalkan:\n• Sta
 // 5
 {no:5,type:'pg',topic:'Kajian Ilmu Ekonomi',sub:'Kegiatan Ekonomi & Mekanisme Pasar',komp:'Pemahaman',subkomp:'Mengidentifikasi suatu konsep ekonomi berdasarkan pernyataan atau ilustrasi sederhana',level:'Mudah',
 chartFn:'makeTableQ5',
-text:'Pasangan yang tepat antara fenomena ekonomi (A) dan faktor penyebabnya (B) adalah....',
+text:'Pasangan yang tepat antara Fenomena Ekonomi dan Faktor Penyebab adalah ....',
 opts:['1-A, 2-D, 3-B, 4-E, 5-C',
 '1-B, 2-D, 3-A, 4-E, 5-C',
 '1-A, 2-C, 3-B, 4-D, 5-E',
